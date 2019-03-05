@@ -1,0 +1,71 @@
+.select-device {
+    position: relative;
+
+    padding: var(--spacing-2) var(--spacing-3);
+
+    width: 100%;
+
+    font: inherit;
+    text-overflow: ellipsis;
+    color: var(--grey-4);
+
+    border: none;
+    border-radius: var(--radius-1);
+    background: hsla(0, 100%, 100%, 0.4);
+
+    &[open] {
+        border-radius:  var(--radius-1) var(--radius-1) 0 0;
+    }
+
+    summary {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+
+        list-style: none;
+        cursor: pointer;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        > span {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    > div {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        display: grid;
+        grid-gap: calc(var(--gap-2) * 1.5);
+
+        padding: var(--spacing-4);
+
+        width: 100%;
+
+        transform: translateY(102%);
+        background: var(--blue-0);
+
+        border-radius: 0 0 var(--radius-1) var(--radius-1);
+
+        .link {
+            display: block;
+
+
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    .link--new {
+        --border-color: var(--dark-blue-4);
+    }
+}

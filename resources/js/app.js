@@ -5,9 +5,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
+import Vue from 'vue';
 
-window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -17,10 +17,8 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,3 +29,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app'
 });
+
+document.addEventListener('click', event => {
+    // clicking off an open details.autoclose, closes it
+    if (!event.target.closest('details')) {
+        document.querySelectorAll('details.autoclose[open]').forEach(el => {
+            el.removeAttribute('open')
+        })
+    }
+})

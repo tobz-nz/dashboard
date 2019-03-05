@@ -1,0 +1,49 @@
+meter {
+    appearance: none;
+    border: 1px solid currentColor;
+    background: var(--grey-6, lightgray);
+
+    transition: color 250ms ease;
+
+    &:-moz-meter-optimum {
+        color: var(--green-2);
+    }
+    &:-webkit-meter-optimum-value {
+        color: var(--green-2);
+    }
+
+    &:-moz-meter-sub-optimum {
+        color: var(--yellow-1);
+    }
+    &:-webkit-meter-suboptimum-value {
+        color: var(--yellow-1);
+    }
+
+    &:-moz-meter-sub-sub-optimum {
+        color: var(--red-0);
+    }
+    &:-webkit-meter-even-less-good-value {
+        color: var(--red-0);
+    }
+}
+
+:-moz-meter-optimum::-moz-meter-bar {
+    background: var(--green-2, green);
+}
+:-webkit-meter-optimum-value::-webkit-meter-bar {
+    background: var(--green-2, green);
+}
+
+:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: var(--yellow-1, yellow);
+}
+:-webkit-meter-suboptimum-value::-webkit-meter-bar {
+    background: var(--yellow-1, yellow);
+}
+
+:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: var(--red-1, red);
+}
+:-webkit-meter-even-less-good-value::-webkit-meter-bar {
+    background: var(--red-1, red);
+}

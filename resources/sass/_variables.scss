@@ -1,20 +1,90 @@
+:root {
+    // Primary Colours
+    --black: hsl(207, 15%, 5%);
+    --white: hsl(207, 10%, 90%);
 
-// Body
-$body-bg: #f8fafc;
+    // hsl(207, 15%, 24%);
 
-// Typography
-$font-family-sans-serif: "Nunito", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+    --blue-0: hsl(205, 95%, 40%);
+    --blue-1: hsl(205, 100%, 60%); // main
+    --blue-2: hsl(205, 100%, 70%);
+    --blue-3: hsl(203, 100%, 78%);
+    --blue-4: hsl(200, 100%, 85%);
+    --blue-5: hsl(200, 100%, 95%);
 
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+    // Neutral Colours
+    --grey-0: hsl(207, 15%, 12%);
+    --grey-1: hsl(207, 15%, 20%); // main
+    --grey-2: hsl(207, 15%, 40%);
+    --grey-3: hsl(207, 15%, 55%);
+    --grey-4: hsl(207, 15%, 85%);
+    --grey-5: hsl(207, 15%, 90%);
+    --grey-6: hsl(207, 15%, 98%);
+
+    // Supporting Colours
+    --dark-blue-0: hsl(213, 96%, 30%);
+    --dark-blue-1: hsl(213, 80%, 36%); // main
+    --dark-blue-2: hsl(213, 64%, 43%);
+    --dark-blue-3: hsl(213, 55%, 60%);
+    --dark-blue-4: hsl(213, 64%, 77%);
+    --dark-blue-5: hsl(213, 72%, 94%);
+
+    --red-0: hsl(6, 90%, 42%);
+    --red-1: hsl(0, 78%, 58%); // main
+    --red-2: hsl(0, 88%, 68%);
+    --red-3: hsl(0, 98%, 78%);
+    --red-4: hsl(0, 100%, 85%);
+    --red-5: hsl(0, 100%, 95%);
+
+    --yellow-0: hsl(47, 100%, 47%);
+    --yellow-1: hsl(50, 95%, 52%);
+    --yellow-2: hsl(50, 95%, 60%); //main
+    --yellow-3: hsl(52, 100%, 68%);
+    --yellow-4: hsl(55, 100%, 75%);
+    --yellow-5: hsl(60, 100%, 88%);
+
+    --green-0: hsl(99, 74%, 40%);
+    --green-1: hsl(102, 60%, 49%);
+    --green-2: hsl(104, 62%, 57%); //main
+    --green-3: hsl(104, 72%, 66%);
+    --green-4: hsl(104, 83%, 75%);
+    --green-5: hsl(104, 93%, 83%);
+
+
+    // Font Sizes
+    --text-1:    0.625rem;   // 10px
+    --text-2:    0.875rem;   // 14px
+    --text-3:    1.125rem;   // 18px
+    --text-4:    1.25rem;    // 20px
+    --text-5:    1.5rem;     // 24px
+    --text-6:    1.75rem;    // 28px
+    --text-7:    2rem;       // 32px
+
+    // spacing
+    --spacing-0: 0;
+    --spacing-1: .25rem; // 4px
+    --spacing-2: .5rem;  // 8px
+    --spacing-3: .75rem; // 12px
+    --spacing-4: 1rem;   // 16px
+    --spacing-5: 1.5rem; // 24px
+    --spacing-6: 2rem;   // 32px
+    --spacing-7: 3rem;   // 48px
+    --spacing-8: 4rem;   // 64px
+    --spacing-9: 6rem;   // 96px
+    --spacing-10: 8rem;  // 128px
+    --spacing-11: 12rem; // 192px
+    --spacing-12: 16rem; // 256px
+    --spacing-13: 24rem; // 384px
+    --spacing-14: 40rem; // 640px
+    --spacing-15: 48rem; // 768px
+
+    // gaps
+    --gap-1: 5px;
+    --gap-2: 10px;
+    --gap-3: 20px;
+
+    // border-radius
+    --radius-1: 3px;
+    --radius-2: 5px;
+    --radius-3: 8px;
+}

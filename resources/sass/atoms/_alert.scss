@@ -1,0 +1,23 @@
+.alert {
+    display: flex;
+    padding: var(--spacing-4);
+    color: var(--alert-color, var(--grey-1));
+
+    border-bottom: 10px solid var(--alert-border, var(--blue-0));
+    background: var(--alert-bg, var(--blue-5));
+
+    &.alert--success {
+        --alert-border: var(--green-1);
+        --alert-bg: var(--green-4);
+    }
+
+    &.alert--warning {
+        --alert-border: var(--yellow-0);
+        --alert-bg:  var(--yellow-4);
+    }
+
+    &.alert--error {
+        --alert-border:  var(--red-0);
+        --alert-bg:  var(--red-4);
+    }
+}

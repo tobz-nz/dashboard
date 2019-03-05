@@ -1,0 +1,15 @@
+.block {
+    display: block;
+}
+
+.flex {
+    display: flex;
+
+    &-col {
+        flex-direction: column;
+    }
+}
+
+.grid {
+    display: grid;
+}

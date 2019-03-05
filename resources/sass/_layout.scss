@@ -1,0 +1,16 @@
+:root {
+    box-sizing: border-box;
+}
+
+*:not(img), *:before, *:after {
+    box-sizing: inherit;
+}
+
+.layout {
+    &--main {
+        display: grid;
+        grid-template-columns: [header] auto [sidebar] minmax(200px, 1fr) [content] auto;
+        min-height: 100vh;
+        grid-template-areas: "sidebar content";
+    }
+}

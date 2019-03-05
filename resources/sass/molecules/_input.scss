@@ -1,0 +1,123 @@
+.input {
+    &-group {
+        position: relative;
+
+        // display: grid;
+        // grid-template-columns: minmax(120px, min-content) 300px;
+        // grid-template-rows: 48px;
+        // grid-gap: 0 var(--gap-3);
+
+        align-content: flex-start;
+
+        // &:not(.inline) {
+        //     grid-template-columns: auto;
+        //     grid-auto-flow: column;
+        // }
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-2) var(--gap-3);
+        align-items: baseline;
+    }
+
+    &-label {
+        display: block;
+        // margin: var(--spacing-4) 0 0;
+        // margin-bottom: var(--spacing-2);
+
+        // flex: 0 1 120px;
+        width: 120px;
+
+        font-weight: 300;
+        font-size: var(--text-md);
+    }
+
+    // normal input
+    &-field:not([type="radio"]):not([type="checkbox"]):not([type="file"]) {
+        padding: var(--spacing-3);
+
+        flex: 1 1 170px;
+        max-width: 350px;
+        min-height: 47px;
+
+        font: inherit;
+        font-weight: 300;
+        line-height: 1.2;
+
+        border: 1px solid var(--blue-1);
+        border-radius: var(--radius-sm);
+
+        background-color: var(--grey-5);
+    }
+
+    &-summary {
+        display: none;
+
+        .input-field ~ & {
+            display: block;
+            max-width: 400px;
+
+            align-self: flex-start;
+            grid-column: 3;
+            flex: 1 1 200px;
+
+            color: var(--grey-3);
+            font-size: var(--text-2);
+            line-height: 1.5;
+        }
+    }
+
+    &--invalid {
+
+        input {
+            border-color: var(--red-0);
+            box-shadow: 0 0 1.5px 1px var(--red-0);
+        }
+    }
+
+    &--error {
+        grid-column: 2;
+        padding: var(--spacing-2) 0;
+
+        font-size: var(--text-2);
+        color: var(--red-1);
+    }
+
+    &[type="color"] {
+        min-height: 50px;
+    }
+
+    // Checkbox/Radio
+    &-group--checkable {
+        display: grid;
+        grid-template-columns: 20px auto;
+        grid-auto-columns: auto;
+        grid-template-areas: "check label";
+        grid-gap: 8px 10px;
+
+    }
+
+    &--checkbox {
+        fill: var(--blue-2);
+
+        .checked {
+            display: var(--display, block);
+            fill: var(--dark-blue-2);
+        }
+    }
+
+    &--checkable {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        &:not(:checked) + svg {
+            --display: none;
+        }
+    }
+}
+
+::placeholder {
+    font-weight: 200;
+    color: var(--grey-3);
+}

@@ -1,0 +1,58 @@
+.text {
+    // sizes
+
+    &-1 {
+        font-size: var(--text-1);
+    }
+
+    &-2 {
+        font-size: var(--text-2);
+    }
+
+    &-3 {
+        font-size: var(--text-3); // base
+    }
+
+    &-4 {
+        font-size: var(--text-4);
+    }
+
+    &-5 {
+        font-size: var(--text-5);
+    }
+
+    &-6 {
+        font-size: var(--text-6);
+    }
+
+    &-7 {
+        font-size: var(--text-7);
+    }
+
+    // weights
+    &-light {
+        font-weight: var(--weight, 300);
+    }
+
+    &-normal {
+        font-weight: var(--weight, 400);
+    }
+
+    &-medium {
+        font-weight: var(--weight, 500);
+    }
+
+    &-bold {
+        font-weight: var(--weight, 700);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: var(--text-6);
+}

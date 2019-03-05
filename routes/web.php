@@ -11,6 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes(['verify' => true]);
+
+$router->redirect('/', 'login');
+
+$router->view('styleguide', 'styleguide');
+
+$router->group(['middleware' => 'verified'], function($router) {
+    $router->get('/', [
+        'uses' => DashboardController::class . '@index',
+        'as' => 'dashboard',
+        'middleware' => 'device.check',
+    ]);
+
+    $router->resource('setup', SetupController::class, [
+        'only' => ['index', 'store'],
+    ]);
+
+    $router->resource('devices', DeviceController::class);
+
+    $router->get('account', [
+        'uses' => AccountController::class . '@index',
+        'as' => 'account',
+    ]);
 });

@@ -1,0 +1,60 @@
+.border {
+    border-width: var(--border-width, 1px);
+    border-style: var(--border-style, solid);
+
+    &, &-t, &-r, &-b, &-l {
+        border-color: var(--border-color, currentColor);
+    }
+
+    &-t {
+        border-top-width: var(--border-width, 1px);
+        border-top-style: var(--border-style, solid);
+    }
+
+    &-r {
+        border-right-width: var(--border-width, 1px);
+        border-right-style: var(--border-style, solid);
+    }
+
+    &-b {
+        border-bottom-width: var(--border-width, 1px);
+        border-bottom-style: var(--border-style, solid);
+    }
+
+    &-l {
+        border-left-width: var(--border-width, 1px);
+        border-left-style: var(--border-style, solid);
+    }
+}
+
+.rounded {
+    border-radius: var(--radius, var(--radius-md));
+
+    &-sm {
+        border-radius: var(--radius-sm);
+    }
+
+    &-md {
+        border-radius: var(--radius-md);
+    }
+
+    &-lg {
+        border-radius: var(--radius-lg);
+    }
+}
+
+
+.chart {
+    transform: rotate(-90deg);
+
+}
+.pie {
+    fill: transparent;
+    stroke: var(--blue-2);
+    stroke-width: 8px;
+}
+.pie2 {
+    fill: transparent;
+    stroke: var(--grey-4);
+    stroke-width: 5px;
+}

@@ -1,0 +1,5 @@
+.border {
+    border-width: var(--border-size, 1px);
+    border-style: var(--border-style, solid);
+    border-color: var(--border-color, inherit);
+}

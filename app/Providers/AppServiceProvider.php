@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,36 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->BootBladeExtensions();
+        $this->registerMacros();
+    }
+
+    private function BootBladeExtensions()
+    {
+        Blade::directive('IsRoute', function ($expression) {
+            [$routeName, $returnValue] = explode('|', trim($expression, "'"));
+            if (Route::is($routeName) === true) {
+                return "<?php echo '{$returnValue}' ?>";
+            }
+        });
+
+        Blade::component('components.input-field', 'inputField');
+    }
+
+    private function registerMacros()
+    {
+        Arr::macro('html_attributes', function (array $attributes): string {
+            $attrs = [];
+            foreach ($attributes as $key => $value) {
+                if (is_bool($value)) {
+                    $attrs[] = $key;
+                    continue;
+                }
+
+                $attrs[] = sprintf('%s="%s"', $key, $value);
+            }
+
+            return implode(' ', $attrs);
+        });
     }
 }

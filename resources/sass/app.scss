@@ -1,14 +1,31 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// base layout rules
+@import 'layout';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// Atoms
+@import "atoms/alert";
+@import "atoms/battery";
+@import "atoms/body";
+@import "atoms/button";
+@import "atoms/border";
+@import "atoms/content";
+@import "atoms/content-header";
+@import "atoms/img";
+@import "atoms/link";
+@import "atoms/list";
+@import "atoms/meter";
+@import "atoms/p";
+@import "atoms/select-device";
+@import "atoms/sidebar";
+
+// molecules
+@import "molecules/input";
+
+// Utilities
+@import "utilities/border";
+@import "utilities/display";
+@import "utilities/layout";
+@import "utilities/type";
