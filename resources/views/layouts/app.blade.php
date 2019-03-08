@@ -40,8 +40,8 @@
             <ul class="p-4 links unlist">
                 <li><a class="link" href="{{ route('dashboard') }}">Trends <span class="line"></span></a></li>
                 <li><a class="link" href="{{ route('dashboard') }}">Manage Refills <span class="line"></span></a></li>
-                <li><a class="link" href="{{ route('dashboard') }}">Alerts <span class="line"></span></a></li>
                 @isset($device)
+                <li><a class="link" href="{{ route('alerts.index', $device) }}">Alerts <span class="line"></span></a></li>
                 <li><a class="link" href="{{ route('devices.edit', $device) }}">Settings <span class="line"></span></a></li>
                 @endisset
             </ul>

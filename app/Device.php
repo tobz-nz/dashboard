@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Alert;
 use App\Concerns\HasVolume;
 use App\DeviceMetric;
 use App\User;
@@ -95,5 +96,16 @@ class Device extends Model
         return $this->hasOne(DeviceMetric::class)
             ->whereType('level')
             ->orderByDesc('id');
+    }
+
+    /**
+     * Alert relationships
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function alerts()
+    {
+        return $this->hasMany(Alert::class)
+            ->orderBy('id');
     }
 }

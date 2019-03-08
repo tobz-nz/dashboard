@@ -29,6 +29,7 @@ $router->group(['middleware' => 'verified'], function($router) {
     ]);
 
     $router->resource('devices', DeviceController::class);
+    $router->resource('devices/{device}/alerts', AlertController::class);
     $router->resource('account', AccountController::class, [
         'only' => ['edit', 'update']
     ]);
