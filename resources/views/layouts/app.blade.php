@@ -28,9 +28,11 @@
     <div id="app" class="layout--main">
         <nav class="sidebar">
             <header class="sidebar-header mb-5 py-5 px-4 border-b">
-                <svg style="--icon-fill: var(--white);margin: 0 auto;width: 130px;height: 40px;display: block;">
-                    <use xlink:href="{{ asset('images/icons.svg#logo') }}"></use>
-                </svg>
+                <a href="{{ route('dashboard') }}">
+                    <svg class="logo" role="image">
+                        <use xlink:href="{{ asset('images/icons.svg#logo') }}"></use>
+                    </svg>
+                </a>
 
                 @include('components.device-selector', ['devices' => auth()->user()->devices])
             </header>
