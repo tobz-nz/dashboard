@@ -29,9 +29,7 @@ $router->group(['middleware' => 'verified'], function($router) {
     ]);
 
     $router->resource('devices', DeviceController::class);
-
-    $router->get('account', [
-        'uses' => AccountController::class . '@index',
-        'as' => 'account',
+    $router->resource('account', AccountController::class, [
+        'only' => ['edit', 'update']
     ]);
 });

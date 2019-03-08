@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Account;
 use App\Device;
 use Creativeorange\Gravatar\Facades\Gravatar;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -50,5 +51,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function devices()
     {
         return $this->hasMany(Device::class, 'owner_id');
+    }
+
+    /**
+     * Device relstionship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function account()
+    {
+        return $this->hasOne(Account::class);
     }
 }

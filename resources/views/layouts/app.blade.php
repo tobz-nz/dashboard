@@ -50,7 +50,7 @@
                 <div class="flex py-5 px-4 gap-3 items-center text-2">
                     <img class="mr-4 rounded-lg" width="40" src="{{ auth()->user()->avatar }}" alt="">
                     <div class="grid gap-1">
-                        <a class="link" href="{{ route('account') }}">Account</a>
+                        <a class="link" href="{{ route('account.edit', auth()->user()->account) }}">Account</a>
                         <button form="logout-form" class="link">Log Out</button>
                     </div>
                 </div>
