@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Add Device')
+
 @section('content')
     <h1 class="px-8 pb-5 border-b" style="--border-color:var(--grey-4)">Device settings</h1>
 
