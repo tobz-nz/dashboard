@@ -20,7 +20,7 @@ class AlertPolicy
     public function view(User $user, Alert $alert)
     {
         return $user->devices()->whereHas('alerts', function ($query) use ($alert) {
-            $query->find($alert);
+            $query->whereId($alert->id);
         })->exists();
     }
 
@@ -32,7 +32,7 @@ class AlertPolicy
      */
     public function create(User $user)
     {
-        //
+        // @todo Check subscription limitations
     }
 
     /**
@@ -44,9 +44,7 @@ class AlertPolicy
      */
     public function update(User $user, Alert $alert)
     {
-        return $user->devices()->whereHas('alerts', function ($query) use ($alert) {
-            $query->find($alert);
-        })->exists();
+        return $this->view($user, $alert);
     }
 
     /**
@@ -58,7 +56,9 @@ class AlertPolicy
      */
     public function delete(User $user, Alert $alert)
     {
-        //
+        // @todo Check subscription limitations
+
+        return $this->view($user, $alert);
     }
 
     /**
@@ -70,7 +70,9 @@ class AlertPolicy
      */
     public function restore(User $user, Alert $alert)
     {
-        //
+        // @todo Check subscription limitations
+
+        return $this->view($user, $alert);
     }
 
     /**

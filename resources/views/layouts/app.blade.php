@@ -78,5 +78,10 @@
         </form>
 
     </div>
+
+<div class="extras">
+    @stack('extras')
+</div>
+
 </body>
 </html>

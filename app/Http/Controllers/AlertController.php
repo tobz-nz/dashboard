@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Alert;
 use App\Device;
 use App\Http\Requests\Alert\CreateRequest;
+use App\Http\Requests\Alert\DeleteRequest;
 use Illuminate\Http\Request;
 
 class AlertController extends Controller
@@ -82,8 +83,10 @@ class AlertController extends Controller
      * @param  \App\Alert  $alert
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alert $alert)
+    public function destroy(DeleteRequest $request, Device $device, Alert $alert)
     {
-        //
+        $alert->delete();
+
+        return redirect()->back()->with('success', 'Alert Removed');
     }
 }
