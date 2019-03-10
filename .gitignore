@@ -15,3 +15,4 @@ yarn-error.log
 /public/js/*
 /public/mix-manifest.json
 /storage/clockwork
+/public/service-worker.js

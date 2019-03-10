@@ -15,13 +15,17 @@ Auth::routes(['verify' => true]);
 
 $router->redirect('/', 'login');
 
-$router->view('styleguide', 'styleguide');
+$router->view('offline', 'offline');
 
-$router->group(['middleware' => 'verified'], function($router) {
+$router->group(['middleware' => [
+    'auth',
+    'verified',
+    'service.worker',
+]], function($router) {
     $router->get('/', [
         'uses' => DashboardController::class . '@index',
         'as' => 'dashboard',
-        'middleware' => 'device.check',
+        'middleware' => ['device.check'],
     ]);
 
     $router->resource('setup', SetupController::class, [
@@ -30,7 +34,10 @@ $router->group(['middleware' => 'verified'], function($router) {
 
     $router->resource('devices', DeviceController::class);
     $router->resource('devices/{device}/alerts', AlertController::class);
+
     $router->resource('account', AccountController::class, [
         'only' => ['edit', 'update']
     ]);
 });
+
+$router->view('styleguide', 'styleguide');

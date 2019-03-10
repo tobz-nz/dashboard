@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$router->group(['middleware' => [
+    'auth:api',
+]], function($router) {
+    /* Web Push Notifications */
+    $router->post('push-service', [
+        'uses' => Api\PushServiceController::class.'@store',
+        'as' => 'api.notifications.subscribe'
+    ]);
+
+    $router->delete('push-service/{subscription}', [
+        'uses' => Api\PushServiceController::class.'@delete',
+        'as' => 'api.notifications.unsubscribe'
+    ]);
 });

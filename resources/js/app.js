@@ -38,3 +38,70 @@ document.addEventListener('click', event => {
         })
     }
 })
+
+
+/**
+ * Boot up our service worker
+ */
+
+if ('serviceWorker' in navigator) {
+    // Service worker to register for this site
+    navigator.serviceWorker.register('/service-worker.js', {
+        scope: '/',
+    }).then((serviceWorkerRegistration) => {
+        console.log('register checks...');
+
+        if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
+            console.log('Notifications aren\'t supported.')
+            return
+        }
+
+        if (Notification.permission === 'denied') {
+            console.log('The user has blocked notifications.')
+            return
+        }
+
+        if (!('PushManager' in window)) {
+            console.log('Push messaging isn\'t supported.')
+            return
+        }
+        console.log('register checks complete');
+
+        let updateSubscription = function(subscription) {
+            const key = subscription.getKey('p256dh')
+            const token = subscription.getKey('auth')
+            const data = {
+                endpoint: subscription.endpoint,
+                key: key ? btoa(String.fromCharCode.apply(null, new Uint8Array(key))) : null,
+                token: token ? btoa(String.fromCharCode.apply(null, new Uint8Array(token))) : null
+            }
+
+            axios.post(route('api.notifications.subscribe'), data).then(response => {
+                // console.log(response);
+            })
+        }
+
+        navigator.serviceWorker.ready.then(registration => {
+            registration.pushManager.getSubscription()
+                .then(pushSubscription => {
+
+                    if (!pushSubscription) {
+                        registration.pushManager.subscribe().then(pushSubscription => {
+                            console.log('new pushSubscription registered', pushSubscription);
+                            updateSubscription(pushSubscription)
+                        })
+
+                        return
+                    }
+
+                    // console.log('existing pushSubscription', pushSubscription)
+                    updateSubscription(pushSubscription)
+                })
+                .catch(error => {
+                    console.log('Error during getSubscription()', error)
+                })
+            }).catch((error) => {
+                console.log(`Service worker registration error: ${error}`);
+        });
+    });
+}
