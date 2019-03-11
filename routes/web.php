@@ -16,6 +16,10 @@ Auth::routes(['verify' => true]);
 $router->redirect('/', 'login');
 
 $router->view('offline', 'offline');
+$router->get('manifest.webmanifest', [
+    'uses' => ManifestController::class.'@show',
+    'as' => 'webmanifest',
+]);
 
 $router->group(['middleware' => [
     'auth',
