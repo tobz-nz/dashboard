@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @auth
     <meta name="api-token" content="{{ auth()->user()->api_token }}">
+    <meta name="push-key" content="{{ config('webpush.vapid.public_key') }}">
     @endauth
 
     <title>@yield('title', config('app.name'))</title>

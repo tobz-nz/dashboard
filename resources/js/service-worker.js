@@ -2,7 +2,7 @@ var CACHE = 'v1';
 
 /* Cache files for offline use */
 self.addEventListener('install', event => {
-    console.log('SW installed');
+    console.log('SW installed', event);
 
     // Open a cache store called `v1`
     event.waitUntil(
@@ -19,6 +19,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
     console.log('SW activated');
 
+    /* Cache */
     var cacheWhitelist = [CACHE];
     event.waitUntil(
         caches.keys().then(keyList => {
@@ -75,7 +76,7 @@ self.addEventListener('activate', event => {
 
 /* Forward push notifications */
 self.addEventListener('push', event => {
-    console.log('SW push');
+    console.log('Push Received');
 
     if (event && event.data) {
         const data = event.data.json();
@@ -98,32 +99,31 @@ self.addEventListener('notificationclick', event => {
 
     event.notification.close();
 
-    // This looks to see if the current is already open and
-    // focuses if it is
+    // This looks to see if the site is already open in a tab
+    // and focuses if it is, else open it in a new tab.
     event.waitUntil(
-        clients.matchAll({ type: "window", includeUncontrolled: true })
-            .then(clientList => {
-                for (var i = 0; i < clientList.length; i++) {
-                    if ('focus' in clientList[i]) {
-                        // focus the existing window/tab
-                        clientList[i].focus();
-                        if (clientList[i].url != event.notification.data.url) {
-                            console.log('not url');
-                            clientList[i].navigate(event.notification.data.url)
-                        }
-
-                        return
+        clients.matchAll({ type: "window", includeUncontrolled: true }).then(clientList => {
+            for (var i = 0; i < clientList.length; i++) {
+                if ('focus' in clientList[i]) {
+                    // focus the existing window/tab
+                    clientList[i].focus();
+                    if (clientList[i].url != event.notification.data.url) {
+                        console.log('urls not matching', clientList[i].url, event.notification.data.url);
+                        // navigate to the notifications provided url
+                        clientList[i].navigate(event.notification.data.url)
                     }
-                }
 
-                if (!clientList.length) {
-                    if (clients.openWindow) {
-                        // no windows/tabs open, so open a new one
-                        return clients.openWindow('/');
-                    }
+                    return
                 }
+            }
 
-            })
+            if (!clientList.length) {
+                if (clients.openWindow) {
+                    // no windows/tabs open, so open a new one
+                    return clients.openWindow('/');
+                }
+            }
+        })
     );
 })
 
@@ -137,7 +137,7 @@ self.addEventListener('pushsubscriptionchange', function(event) {
 
             console.log('Subscribed after expiration', subscription.endpoint);
 
-            return fetch('register', {
+            return fetch('/api/push-service', {
                 method: 'post',
                 headers: {
                     'Content-type': 'application/json'

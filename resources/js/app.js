@@ -76,17 +76,34 @@ if ('serviceWorker' in navigator) {
                 token: token ? btoa(String.fromCharCode.apply(null, new Uint8Array(token))) : null
             }
 
-            axios.post(route('api.notifications.subscribe'), data).then(response => {
-                // console.log(response);
-            })
+            // store the subscription server-side
+            axios.post(route('api.notifications.subscribe'), data)
+        }
+
+        const urlB64ToUint8Array = base64String => {
+            const padding = '='.repeat((4 - (base64String.length % 4)) % 4)
+            const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/')
+            const rawData = atob(base64)
+            const outputArray = new Uint8Array(rawData.length)
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i)
+            }
+            return outputArray
         }
 
         navigator.serviceWorker.ready.then(registration => {
             registration.pushManager.getSubscription()
                 .then(pushSubscription => {
-
                     if (!pushSubscription) {
-                        registration.pushManager.subscribe().then(pushSubscription => {
+
+                        // fetch the VAPID public key
+                        const publicPushKey = document.querySelector('meta[name=push-key]').content
+
+                        registration.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: urlB64ToUint8Array(publicPushKey)
+                        })
+                        .then(pushSubscription => {
                             console.log('new pushSubscription registered', pushSubscription);
                             updateSubscription(pushSubscription)
                         })
@@ -94,7 +111,8 @@ if ('serviceWorker' in navigator) {
                         return
                     }
 
-                    // console.log('existing pushSubscription', pushSubscription)
+                    // subscriptions get updated now and again,
+                    // so keep it updated here.
                     updateSubscription(pushSubscription)
                 })
                 .catch(error => {
