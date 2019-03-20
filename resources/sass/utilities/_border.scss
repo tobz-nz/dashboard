@@ -42,19 +42,3 @@
         border-radius: var(--radius-lg);
     }
 }
-
-
-.chart {
-    transform: rotate(-90deg);
-
-}
-.pie {
-    fill: transparent;
-    stroke: var(--blue-2);
-    stroke-width: 8px;
-}
-.pie2 {
-    fill: transparent;
-    stroke: var(--grey-4);
-    stroke-width: 5px;
-}

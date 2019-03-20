@@ -19,5 +19,10 @@
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.8"
+    },
+    "dependencies": {
+        "echarts": "^4.1.0",
+        "moment": "^2.24.0",
+        "vue-echarts": "^4.0.1"
     }
 }

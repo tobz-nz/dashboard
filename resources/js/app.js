@@ -7,7 +7,26 @@
 
 import './bootstrap';
 import Vue from 'vue';
+import TfChart from './components/tf-chart.vue'
 
+function randomData() {
+    now = new Date(+now + oneDay);
+    value = value + Math.random() * 21 - 10;
+    return {
+        name: now.toString(),
+        value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+            Math.round(value)
+        ]
+    }
+}
+window.data = [];
+var now = +new Date(1997, 9, 3);
+var oneDay = 24 * 3600 * 1000;
+var value = Math.random() * 1000;
+for (var i = 0; i < 1000; i++) {
+    data.push(randomData());
+}
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,6 +38,8 @@ import Vue from 'vue';
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component(TfChart)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
