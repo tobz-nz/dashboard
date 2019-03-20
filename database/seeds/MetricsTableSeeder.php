@@ -12,6 +12,6 @@ class MetricsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(DeviceMetric::class, 50)->create(['device_id' => 1]);
+        factory(DeviceMetric::class, 40)->create(['device_id' => 1]);
     }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Concerns;
 
+use App\DeviceMetric;
+use Illuminate\Support\Carbon;
+
 trait HasVolume
 {
     /**
@@ -89,5 +92,41 @@ trait HasVolume
     public function getMaxVolumeAttribute($value = null): int
     {
         return $this->getCurrentVolumeAttribute($this->dimensions->height);
+    }
+
+    /**
+     * Get metrics limited to the last entry per day
+     *
+     * @param int $limit
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function dailyMetrics($limit = null)
+    {
+        $table = DeviceMetric::make()->getTable();
+
+        /*
+        SELECT value, created_at
+        FROM device_metrics
+        INNER JOIN
+        (
+          SELECT
+          MAX(created_at) AS max_created_at
+          FROM device_metrics
+          GROUP BY Date(`created_at`)
+        ) AS t
+        ON created_at = t.max_created_at
+        */
+
+        $sub = \DB::table($table)
+            ->select(\DB::raw('max(created_at) AS max_created_at'))
+            ->where(['device_id' => $this->getKey()])
+            ->groupBy(\DB::raw('DATE(created_at)'));
+
+        return $this->metrics()
+            ->whereNull('deleted_at')
+            ->joinSub($sub, 'm', function ($join) {
+                $join->on('created_at', '=', 'm.max_created_at');
+            })
+            ->limit($limit);
     }
 }
