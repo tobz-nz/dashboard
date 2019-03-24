@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'api_token',
+        'apn_tokens',
     ];
 
     /**
@@ -36,8 +37,26 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'api_token',
+        'apn_tokens',
         'remember_token',
     ];
+
+    /**
+     * @inheritdoc
+     */
+    protected $casts = [
+        'apn_tokens' => 'array',
+    ];
+
+    /**
+     * Get user APN tokens
+     *
+     * @return array
+     */
+    public function routeNotificationForApn(): array
+    {
+        return $this->apn_tokens;
+    }
 
     /**
      * Avatar image

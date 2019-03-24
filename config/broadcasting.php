@@ -1,5 +1,7 @@
 <?php
 
+use NotificationChannels\Apn\ApnChannel;
+
 return [
 
     /*
@@ -39,6 +41,12 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'encrypted' => true,
             ],
+        ],
+
+        'apn' => [
+            'environment' => ApnChannel::PRODUCTION,
+            'certificate' => base_path(env('APNS_CERTIFICATE')),
+            'pass_phrase' => null,
         ],
 
         'redis' => [

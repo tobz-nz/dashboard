@@ -1,0 +1,8 @@
+{
+    "websiteName": "Tankful",
+    "websitePushID": "web.nz.tankful",
+    "allowedDomains": ["https://{{ host }}"],
+    "urlFormatString": "https://{{ host }}/%@",
+    "authenticationToken": "{{ userId }}",
+    "webServiceURL": "https://{{ host }}/apns"
+}

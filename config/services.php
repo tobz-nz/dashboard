@@ -44,4 +44,7 @@ return [
         ],
     ],
 
+    'apns' => [
+        'register_certificate' => base_path(env('APNS_REGISTER_CERTIFICATE')),
+    ],
 ];

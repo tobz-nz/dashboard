@@ -21,6 +21,8 @@ $router->get('manifest.webmanifest', [
     'as' => 'webmanifest',
 ]);
 
+include 'push/apns.php';
+
 $router->group(['middleware' => [
     'auth',
     'verified',

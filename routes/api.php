@@ -26,4 +26,10 @@ $router->group(['middleware' => [
         'uses' => Api\PushServiceController::class.'@delete',
         'as' => 'api.notifications.unsubscribe'
     ]);
+
+    // Get the autheneticated user
+    $router->get('auth/user', [
+        'uses' => Api\AuthUserController::class.'@show',
+        'as' => 'api.auth.user.show',
+    ]);
 });
