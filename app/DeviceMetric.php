@@ -9,8 +9,16 @@ class DeviceMetric extends Model
 {
     protected $table = 'device_metrics';
 
+    protected $fillable = [
+        'device_id',
+        'value',
+        'type',
+        'meta',
+    ];
+
     protected $casts = [
         'value' => 'float',
+        'meta' => 'object',
     ];
 
     /**

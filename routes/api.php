@@ -33,3 +33,11 @@ $router->group(['middleware' => [
         'as' => 'api.auth.user.show',
     ]);
 });
+
+$router->group(['middleware' => [
+    'auth:device',
+]], function($router) {
+    $router->apiResource('devices/{device}/metrics', Api\DeviceMetricController::class, [
+        'only' => ['store'],
+    ]);
+});

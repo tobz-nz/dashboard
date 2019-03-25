@@ -27,6 +27,11 @@ class Device extends Model
         'meta',
     ];
 
+    public $hidden = [
+        'id',
+        'api_token',
+    ];
+
     public $casts = [
         'address' => 'object',
         'dimensions' => 'object',
@@ -106,6 +111,6 @@ class Device extends Model
     public function alerts()
     {
         return $this->hasMany(Alert::class)
-            ->orderBy('id');
+            ->orderByDesc('percent');
     }
 }
