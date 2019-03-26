@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 class PingController extends Controller
 {
     /**
-     * Tell the
+     * Tell us that this device Hardware is still alive
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
