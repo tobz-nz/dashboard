@@ -37,7 +37,7 @@ $router->group(['middleware' => [
 $router->group(['middleware' => [
     'auth:device',
 ]], function($router) {
-    $router->apiResource('devices/{device}/metrics', Api\DeviceMetricController::class, [
+    $router->apiResource('devices/{device}/metrics', Api\Device\MetricController::class, [
         'only' => ['store'],
     ]);
 });

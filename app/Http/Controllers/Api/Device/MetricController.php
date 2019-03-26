@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Device;
 
 use App\Device;
 use App\Events\MetricRecorded;
@@ -10,7 +10,7 @@ use App\Http\Resources\DeviceMetricResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class DeviceMetricController extends Controller
+class MetricController extends Controller
 {
     /**
      * Display a listing of the resource.
