@@ -25,7 +25,7 @@ class PushPackageController extends Controller
         $packageGenerator = new PackageGenerator(
             $certificate,
             resource_path('safariPushPackage.base'),
-            'tankful.test'
+            config('app.domain')
         );
 
         $userId = (int) $request->get('userId');
