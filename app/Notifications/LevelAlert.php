@@ -48,7 +48,7 @@ class LevelAlert extends Notification
             array_push($channels, WebPushChannel::class);
         }
 
-        if ($notifiable->settings && $notifiable->settings->mailAlerts) {
+        if (data_get($notifiable, 'settings.mailAlerts')) {
             array_push($channels, 'mail');
         }
 
