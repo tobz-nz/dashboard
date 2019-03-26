@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
+
+/**
+ * User authenticated API routes
+ * using the user's API token
+ */
 $router->group(['middleware' => [
     'auth:api',
 ]], function($router) {
@@ -34,9 +39,19 @@ $router->group(['middleware' => [
     ]);
 });
 
+/**
+ * Devide API routes
+ * routes where the device hardware is the client,
+ * which has its own API token to authenticate.
+ */
 $router->group(['middleware' => [
     'auth:device',
 ]], function($router) {
+    $router->post('devices/{device}/ping', [
+        'uses' => Api\Device\PingController::class.'@store',
+        'as' => 'api.devices.ping',
+    ]);
+
     $router->apiResource('devices/{device}/metrics', Api\Device\MetricController::class, [
         'only' => ['store'],
     ]);

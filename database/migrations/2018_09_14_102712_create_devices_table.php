@@ -24,6 +24,7 @@ class CreateDevicesTable extends Migration
             $table->unsignedSmallInteger('household_size');
             $table->json('dimensions');
             $table->json('meta')->nullable();
+            $table->timestampTz('last_seen_at')->nullable();
             $table->timestampsTz();
             $table->softDeletesTz();
         });

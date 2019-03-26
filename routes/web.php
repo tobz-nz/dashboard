@@ -21,8 +21,14 @@ $router->get('manifest.webmanifest', [
     'as' => 'webmanifest',
 ]);
 
+/**
+ * Public/unauthenticated routes for APN push notifications.
+ */
 include 'push/apns.php';
 
+/**
+ * Authenticated Routes
+ */
 $router->group(['middleware' => [
     'auth',
     'verified',

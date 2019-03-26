@@ -25,6 +25,7 @@ class Device extends Model
         'household_size',
         'dimensions',
         'meta',
+        'last_seen_at',
     ];
 
     public $hidden = [
@@ -36,6 +37,10 @@ class Device extends Model
         'address' => 'object',
         'dimensions' => 'object',
         'meta' => 'object',
+    ];
+
+    public $dates = [
+        'last_seen_at',
     ];
 
     /**
