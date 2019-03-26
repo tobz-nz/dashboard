@@ -27,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'api_token',
         'apn_tokens',
+        'preferences',
     ];
 
     /**
@@ -46,6 +47,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'apn_tokens' => 'array',
+        'preferences' => 'object',
     ];
 
     /**

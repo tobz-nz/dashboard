@@ -48,7 +48,7 @@ class LevelAlert extends Notification
             array_push($channels, WebPushChannel::class);
         }
 
-        if (data_get($notifiable, 'settings.mailAlerts')) {
+        if (data_get($notifiable, 'preferences.email_alerts')) {
             array_push($channels, 'mail');
         }
 
@@ -66,10 +66,12 @@ class LevelAlert extends Notification
         $data = (object) $this->toArray($notifiable);
 
         return (new MailMessage)
+            ->level($this->alertLevel())
             ->subject(sprintf('%s - level Alert', config('app.name')))
             ->greeting($data->title)
             ->line($data->body)
-            ->action('View', route('devices.show', $this->device));
+            ->action('View', route('devices.show', $this->device))
+            ->salutation('');
     }
 
     public function toWebPush($notifiable, $notification)
@@ -111,25 +113,38 @@ class LevelAlert extends Notification
      */
     public function toArray($notifiable)
     {
-        switch ($this->alert->trigger) {
-            case 1:
-                $action = sprintf('dropped below %d%%', $this->alert->percent);
-                break;
-            case 2:
-                $action = sprintf('risen above %d%%', $this->alert->percent);
-                break;
-            default:
-                $action = 'changed';
-                break;
-        }
-
         return [
-            'title' => sprintf('You water level has %s', $action),
+            'title' => sprintf('You water level has %s', $this->actionText()),
             'body' => sprintf(
                 'The level in your water tank (%s) is now at %d%% capacity.',
                 $this->device->name,
                 $this->device->currentPercent
             ),
         ];
+    }
+
+    private function actionText()
+    {
+        switch ($this->alert->trigger) {
+            case 1:
+                return sprintf('dropped below %d%%', $this->alert->percent);
+            case 2:
+                return sprintf('risen above %d%%', $this->alert->percent);
+            default:
+                return 'changed';
+        }
+    }
+
+    public function alertLevel()
+    {
+        if ($this->device->currentPercent >= 70) {
+            return 'success';
+        }
+
+        if ($this->device->currentPercent < 30) {
+            return 'error';
+        }
+
+        return 'info';
     }
 }
