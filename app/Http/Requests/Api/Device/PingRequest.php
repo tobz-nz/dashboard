@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Device;
+namespace App\Http\Requests\Api\Device;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +14,7 @@ class PingRequest extends FormRequest
     public function authorize()
     {
         // user() is a Device
-        return $this->user()->is($this->device);
+        return $this->user('device')->is($this->device);
     }
 
     /**

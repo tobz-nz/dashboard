@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Device;
 
 use App\Device;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Device\PingRequest;
+use App\Http\Requests\Api\Device\PingRequest;
 use App\Http\Resources\DeviceResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
