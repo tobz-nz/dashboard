@@ -30,6 +30,10 @@ $router->post('devices/{device}/token', [
 $router->group(['middleware' => [
     'auth:api',
 ]], function($router) {
+    $router->apiResource('devices', Api\Device\DeviceController::class, [
+        'as' => 'api',
+    ]);
+
     /* Web Push Notifications */
     $router->post('push-service', [
         'uses' => Api\PushServiceController::class.'@store',
@@ -47,6 +51,7 @@ $router->group(['middleware' => [
         'as' => 'api.auth.user.show',
     ]);
 });
+
 
 /**
  * Devide API routes

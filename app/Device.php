@@ -31,6 +31,7 @@ class Device extends Model
     public $hidden = [
         'id',
         'api_token',
+        'deleted_at',
     ];
 
     public $casts = [
