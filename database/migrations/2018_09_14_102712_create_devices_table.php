@@ -17,7 +17,7 @@ class CreateDevicesTable extends Migration
             $table->increments('id');
             $table->string('uid')->unique()->index();
             $table->unsignedInteger('owner_id');
-            $table->string('api_token', 60)->unique();
+            $table->string('api_token', 80)->unique()->nullable();
             $table->string('name')->nullable();
             $table->string('color')->nullable();
             $table->json('address');
