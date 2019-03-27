@@ -39,6 +39,7 @@ class TokenController extends Controller
             $user->update(['apn_tokens' => $tokens]);
         }
 
+        // Apple doesn't like 204's it seems, so 200 it is
         return Response(null, 200);
     }
 
@@ -61,8 +62,8 @@ class TokenController extends Controller
             $user->update(['apn_tokens' => $tokens]);
         }
 
-
-        return Response(null, 204);
+        // Apple doesn't like 204's it seems, so 200 it is
+        return Response(null, 200);
     }
 
     /**
