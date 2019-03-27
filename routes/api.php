@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
+/*
+ * Public API Routes
+ */
+
+$router->post('devices/{device}/token', [
+    'uses' => Api\Device\TokenController::class.'@store',
+    'as' => 'api',
+]);
+
 
 /**
  * User authenticated API routes
