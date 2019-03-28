@@ -98,18 +98,6 @@ class Device extends Model
     }
 
     /**
-     * Latest level metric
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function currentLevel()
-    {
-        return $this->hasOne(DeviceMetric::class)
-            ->whereType('level')
-            ->orderByDesc('id');
-    }
-
-    /**
      * Alert relationships
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

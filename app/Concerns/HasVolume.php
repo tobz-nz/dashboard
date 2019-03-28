@@ -26,6 +26,8 @@ trait HasVolume
     public function getCurrentLevelAttribute($value): int
     {
         return $this->metrics()
+            ->whereType('level')
+            ->orderByDesc('id')
             ->value('value') ?: 0;
     }
 
