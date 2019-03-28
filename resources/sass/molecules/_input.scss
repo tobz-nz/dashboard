@@ -94,7 +94,7 @@
         grid-auto-columns: auto;
         grid-template-areas: "check label";
         grid-gap: 8px 10px;
-
+        width: auto;
     }
 
     &--checkbox {
@@ -103,6 +103,7 @@
         .checked {
             display: var(--display, block);
             fill: var(--dark-blue-2);
+            color: var(--dark-blue-2);
         }
     }
 
