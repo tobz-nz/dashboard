@@ -20,6 +20,10 @@
         align-items: baseline;
     }
 
+    &-field-group {
+        flex: 1 1 170px;
+    }
+
     &-label {
         display: block;
         // margin: var(--spacing-4) 0 0;
@@ -53,7 +57,8 @@
     &-summary {
         display: none;
 
-        .input-field ~ & {
+        .input-field ~ &,
+        .input-field-group ~ & {
             display: block;
             max-width: 400px;
 

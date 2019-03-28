@@ -34,6 +34,7 @@ class UpdateRequest extends FormRequest
             'address.name' => 'required_with:address|string',
             'address.city' => 'required_with:address|string',
             'address.country' => 'required_with:address|string',
+            'address.household_type' => 'required|string',
             'address.latlng' => 'required_with:address|array',
             'address.latlng.lat' => 'required_with:address|numeric',
             'address.latlng.lng' => 'required_with:address|numeric',

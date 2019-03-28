@@ -65,10 +65,56 @@
     @endif
 </div>
 
+<div class="mb-2 input-group @if($errors->has('household_type'))input--invalid @endif">
+    <label class="input-label" for="household_type_residential">{{ __('Type of property') }}</label>
+    <div class="flex flex-col py-1 input-field-group">
+
+        <label for="household_type_residential" class="input-label input-group--checkable mb-2">
+            <input class="input--checkable" type="radio" name="address[household_type]" id="household_type_residential" {{ old('address.household_type', optional($device->address)->household_type) == 'residential' ? 'checked' : '' }} value="residential">
+            <svg class="input--checkbox"  width="20" height="20" viewBox="0 0 20 20">
+                <use xlink:href="{{ asset('images/icons.svg#radio') }}"></use>
+                <use class="checked" xlink:href="{{ asset('images/icons.svg#radio_checked') }}"></use>
+            </svg>
+            {{ __('Residential') }}
+        </label>
+
+        <label for="household_type_holiday" class="input-label input-group--checkable mb-2">
+            <input class="input--checkable" type="radio" name="address[household_type]" id="household_type_holiday" {{ old('address.household_type', optional($device->address)->household_type) == 'holiday' ? 'checked' : '' }} value="holiday">
+            <svg class="input--checkbox"  width="20" height="20" viewBox="0 0 20 20">
+                <use xlink:href="{{ asset('images/icons.svg#radio') }}"></use>
+                <use class="checked" xlink:href="{{ asset('images/icons.svg#radio_checked') }}"></use>
+            </svg>
+            {{ __('Holiday Home / Batch') }}
+        </label>
+
+        <label for="household_type_lifestyle" class="input-label input-group--checkable mb-2">
+            <input class="input--checkable" type="radio" name="address[household_type]" id="household_type_lifestyle" {{ old('address.household_type', optional($device->address)->household_type) == 'lifestyle' ? 'checked' : '' }} value="lifestyle">
+            <svg class="input--checkbox"  width="20" height="20" viewBox="0 0 20 20">
+                <use xlink:href="{{ asset('images/icons.svg#radio') }}"></use>
+                <use class="checked" xlink:href="{{ asset('images/icons.svg#radio_checked') }}"></use>
+            </svg>
+            {{ __('Lifestyle Block') }}
+        </label>
+
+        <label for="household_type_commercial" class="input-label input-group--checkable mb-2">
+            <input class="input--checkable" type="radio" name="address[household_type]" id="household_type_commercial" {{ old('address.household_type', optional($device->address)->household_type) == 'commercial' ? 'checked' : '' }} value="commercial">
+            <svg class="input--checkbox"  width="20" height="20" viewBox="0 0 20 20">
+                <use xlink:href="{{ asset('images/icons.svg#radio') }}"></use>
+                <use class="checked" xlink:href="{{ asset('images/icons.svg#radio_checked') }}"></use>
+            </svg>
+            {{ __('Commercial') }}
+        </label>
+    </div>
+    <div class="input-summary">The property type is used to help us categorize and calculate how much water you use.</div>
+    @if ($errors->has('household_type'))
+        <div class="input--error">{{ $errors->first('household_type') }}</div>
+    @endif
+</div>
+
 <div class="mb-7 input-group inline @if($errors->has('household_size'))input--invalid @endif">
     <label class="input-label" for="household_size">{{ __('Number of Residents') }}</label>
     <input class="input-field" type="number" min="1" id="household_size" name="household_size" value="{{ old('household_size', $device->household_size) }}" placeholder="# of Residents" required>
-    <div class="input-summary">The household size is the number of people living at the address. Its used to help calculate how much water you use on a daily basis.</div>
+    <div class="input-summary">The household size is the number of people living at the address. We use this information to help calculate how much water you use on a daily basis.</div>
     @if ($errors->has('household_size'))
         <div class="input--error">{{ $errors->first('household_size') }}</div>
     @endif
