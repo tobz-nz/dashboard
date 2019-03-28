@@ -103,12 +103,13 @@
     }
 
     &--checkbox {
-        fill: var(--blue-2);
+        --fill: var(--blue-2);
+        --fill-2: var(--blue-2);
 
         .checked {
             display: var(--display, block);
-            fill: var(--dark-blue-2);
-            color: var(--dark-blue-2);
+            --fill: var(--blue-2);
+            --fill-2: var(--dark-blue-2);
         }
     }
 
@@ -117,7 +118,7 @@
         z-index: -1;
         opacity: 0;
 
-        &:not(:checked) + svg {
+        &:not(:checked) ~ .input--checkbox {
             --display: none;
         }
     }
