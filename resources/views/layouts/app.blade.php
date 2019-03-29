@@ -16,6 +16,10 @@
 
     <title>@yield('title', config('app.name'))</title>
 
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @stack('styles')
+
     <!-- Scripts -->
     @routes
     <script src="{{ asset('js/manifest.js') }}"></script>
@@ -26,10 +30,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Barlow:300,400,500,700" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @stack('styles')
 </head>
 <body>
     <div id="app" class="layout--main">
