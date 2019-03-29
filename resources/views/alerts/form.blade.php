@@ -2,7 +2,7 @@
     @method($alert->exists ? 'put' : 'POST')
     @csrf()
 
-    <div class="grid gap-2 grid-flow-col input-group items-center" style="grid-template-columns: 1fr 4fr 1fr">
+    <div class="grid gap-2 grid-flow-col input-group items-center" style="grid-template-columns: max-content auto fit-content(100px) max-content">
         <label class="input-label" for="percent-{{ $alert->id ?? 0 }}">{{ __('Alert me when level') }}</label>
 
         <div class="grid gap-2" style="grid-template-columns: 2fr 1fr;">
@@ -20,7 +20,17 @@
             </div>
         </div>
 
-        <button class="button" type="submit">{{ $alert->exists ? 'Update' : 'Add' }}</button>
+        <button class="" type="submit">
+            <svg width="20" height="20">
+                @if ($alert->exists)
+                    <title>Update</title>
+                    <use xlink:href="{{ asset('images/icons.svg#tick') }}"></use>
+                @else
+                    <title>Add</title>
+                    <use xlink:href="{{ asset('images/icons.svg#add') }}"></use>
+                @endif
+            </svg>
+        </button>
         @if ($alert->exists)
         <button class="button--link" style="color: var(--red-1)" type="submit" form="delete-{{ $alert->id ?? 0 }}">
             <svg width="20" height="20">
