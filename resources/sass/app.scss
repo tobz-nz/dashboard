@@ -8,6 +8,7 @@
 
 // Atoms
 @import "atoms/alert";
+@import "atoms/avatar";
 @import "atoms/battery";
 @import "atoms/body";
 @import "atoms/button";
@@ -21,10 +22,10 @@
 @import "atoms/meter";
 @import "atoms/p";
 @import "atoms/select-device";
-@import "atoms/sidebar";
 
 // molecules
 @import "molecules/input";
+@import "molecules/sidebar";
 
 // Utilities
 @import "utilities/border";

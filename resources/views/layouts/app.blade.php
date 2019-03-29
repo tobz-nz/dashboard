@@ -34,7 +34,7 @@
 <body>
     <div id="app" class="layout--main">
         <nav class="sidebar">
-            <header class="sidebar-header mb-5 py-5 px-4 border-b">
+            <header class="sidebar-header py-5 px-4 border-b">
                 <a href="{{ route('dashboard') }}">
                     <svg class="logo" role="image">
                         <use xlink:href="{{ asset('images/icons.svg#logo') }}"></use>
@@ -45,24 +45,25 @@
             </header>
 
             <ul class="p-4 links unlist">
-                <li><a class="link" href="{{ route('dashboard') }}">Trends <span class="line"></span></a></li>
-                <li><a class="link" href="{{ route('dashboard') }}">Manage Refills <span class="line"></span></a></li>
+                <li><a class="link" href="{{ route('dashboard') }}">Trends<span class="line"></span></a></li>
+                <li><a class="link" href="{{ route('dashboard') }}">Manage Refills<span class="line"></span></a></li>
                 @isset($device)
-                <li><a class="link" href="{{ route('alerts.index', $device) }}">Alerts <span class="line"></span></a></li>
-                <li><a class="link" href="{{ route('devices.edit', $device) }}">Settings <span class="line"></span></a></li>
+                <li><a class="link" href="{{ route('alerts.index', $device) }}">Alerts<span class="line"></span></a></li>
+                <li><a class="link" href="{{ route('devices.edit', $device) }}">Settings<span class="line"></span></a></li>
                 @endisset
             </ul>
 
-            <div class="grid">
-                <div class="flex py-5 px-4 gap-3 items-center text-2">
-                    <img class="mr-4 rounded-lg" width="40" src="{{ auth()->user()->avatar }}" alt="">
-                    <div class="grid gap-1">
-                        <a class="link" href="{{ route('account.edit', auth()->user()->account) }}">Account</a>
-                        <button form="logout-form" class="link">Log Out</button>
-                    </div>
+            <div class="account-links">
+                <img class="avatar" width="40" src="{{ auth()->user()->avatar }}" alt="">
+                <div class="grid gap-1">
+                    <a class="link" href="{{ route('account.edit', auth()->user()->account) }}">Account</a>
+                    <button form="logout-form" class="link">Log Out</button>
                 </div>
-
             </div>
+
+            <svg class="sidebar-close" width="35px" height="35px" role="button">
+                <use xlink:href="{{ asset('images/icons.svg#close') }}"></use>
+            </svg>
         </nav>
 
         <main class="content">
@@ -78,12 +79,17 @@
             @endif
 
             @yield('content')
+
+            <div class="sidebar-open">
+                <svg width="20" height="20" role="button">
+                    <use xlink:href="{{ asset('images/icons.svg#arrow-down') }}"></use>
+                </svg>
+            </div>
         </main>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
             @csrf
         </form>
-
     </div>
 
 <div class="extras">

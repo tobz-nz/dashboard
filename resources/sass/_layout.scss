@@ -8,9 +8,11 @@
 
 .layout {
     &--main {
-        display: grid;
-        grid-template-columns: [header] auto [sidebar] minmax(200px, 1fr) [content] auto;
-        min-height: 100vh;
-        grid-template-areas: "sidebar content";
+        @include for-tablet-portrait-up {
+            display: grid;
+            grid-template-columns: [header] auto [sidebar] minmax(200px, 1fr) [content] auto;
+            min-height: 100vh;
+            grid-template-areas: "sidebar content";
+        }
     }
 }

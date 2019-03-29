@@ -61,7 +61,14 @@ document.addEventListener('click', event => {
             el.removeAttribute('open')
         })
     }
-})
+});
+
+[].slice.call(document.querySelectorAll('.sidebar-open, .sidebar-close'))
+    .forEach(button => {
+        button.addEventListener('click', event => {
+            sidebar = document.querySelector('.sidebar').toggleAttribute('data-open')
+        })
+    });
 
 
 /**
