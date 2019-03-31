@@ -85,7 +85,7 @@ class LevelCheck
 
     private function lastAlert(Collection $alerts):? Alert
     {
-        if (!$this->device->meta || !$this->device->meta->lastAlert) {
+        if (!$this->device->meta || !optional($this->device->meta)->lastAlert) {
             return null;
         }
 
