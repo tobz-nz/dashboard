@@ -34,7 +34,7 @@ class TokenController extends Controller
         $user = $this->getUser($request);
         $tokens = $user->apn_tokens ?: [];
 
-        if (array_has($tokens, $deviceToken) === false) {
+        if (in_array($deviceToken, $tokens) === false) {
             array_push($tokens, $deviceToken);
             $user->update(['apn_tokens' => $tokens]);
         }
@@ -57,7 +57,7 @@ class TokenController extends Controller
         $user = $this->getuser($request);
         $tokens = $user->apn_tokens ?: [];
 
-        if (array_has($tokens, $deviceToken) === true) {
+        if (in_array($deviceToken, $tokens) === true) {
             array_splice($tokens, array_search($deviceToken, $tokens), 1);
             $user->update(['apn_tokens' => $tokens]);
         }
