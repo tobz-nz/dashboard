@@ -78,7 +78,9 @@ class DeviceController extends Controller
      */
     public function update(UpdateRequest $request, Device $device)
     {
-        $device->update($request->validated());
+        $data = $request->validated();
+        $data['meta'] = array_merge((array)$device->meta, $data['meta']??[]);
+        $device->update($data);
 
         return redirect()->back()->with([
             'status' => 'Updated.',
