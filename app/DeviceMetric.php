@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Device;
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 
 class DeviceMetric extends Model
 {

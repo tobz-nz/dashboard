@@ -51,6 +51,11 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
+     * @inheritdoc
+     */
+    protected $dateFormat = 'Y-m-d H:i:sO';
+
+    /**
      * Get user APN tokens
      *
      * @return array

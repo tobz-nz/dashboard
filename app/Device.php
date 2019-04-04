@@ -5,8 +5,8 @@ namespace App;
 use App\Alert;
 use App\Concerns\HasVolume;
 use App\DeviceMetric;
+use App\Model;
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -15,6 +15,9 @@ class Device extends Model
     use SoftDeletes;
     use HasVolume;
 
+    /**
+     * @inheritdoc
+     */
     public $fillable = [
         'uid',
         'api_token',
@@ -28,18 +31,27 @@ class Device extends Model
         'last_seen_at',
     ];
 
+    /**
+     * @inheritdoc
+     */
     public $hidden = [
         'id',
         'api_token',
         'deleted_at',
     ];
 
+    /**
+     * @inheritdoc
+     */
     public $casts = [
         'address' => 'object',
         'dimensions' => 'object',
         'meta' => 'object',
     ];
 
+    /**
+     * @inheritdoc
+     */
     public $dates = [
         'last_seen_at',
     ];

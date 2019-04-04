@@ -2,10 +2,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Model;
 
 class DeviceUid extends Model
 {
+    public $incrementing = false;
+
     public $timestamps = false;
 
     protected $casts = [
