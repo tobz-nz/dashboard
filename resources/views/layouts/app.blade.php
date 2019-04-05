@@ -68,14 +68,19 @@
 
         <main class="content">
             @if (session('status'))
-                <div class="alert alert--{{ session('statusLevel', 'success') }}" role="alert">
+                @component('components.alert', ['status' => session('statusLevel', 'success')])
                     {{ session('status') }}
-                </div>
+                @endcomponent
             @endif
             @if ($errors->count())
-            <div class="alert alert--error" role="alert">
-                {{ $errors->first() }}
-            </div>
+            @component('components.alert', ['status' => 'error'])
+                @slot('title', __('Sorry, some information is a bit wrong'))
+                <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            @endcomponent
             @endif
 
             @yield('content')

@@ -26,11 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->BootBladeExtensions();
+        $this->registerBladeExtensions();
         $this->registerMacros();
     }
 
-    private function BootBladeExtensions()
+    private function registerBladeExtensions()
     {
         Blade::directive('IsRoute', function ($expression) {
             [$routeName, $returnValue] = explode('|', trim($expression, "'"));
@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::component('components.input-field', 'inputField');
+        Blade::component('components.alert', 'alert');
     }
 
     private function registerMacros()
