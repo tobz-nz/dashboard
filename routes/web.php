@@ -48,7 +48,7 @@ $router->group(['middleware' => [
     $router->resource('devices/{device}/alerts', AlertController::class);
 
     $router->resource('account', AccountController::class, [
-        'only' => ['edit', 'update']
+        'only' => ['index', 'edit', 'update']
     ]);
 });
 

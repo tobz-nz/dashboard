@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->registerBladeExtensions();
         $this->registerMacros();
+        $this->registerViewComposers();
     }
 
     private function registerBladeExtensions()
@@ -57,6 +59,17 @@ class AppServiceProvider extends ServiceProvider
             }
 
             return implode(' ', $attrs);
+        });
+    }
+
+    private function registerViewComposers()
+    {
+        View::composer('layouts.app', function ($view) {
+            $user = auth()->user();
+            $devices = $user->devices;
+            $device = $devices->first();
+
+            $view->with(compact('user', 'device', 'devices'));
         });
     }
 }
