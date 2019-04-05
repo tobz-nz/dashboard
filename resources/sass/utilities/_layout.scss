@@ -1,4 +1,10 @@
 .m {
+    @for $i from 0 through 15 {
+        &-#{$i} {
+            margin: var(--spacing-#{$i});
+        }
+    }
+
     &-auto {
         margin: auto;
     }
@@ -57,6 +63,12 @@
 }
 
 .p {
+    @for $i from 0 through 15 {
+        &-#{$i} {
+            padding: var(--spacing-#{$i});
+        }
+    }
+
     &-auto {
         padding: auto;
     }
