@@ -79,8 +79,18 @@ class CreateRequest extends FormRequest
     {
         return [
             'uid' => 'Device Code',
-            'household_size' => 'Household Size',
-            'address.name' => 'Address',
+
+            'address.household_type' => 'Property Type',
+            'household_size' => 'Number of Residents',
+
+            'dimensions' => 'Dimensions',
+            'dimensions.shape' => 'Water Tank Shape',
+            'dimensions.height' => 'Water Tank Height',
+            'dimensions.diameter' => 'Water Tank Diameter',
+            'dimensions.width' => 'Water Tank Width',
+            'dimensions.depth' => 'Water Tank Depth',
+
+            'meta.catchment' => 'Water Catchment Area',
         ];
     }
 }
