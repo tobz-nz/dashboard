@@ -53,19 +53,19 @@
 
         <main class="content">
             @if (session('status'))
-                @component('components.alert', ['status' => session('statusLevel', 'success')])
+                @alert(['status' => session('statusLevel', 'success')])
                     {{ session('status') }}
-                @endcomponent
+                @endalert
             @endif
             @if ($errors->count())
-            @component('components.alert', ['status' => 'error'])
+            @alert(['status' => 'error'])
                 @slot('title', __('Sorry, some information is a bit wrong'))
                 <ul>
                 @foreach($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
                 </ul>
-            @endcomponent
+            @endalert
             @endif
 
             @yield('content')
