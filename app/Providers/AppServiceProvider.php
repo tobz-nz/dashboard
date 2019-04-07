@@ -43,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
 
         Blade::component('components.input-field', 'inputField');
         Blade::component('components.alert', 'alert');
+        Blade::component('components.input', 'input');
     }
 
     private function registerMacros()

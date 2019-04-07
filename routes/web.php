@@ -52,7 +52,7 @@ $router->group(['middleware' => [
         'parameters' => ['profile' => 'user'],
     ]);
 
-    $router->resource('account/profile/{user}/subscription', SubscriptionController::class, [
+    $router->resource('account/subscription', SubscriptionController::class, [
         'only' => ['index', 'update', 'destroy'],
     ]);
 });
