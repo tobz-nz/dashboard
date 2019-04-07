@@ -2,6 +2,10 @@
 
 @section('title', 'Edit Device settings')
 
+@section('nav-links')
+    @include('devices.nav-links')
+@endsection
+
 @section('content')
     <header class="content-header">
         <h1>Device settings</h1>

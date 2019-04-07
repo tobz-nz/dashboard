@@ -2,6 +2,10 @@
 
 @section('title', 'Add Device')
 
+@section('nav-links')
+    @include('devices.nav-links')
+@endsection
+
 @section('content')
     <h1 class="px-8 pb-5 border-b" style="--border-color:var(--grey-4)">Device settings</h1>
 

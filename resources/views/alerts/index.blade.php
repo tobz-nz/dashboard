@@ -2,6 +2,10 @@
 
 @section('title', "Alerts for {$device->name}")
 
+@section('nav-links')
+    @include('devices.nav-links')
+@endsection
+
 @section('content')
 <header class="content-header">
     <h1>Alerts for {{ $device->name }}</h1>

@@ -2,6 +2,10 @@
 
 @section('title', 'Trends')
 
+@section('nav-links')
+    @include('devices.nav-links')
+@endsection
+
 @section('content')
 
     <header class="content-header">
