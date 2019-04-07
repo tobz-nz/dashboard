@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes(['verify' => true]);
 
@@ -17,7 +17,7 @@ $router->redirect('/', 'login');
 
 $router->view('offline', 'offline');
 $router->get('manifest.webmanifest', [
-    'uses' => ManifestController::class.'@show',
+    'uses' => ManifestController::class . '@show',
     'as' => 'webmanifest',
 ]);
 
@@ -33,7 +33,7 @@ $router->group(['middleware' => [
     'auth',
     'verified',
     'service.worker',
-]], function($router) {
+]], function ($router) {
     $router->get('/', [
         'uses' => DashboardController::class . '@index',
         'as' => 'dashboard',
@@ -47,8 +47,13 @@ $router->group(['middleware' => [
     $router->resource('devices', DeviceController::class);
     $router->resource('devices/{device}/alerts', AlertController::class);
 
-    $router->resource('account', AccountController::class, [
-        'only' => ['index', 'edit', 'update']
+    $router->resource('account/profile', ProfileController::class, [
+        'only' => ['index', 'edit', 'update', 'destroy'],
+        'parameters' => ['profile' => 'user'],
+    ]);
+
+    $router->resource('account/profile/{user}/subscription', SubscriptionController::class, [
+        'only' => ['index', 'update', 'destroy'],
     ]);
 });
 
