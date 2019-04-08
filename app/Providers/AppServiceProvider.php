@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerBladeExtensions()
     {
-        Blade::component('components.input-field', 'inputField');
-        Blade::component('components.input', 'input');
+        Blade::component('components.input');
+        Blade::component('components.checkable');
     }
 
     private function registerMacros()

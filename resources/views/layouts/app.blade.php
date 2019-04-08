@@ -14,7 +14,7 @@
     <meta name="push-key" content="{{ config('webpush.vapid.public_key') }}">
     @endauth
 
-    <title>@yield('title', config('app.name'))</title>
+    <title>@yield('title', '') - {{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
