@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Device;
 
 use App\Device;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class CreateRequest extends FormRequest
+class CreateRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class CreateRequest extends FormRequest
             'uid' => [
                 'required',
                 'unique:devices,uid',
-                'exists:device_uids,uid,registered_at,NULL'
+                'exists:device_uids,uid,registered_at,NULL',
             ],
             'name' => 'string|nullable',
             'color' => 'string|nullable',

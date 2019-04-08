@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Device;
 
 use App\Device;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class ViewRequest extends FormRequest
+class ViewRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class ViewRequest extends FormRequest
     public function authorize()
     {
         return $this->user() &&
-            $this->user()->can('view', $this->device);
+        $this->user()->can('view', $this->device);
     }
 
     /**

@@ -40,7 +40,9 @@ class AlertController extends Controller
     {
         $alert = $device->alerts()->create($request->validated());
 
-        return redirect()->back()->with('success', 'New alert added');
+        flash('New alert added')->success();
+
+        return redirect()->back();
     }
 
     /**
@@ -87,6 +89,8 @@ class AlertController extends Controller
     {
         $alert->delete();
 
-        return redirect()->back()->with('success', 'Alert Removed');
+        flash('Alert Removed');
+
+        return redirect()->back();
     }
 }

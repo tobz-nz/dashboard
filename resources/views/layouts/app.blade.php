@@ -52,21 +52,7 @@
         </nav>
 
         <main class="content">
-            @if (session('status'))
-                @alert(['status' => session('statusLevel', 'success')])
-                    {{ session('status') }}
-                @endalert
-            @endif
-            @if ($errors->count())
-            @alert(['status' => 'error'])
-                @slot('title', __('Sorry, some information is a bit wrong'))
-                <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-                </ul>
-            @endalert
-            @endif
+            @include('flash::message')
 
             @yield('content')
 

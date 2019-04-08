@@ -34,15 +34,7 @@ class AppServiceProvider extends ServiceProvider
 
     private function registerBladeExtensions()
     {
-        Blade::directive('IsRoute', function ($expression) {
-            [$routeName, $returnValue] = explode('|', trim($expression, "'"));
-            if (Route::is($routeName) === true) {
-                return "<?php echo '{$returnValue}' ?>";
-            }
-        });
-
         Blade::component('components.input-field', 'inputField');
-        Blade::component('components.alert', 'alert');
         Blade::component('components.input', 'input');
     }
 

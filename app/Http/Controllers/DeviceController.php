@@ -42,9 +42,9 @@ class DeviceController extends Controller
     {
         $device - Device::create($request->validated());
 
-        return redirect()->route('devices.show', $device)->with([
-            'status' => 'Updated.',
-        ]);
+        flash('Saved')->success();
+
+        return redirect()->route('devices.show', $device);
     }
 
     /**
@@ -82,9 +82,9 @@ class DeviceController extends Controller
         $data['meta'] = array_merge((array)$device->meta, $data['meta']??[]);
         $device->update($data);
 
-        return redirect()->back()->with([
-            'status' => 'Updated.',
-        ]);
+        flash('Saved')->success();
+
+        return redirect()->back();
     }
 
     /**
@@ -97,8 +97,8 @@ class DeviceController extends Controller
     {
         $device->delete();
 
-        return redirect()->route('dashboard')->with([
-            'status' => 'Deleted.',
-        ]);
+        flash('Deleted');
+
+        return redirect()->route('dashboard');
     }
 }

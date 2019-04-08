@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Device;
 
 use App\Device;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class DeleteRequest extends FormRequest
+class DeleteRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
