@@ -56,7 +56,7 @@ class DevicePolicy
      */
     public function create(User $user)
     {
-        // @todo add limiter
+        // @todo add plan/subscription limiter
         return true;
     }
 

@@ -46,23 +46,24 @@
                 'class' => 'mb-4 inline',
             ])You need one of these so you can access your Tanful account and others cannot. @endinput
 
-            <h2>Preferences:</h2>
+            <fieldset class="mb-5">
+                <legend>Preferences:</legend>
 
-            @checkable([
-                'id' => 'email-alerts',
-                'name' => 'preferences[email_alerts]',
-                'label' => 'Enable Email Alerts',
-                'checked' => old('preferences.email_alerts', $user->preferences->email_alerts),
-                'class' => 'mb-4 inline',
-            ])Do you want to receive water level alerts via email? @endcheckable
+                @checkable([
+                    'id' => 'email-alerts',
+                    'name' => 'preferences[email_alerts]',
+                    'label' => 'Enable Email Alerts',
+                    'checked' => old('preferences.email_alerts', $user->preferences->email_alerts),
+                    'class' => 'mb-4 inline',
+                ])Do you want to receive water level alerts via email? @endcheckable
 
-            @checkable([
-                'id' => 'push-alerts',
-                'name' => 'preferences[push_alerts]',
-                'label' => 'Enable Push Notifications',
-                'checked' => old('preferences.push_alerts', $user->preferences->push_alerts??false),
-                'class' => 'mb-4 inline',
-            ])Do you want to receive water level alerts via Push Notification? @endcheckable
+                @checkable([
+                    'id' => 'push-alerts',
+                    'name' => 'preferences[push_alerts]',
+                    'label' => 'Enable Push Notifications',
+                    'checked' => old('preferences.push_alerts', $user->preferences->push_alerts??false),
+                    'class' => 'inline',
+                ])Do you want to receive water level alerts via Push Notification? @endcheckable</fieldset>
 
             <div class="flex justify-between">
                 <button type="submit" class="mb-7 button">Update Profile</button>

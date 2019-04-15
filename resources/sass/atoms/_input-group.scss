@@ -1,0 +1,32 @@
+.input-group {
+    display: block;
+    @supports (display: flex) {
+        // Hide flex from IE11
+        display: flex;
+    }
+
+    margin-bottom: var(--spacing, 1em);
+    gap: 0 5px;
+    align-items: center;
+
+    $parent: &;
+
+    &:not(&--inline) {
+        --label-spacing: 4px;
+
+        flex-direction: column;
+        flex: 1 auto;
+        align-items: flex-start;
+    }
+
+    &--error {
+        --input-border: var(--red);
+    }
+
+    .input-error {
+        padding: 5px 2px;
+
+        color: var(--red);
+        font-size: 0.9rem;
+    }
+}

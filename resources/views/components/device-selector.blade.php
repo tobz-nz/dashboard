@@ -1,4 +1,4 @@
-@if ($devices->count() > 1)
+@can('create', Device::class)
 <details class="select-device autoclose">
     <summary>
         <span>{{ $device->name ?? 'Select Device' }}</span>
@@ -15,4 +15,4 @@
         @endcan
     </div>
 </details>
-@endif
+@endcan
