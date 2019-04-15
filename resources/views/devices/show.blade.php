@@ -13,12 +13,12 @@
     </header>
 
     @if ($device->meta->is_missing??null === true)
-    @component('components.alert', ['status' => 'error', 'class' => 'm-4'])
+    @alert(['status' => 'error', 'class' => 'm-4'])
         @slot('title', __('Connection Lost'))
 
         <div>{!! __('We have not received any information from this Unit since <time>:datetime</time>!', ['datetime' => $device->last_seen_at->format('Y-m-d H:ia')]) !!}</div>
         <div>{!! __('<a href=":url"><strong>We\'re here to help</strong></a>', ['url'=>route('website.faqs')]) !!}</div>
-    @endcomponent
+    @endalert
     @endif
 
     <div>

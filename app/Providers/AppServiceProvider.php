@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::component('components.input');
         Blade::component('components.checkable');
+        Blade::component('components.alert');
     }
 
     private function registerMacros()
