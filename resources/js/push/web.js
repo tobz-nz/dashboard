@@ -2,7 +2,7 @@ export default function init() {
     console.log('register checks...');
 
     if (!('showNotification' in ServiceWorkerRegistration.prototype)) {
-        console.log('Notifications aren\'t supported.')
+        console.log('Standard Notifications aren\'t supported.')
         return
     }
 
@@ -17,7 +17,7 @@ export default function init() {
     }
     console.log('register checks complete');
 
-    let updateSubscription = function(subscription) {
+    let updateSubscription = async function(subscription) {
         const key = subscription.getKey('p256dh')
         const token = subscription.getKey('auth')
         const data = {
@@ -27,7 +27,7 @@ export default function init() {
         }
 
         // store the subscription server-side
-        axios.post(route('api.notifications.subscribe'), data)
+        return axios.post(route('api.notifications.subscribe'), data)
     }
 
     const urlB64ToUint8Array = base64String => {
@@ -41,34 +41,41 @@ export default function init() {
         return outputArray
     }
 
-    navigator.serviceWorker.ready.then(registration => {
-        registration.pushManager.getSubscription()
+    return navigator.serviceWorker.ready.then(registration => {
+        return registration.pushManager.getSubscription()
             .then(pushSubscription => {
                 if (!pushSubscription) {
 
                     // fetch the VAPID public key
                     const publicPushKey = document.querySelector('meta[name=push-key]').content
 
-                    registration.pushManager.subscribe({
+                    return registration.pushManager.subscribe({
                         userVisibleOnly: true,
                         applicationServerKey: urlB64ToUint8Array(publicPushKey)
                     })
                     .then(pushSubscription => {
                         console.log('new pushSubscription registered', pushSubscription);
-                        updateSubscription(pushSubscription)
+                        return updateSubscription(pushSubscription)
                     })
-
-                    return
                 }
 
                 // subscriptions get updated now and again,
                 // so keep it updated here.
-                updateSubscription(pushSubscription)
+                return updateSubscription(pushSubscription)
             })
             .catch(error => {
-                console.log('Error during getSubscription()', error)
+                console.error(error.message)
+                return window.axios.patch(`users/${appData.user.id}`, {
+                    preferences: {
+                        push: true
+                    },
+                }).then(response => {
+                    console.log(response);
+                    return true;
+                });
             })
         }).catch((error) => {
             console.log(`Service worker registration error: ${error}`);
+            return true
     });
 }

@@ -1,23 +1,23 @@
 const WebServiceURL = route('apns')
 const pushID = 'web.nz.tankful'
 
-export default function init() {
+export default async function init() {
     if ('safari' in window && 'pushNotification' in window.safari) {
         console.log('Check permission');
         let permissionData = window.safari.pushNotification.permission(pushID);
         console.log(permissionData);
-        checkRemotePermission(permissionData)
+        return checkRemotePermission(permissionData)
     }
 }
 
-async function checkRemotePermission (permissionData) {
+export async function checkRemotePermission (permissionData) {
     console.log(permissionData.permission);
 
     if (permissionData.permission === 'default') {
         // This is a new web service URL and its validity is unknown.
 
         // Fetch user data, then ask for permission to send notifications
-        axios.get(route('api.auth.user.show'))
+        await axios.get(route('api.auth.user.show'))
         .then(response => response.data)
         .then(response => {
             let userData = {
@@ -34,10 +34,12 @@ async function checkRemotePermission (permissionData) {
     }
     else if (permissionData.permission === 'denied') {
         // The user said no.
+        return false;
     }
     else if (permissionData.permission === 'granted') {
         // The web service URL is a valid push provider, and the user said yes.
         // permissionData.deviceToken is now available to use.
         console.log(permissionData);
+        return true;
     }
 };

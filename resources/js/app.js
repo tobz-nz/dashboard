@@ -9,9 +9,6 @@ import './bootstrap';
 import Vue from 'vue';
 import TfChart from './components/tf-chart.vue'
 
-import initWebPush from './push/web.js'
-import initAPNS from './push/apn.js'
-
 function randomData() {
     now = new Date(+now + oneDay);
     value = value + Math.random() * 21 - 10;
@@ -79,10 +76,5 @@ if ('serviceWorker' in navigator) {
     // Service worker to register for this site
     navigator.serviceWorker.register('/service-worker.js', {
         scope: '/',
-    }).then((serviceWorkerRegistration) => {
-        if (!initWebPush()) {
-            console.log('trying APN for push...');
-            initAPNS()
-        }
     });
 }

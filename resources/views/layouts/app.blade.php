@@ -31,6 +31,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Barlow:300,400,500,700" rel="stylesheet" type="text/css">
+
+    <script>
+        var appData = {user:@json(Auth::user()->only(['id', 'name']))}
+    </script>
 </head>
 <body>
     <div id="app" class="layout--main">
@@ -54,6 +58,7 @@
 
         <main class="content">
             @include('flash::message')
+            <notification-permission></notification-permission>
 
             @yield('content')
 
