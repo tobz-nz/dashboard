@@ -9,6 +9,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="api-base-url" content="{{ url('api') }}">
     @auth
     <meta name="api-token" content="{{ auth()->user()->api_token }}">
     <meta name="push-key" content="{{ config('webpush.vapid.public_key') }}">

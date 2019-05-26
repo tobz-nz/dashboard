@@ -19,6 +19,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 let csrfToken = document.head.querySelector('meta[name="csrf-token"]');
 let apiToken = document.head.querySelector('meta[name="api-token"]');
+let apiBaseUrl = document.head.querySelector('meta[name="api-base-url"]');
 
 if (csrfToken) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken.content;
@@ -31,6 +32,9 @@ if (csrfToken) {
  */
 if (apiToken) {
     window.axios.defaults.headers.common['Authorization'] = `Bearer ${apiToken.content}`;
+}
+if (apiBaseUrl) {
+    window.axios.defaults.baseURL = apiBaseUrl.content;
 }
 
 /**
