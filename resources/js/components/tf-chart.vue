@@ -1,5 +1,5 @@
 <template>
-    <v-chart class="tf-chart" :options="options"></v-chart>
+    <v-chart class="tf-chart" :options="options" :autoresize="true"></v-chart>
 </template>
 
 <script>

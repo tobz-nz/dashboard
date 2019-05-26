@@ -8,6 +8,7 @@
 import './bootstrap';
 import Vue from 'vue';
 import TfChart from './components/tf-chart.vue'
+import TfPie from './components/tf-pie.vue'
 
 function randomData() {
     now = new Date(+now + oneDay);

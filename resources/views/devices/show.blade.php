@@ -21,6 +21,16 @@
     @endalert
     @endif
 
+    <div class="grid grid-flow-col mx-auto justify-around">
+        <div class="current-status grid">
+            <tf-pie :value="{{ $device->currentPercent }}" style="color:hsl(205, 100%, 60%)"></tf-pie>
+            <div class="status-details">
+                <div>{{ $device->currentLevel }} cm</div>
+                <div>{{ $device->currentVolume }} L<sup>3</sup></div>
+            </div>
+        </div>
+    </div>
+
     <div>
         <?php
         $data = $device->dailyMetrics($limit = 30)->get()->transform(function($metric) use ($device) {
@@ -31,21 +41,6 @@
         })
         ?>
         <tf-chart title="Test Chart" :max="100" :data='@json($data)'></tf-chart>
-    </div>
-
-    <div class="grid grid-flow-col mx-auto justify-around">
-        <div class="grid">
-            <span>{{ $device->currentLevel }} cm</span>
-            <meter min="0" max="{{ $device->dimensions->height }}" value="{{ $device->currentLevel }}"></meter>
-        </div>
-        <div class="grid">
-            <span>{{ $device->currentPercent }}%</span>
-            <meter min="0" low="30" high="70" max="100" optimum="100" value="{{ $device->currentPercent }}"></meter>
-        </div>
-        <div class="grid">
-            <span>{{ $device->currentVolume }} L<sup>3</sup></span>
-            <meter dir="vertical" min="0" max="{{ $device->maxVolume }}" value="{{ $device->currentVolume }}"></meter>
-        </div>
     </div>
 
 @endsection
