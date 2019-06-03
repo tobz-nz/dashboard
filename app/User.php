@@ -67,6 +67,21 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Fetch a cache key for specified cached resources
+     *
+     * @param string $key
+     * @return void
+     */
+    public function getCachKey(string $key = null)
+    {
+        $cacheKeys = [
+            'devices' => sprintf('users.%d.devices', $this->id),
+        ];
+
+        return $cacheKeys[$key] ?? sprintf('users.%d', $this->id);
+    }
+
+    /**
      * Avatar image
      *
      * @return string

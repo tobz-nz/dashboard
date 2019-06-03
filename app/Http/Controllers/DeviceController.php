@@ -44,6 +44,7 @@ class DeviceController extends Controller
         $device->owner()->associate($request->user());
         $device->save();
 
+        app('cache')->forget($request->user()->getCachKey('devices'));
         flash('Saved')->success();
 
         return redirect()->route('devices.show', $device);
@@ -84,6 +85,7 @@ class DeviceController extends Controller
         $data['meta'] = array_merge((array)$device->meta, $data['meta']??[]);
         $device->update($data);
 
+        app('cache')->forget($request->user()->getCachKey('devices'));
         flash('Saved')->success();
 
         return redirect()->back();
@@ -99,6 +101,7 @@ class DeviceController extends Controller
     {
         $device->delete();
 
+        app('cache')->forget($request->user()->getCachKey('devices'));
         flash('Deleted');
 
         return redirect()->route('dashboard');

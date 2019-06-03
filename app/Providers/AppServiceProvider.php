@@ -60,7 +60,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layouts.app', function ($view) {
             $user = auth()->user();
-            $devices = $user->devices;
+            $devices = app('cache')->rememberForever($user->getCachKey('devices'), function () use ($user) {
+                return $user->devices()->paginate();
+            });
             $device = $devices->first();
 
             $view->with(compact('user', 'device', 'devices'));
