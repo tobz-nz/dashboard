@@ -7,8 +7,6 @@
 
 import './bootstrap';
 import Vue from 'vue';
-import TfChart from './components/tf-chart.vue'
-import TfPie from './components/tf-pie.vue'
 
 function randomData() {
     now = new Date(+now + oneDay);
@@ -39,8 +37,6 @@ for (var i = 0; i < 1000; i++) {
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component(TfChart)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

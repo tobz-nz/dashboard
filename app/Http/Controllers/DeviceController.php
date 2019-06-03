@@ -40,7 +40,9 @@ class DeviceController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $device - Device::create($request->validated());
+        $device = Device::make($request->validated());
+        $device->owner()->associate($request->user());
+        $device->save();
 
         flash('Saved')->success();
 

@@ -33,8 +33,6 @@ class CreateRequest extends BaseRequest
             'name' => 'string|nullable',
             'color' => 'string|nullable',
 
-            // 'place' => 'required_without:address|string',
-
             'address' => 'required|array',
             'address.name' => 'required_with:address|string',
             'address.city' => 'required_with:address|string',

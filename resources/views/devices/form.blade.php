@@ -51,14 +51,17 @@
 <h3 class="mt-0 mb-2">Household</h3>
 <div class="mb-4 input-group inline @if($errors->has('dimensions.address'))input--invalid @endif">
     <label class="input-label" for="place">{{ __('Address') }}</label>
-    <input class="input-field" type="text" id="place" name="place" value="{{ old('place', optional($device->address)->name) }}" placeholder="e.g. 12 Kagan Ave, Mangawhai" data-place required>
+    <places-field class="input-field" id="place" name="place" data-field="address-location" value="{{ old('place', optional($device->address)->name ?? null) }}" placeholder="e.g. 12 Kagan Ave, Mangawhai" data-place required></places-field>
+
     <div class="input-summary">The address field is used to look up weather forecasts and to book deliveries &amp; other servies.</div>
 
-    <input type="hidden" name="address[name]" value="{{ optional($device->address)->name ?? '' }}">
-    <input type="hidden" name="address[city]" value="{{ optional($device->address)->city ?? '' }}">
-    <input type="hidden" name="address[country]" value="{{ optional($device->address)->country ?? '' }}">
-    <input type="hidden" name="address[latlng][lat]" value="{{ optional($device->address)->latlng->lat ?? '' }}">
-    <input type="hidden" name="address[latlng][lng]" value="{{ optional($device->address)->latlng->lng ?? '' }}">
+    <input type="hidden" id="address-name" name="address[name]" value="{{ optional($device->address)->name ?? '' }}">
+    <input type="hidden" id="address-city" name="address[city]" value="{{ optional($device->address)->city ?? '' }}">
+    <input type="hidden" id="address-country" name="address[country]" value="{{ optional($device->address)->country ?? '' }}">
+    <input type="hidden" id="address-postcode" name="address[postcode]" value="{{ optional($device->address)->postcode ?? '' }}">
+    <input type="hidden" id="address-latlng-lat" name="address[latlng][lat]" value="{{ optional($device->address)->latlng->lat ?? '' }}">
+    <input type="hidden" id="address-latlng-lng" name="address[latlng][lng]" value="{{ optional($device->address)->latlng->lng ?? '' }}">
+
     @if ($errors->has('address') || $errors->has('place'))
         <div class="input--error">{{ $errors->first('place') ?: $errors->first('address') }}</div>
     @endif
@@ -119,3 +122,6 @@
     @endif
     <div class="input-summary">The household size is the number of people living at the address. We use this information to help calculate how much water you use on a daily basis.</div>
 </div>
+
+
+@push('scripts', '<script src="https://cdn.jsdelivr.net/npm/places.js@1.16.4"></script>')

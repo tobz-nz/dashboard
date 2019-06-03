@@ -33,7 +33,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Barlow:300,400,500,700" rel="stylesheet" type="text/css">
 
     <script>
-        var appData = {user:@json(Auth::user()->only(['id', 'name']))}
+        var appData = {
+            user:@json(Auth::user()->only(['id', 'name'])),
+            places: @json(config('services.algolia.places'))
+        }
     </script>
 </head>
 <body>

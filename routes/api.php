@@ -29,7 +29,7 @@ $router->post('devices/{device}/token', [
  */
 $router->group(['middleware' => [
     'auth:api',
-]], function($router) {
+]], function ($router) {
     $router->apiResource('devices', Api\Device\DeviceController::class, [
         'as' => 'api',
     ]);
@@ -60,7 +60,7 @@ $router->group(['middleware' => [
  */
 $router->group(['middleware' => [
     'auth:device',
-]], function($router) {
+]], function ($router) {
     $router->post('devices/{device}/ping', [
         'uses' => Api\Device\PingController::class.'@store',
         'as' => 'api.devices.ping',
