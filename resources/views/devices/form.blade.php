@@ -55,12 +55,12 @@
 
     <div class="input-summary">The address field is used to look up weather forecasts and to book deliveries &amp; other servies.</div>
 
-    <input type="hidden" id="address-name" name="address[name]" value="{{ optional($device->address)->name ?? '' }}">
-    <input type="hidden" id="address-city" name="address[city]" value="{{ optional($device->address)->city ?? '' }}">
-    <input type="hidden" id="address-country" name="address[country]" value="{{ optional($device->address)->country ?? '' }}">
-    <input type="hidden" id="address-postcode" name="address[postcode]" value="{{ optional($device->address)->postcode ?? '' }}">
-    <input type="hidden" id="address-latlng-lat" name="address[latlng][lat]" value="{{ optional($device->address)->latlng->lat ?? '' }}">
-    <input type="hidden" id="address-latlng-lng" name="address[latlng][lng]" value="{{ optional($device->address)->latlng->lng ?? '' }}">
+    <input type="hidden" id="address-name" name="address[name]" value="{{ old('address.name', optional($device->address)->name ?? '') }}">
+    <input type="hidden" id="address-city" name="address[city]" value="{{ old('address.city', optional($device->address)->city ?? '') }}">
+    <input type="hidden" id="address-country" name="address[country]" value="{{ old('address.country', optional($device->address)->country ?? '') }}">
+    <input type="hidden" id="address-postcode" name="address[postcode]" value="{{ old('address.postcode', optional($device->address)->postcode ?? '') }}">
+    <input type="hidden" id="address-latlng-lat" name="address[latlng][lat]" value="{{ old('address.latlng.lat', optional($device->address)->latlng->lat ?? '') }}">
+    <input type="hidden" id="address-latlng-lng" name="address[latlng][lng]" value="{{ old('address.latlng.lng', optional($device->address)->latlng->lng ?? '') }}">
 
     @if ($errors->has('address') || $errors->has('place'))
         <div class="input--error">{{ $errors->first('place') ?: $errors->first('address') }}</div>
