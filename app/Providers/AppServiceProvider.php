@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Device;
+use App\Observers\DeviceObserver;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -27,9 +29,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerModelObservers();
         $this->registerBladeExtensions();
         $this->registerMacros();
         $this->registerViewComposers();
+    }
+
+    private function registerModelObservers()
+    {
+        Device::observe(DeviceObserver::class);
     }
 
     private function registerBladeExtensions()
