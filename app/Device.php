@@ -7,12 +7,14 @@ use App\Concerns\HasVolume;
 use App\DeviceMetric;
 use App\Model;
 use App\User;
+use Givebutter\LaravelKeyable\Keyable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 class Device extends Model
 {
     use SoftDeletes;
+    use Keyable;
     use HasVolume;
 
     /**
