@@ -3,7 +3,8 @@
 namespace App\Observers;
 
 use App\Device;
-use Givebutter\LaravelKeyable\Models\ApiKey;
+use App\DeviceUid;
+use Illuminate\Support\Carbon;
 
 class DeviceObserver
 {
@@ -15,9 +16,9 @@ class DeviceObserver
      */
     public function created(Device $device)
     {
-        $apiKey = new ApiKey(['key' => ApiKey::generate(),]);
-        $apiKey->keyable()->associate($device);
-        $api->save();
+        DeviceUid::where(['uid' => $device->uid, 'registered_at' => null])
+            ->firstOrFail()
+            ->update(['registered_at' => new Carbon]);
     }
 
     /**
