@@ -1,4 +1,4 @@
-@can('create', Device::class)
+@can('create', App\Device::class)
 <details class="select-device autoclose">
     <summary>
         <span>{{ $device->name ?? 'Select Device' }}</span>
@@ -10,7 +10,7 @@
         @foreach($devices as $device)
         <a href="{{ route('devices.show', $device) }}" class="link" title="{{ $device->name }}">{{ $device->name }}</a>
         @endforeach
-        @can('create', \App\Device::class)
+        @can('create', App\Device::class)
         <a href="{{ route('devices.create') }}" class="pt-3 border-t link link--new" title="Add new Water Monitor">Add new Water Monitor</a>
         @endcan
     </div>
