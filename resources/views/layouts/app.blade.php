@@ -61,7 +61,9 @@
 
         <main class="content">
             @include('flash::message')
+            @if(!$user->pushEnabled())
             <notification-permission></notification-permission>
+            @endif
 
             @yield('content')
 

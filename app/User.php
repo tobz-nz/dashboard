@@ -82,6 +82,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
+     * Check if push notifications are enabled
+     *
+     * @return boolean
+     */
+    public function pushEnabled()
+    {
+        return $this->pushSubscriptions()->count() ||
+            count($this->apn_tokens);
+    }
+
+    /**
      * Avatar image
      *
      * @return string
