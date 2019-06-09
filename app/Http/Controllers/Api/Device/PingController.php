@@ -21,6 +21,6 @@ class PingController extends Controller
     {
         $device->update(['last_seen_at' => new Carbon]);
 
-        return new DeviceResource($device);
+        return response([], 204);
     }
 }
