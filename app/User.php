@@ -89,7 +89,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pushEnabled()
     {
         return $this->pushSubscriptions()->count() ||
-            count($this->apn_tokens);
+            count($this->apn_tokens ?? []);
     }
 
     /**
