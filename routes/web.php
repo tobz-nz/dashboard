@@ -57,4 +57,9 @@ $router->group(['middleware' => [
     ]);
 });
 
+$router->group(['domain' => env('FIRMWARE_DOMAIN')], function ($router) {
+    // used in firmware version caching command
+    $router->redirect('/current.json', '/')->name('firmware.current');
+});
+
 $router->view('styleguide', 'styleguide');

@@ -60,6 +60,7 @@ $router->group(['middleware' => [
  */
 $router->group(['middleware' => [
     'auth:device',
+    'device.firmware',
 ]], function ($router) {
     $router->post('devices/{device}/ping', [
         'uses' => Api\Device\PingController::class.'@store',

@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'device.check' => \App\Http\Middleware\CheckAtLeastOneDevice::class,
         'service.worker' => \App\Http\Middleware\ServiceWorkerAllowed::class,
+        'device.firmware' => \App\Http\Middleware\FirmwareVersion::class,
     ];
 
     /**
