@@ -17,7 +17,7 @@ class FirmwareVersion
     {
         $response = $next($request);
 
-        $response->header('X-Firmware', app('cache')->get('firmware-version'));
+        $response->header('X-Current-Firmware', app('cache')->get('firmware-version'));
 
         return $response;
     }
