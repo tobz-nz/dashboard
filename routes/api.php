@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 $router->post('devices/{device}/token', [
     'uses' => Api\Device\TokenController::class.'@store',
     'as' => 'api',
+    'middleware' => ['device.firmware']
 ]);
 
 
