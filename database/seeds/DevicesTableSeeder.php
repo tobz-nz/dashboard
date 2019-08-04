@@ -16,10 +16,7 @@ class DevicesTableSeeder extends Seeder
     {
         factory(DeviceUid::class)->create([
             'uid' => '30aea44e6b24',
-            'registered_at' => new Carbon,
         ]);
-
-        factory(DeviceUid::class, 5)->create();
 
         factory(Device::class)->create([
             'uid' => '30aea44e6b24',
