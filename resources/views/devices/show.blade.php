@@ -21,12 +21,19 @@
     @endalert
     @endif
 
-    <div class="grid grid-flow-col mx-auto justify-around">
+    <div class="grid grid-flow-col mx-auto justify-center gap-3">
         <div class="current-status grid">
             <tf-pie :value="{{ $device->currentPercent }}" style="color:hsl(205, 100%, 60%)"></tf-pie>
             <div class="status-details">
                 <div>{{ $device->currentLevel }} cm</div>
-                <div>{{ $device->currentVolume }} L<sup>3</sup></div>
+                <div>{{ $device->currentVolume }} L</div>
+            </div>
+        </div>
+        <div class="grid items-center">
+            <div class="days-remaining flex flex-col justify-center items-center rounded-full" style="width: 220px; height:220px; box-shadow:0 0 10px var(--blue-0)">
+                <span class="days-remaining__counter block text-center" style="font-size: var(--text-10);">{{ (int) $device->daysRemaining ?? 'Indeterminate' }}</span>
+                <span>Days remaining</span>
+                <small class="text-light">avg {{ $device->burnRate }}L per day</small>
             </div>
         </div>
     </div>
