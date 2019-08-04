@@ -28,17 +28,21 @@
 }
 
 .rounded {
-    border-radius: var(--radius, var(--radius-md));
+    border-radius: var(--radius, var(--radius-2));
 
     &-sm {
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-1);
     }
 
     &-md {
-        border-radius: var(--radius-md);
+        border-radius: var(--radius-2);
     }
 
     &-lg {
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-3);
+    }
+
+    &-full {
+        border-radius: var(--radius-full);
     }
 }
