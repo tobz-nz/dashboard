@@ -14,7 +14,7 @@ trait HasVolume
      */
     public function getCurrentPercentAttribute(): int
     {
-        return round($this->currentLevel / data_get($this->dimensions, 'height', 0) * 100);
+        return (int) round($this->currentLevel / data_get($this->dimensions, 'height', 1) * 100);
     }
 
     /**
@@ -129,6 +129,49 @@ trait HasVolume
             ->joinSub($sub, 'm', function ($join) {
                 $join->on('created_at', '=', 'm.max_created_at');
             })
+            ->orderByDesc('max_created_at')
             ->limit($limit);
+    }
+
+    /**
+     * Calculate the days remaining
+     *
+     * @return integer|null
+     */
+    public function getDaysRemainingAttribute(): ?int
+    {
+        // return days remaining
+        return (int) $this->burnRate ? round($this->currentLevel / $this->burnRate) : null;
+    }
+
+    /**
+     * Calculate the current burn rate
+     *
+     * @return int|null
+     */
+    public function getBurnRateAttribute(): ?int
+    {
+        // reverse so its chronological (we order most recent first by default)
+        $dailies = $this->dailyMetrics()->take(30)->get();
+
+        $last = optional($dailies->first())->value ?? 0;
+        $burn = collect([]);
+
+        foreach ($dailies as $metric) {
+            if ($last - $metric->value > 0) {
+                // We only want readings where the value has gone down
+                $burn->push($last - $metric->value);
+            }
+            $last = $metric->value;
+        }
+
+        // if no readings to cound return null.
+        // (time remaining is indeterminate)
+        if ($burn->count() === 0) {
+            return null;
+        }
+
+        // return the average daily burn rate
+        return $burn->sum() / $burn->count();
     }
 }
