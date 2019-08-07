@@ -1,32 +1,9 @@
 .text {
     // sizes
-
-    &-1 {
-        font-size: var(--text-1);
-    }
-
-    &-2 {
-        font-size: var(--text-2);
-    }
-
-    &-3 {
-        font-size: var(--text-3); // base
-    }
-
-    &-4 {
-        font-size: var(--text-4);
-    }
-
-    &-5 {
-        font-size: var(--text-5);
-    }
-
-    &-6 {
-        font-size: var(--text-6);
-    }
-
-    &-7 {
-        font-size: var(--text-7);
+    @for $i from 1 through 10 {
+        &-#{$i} {
+            font-size: var(--text-#{$i});
+        }
     }
 
     // weights
@@ -45,6 +22,13 @@
     &-bold {
         font-weight: var(--weight, 700);
     }
+}
+
+.underline {
+    text-decoration: underline;
+}
+.no-underline {
+    text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {

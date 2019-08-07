@@ -3,17 +3,21 @@
 @section('content')
 
 <div class="flex flex-col justify-center items-center">
-    <img class="block mt-8" width="145" height="145" src="{{ asset('images/icon.svg') }}">
+    <svg class="block mt-6" style="color:var(--blue-1)" width="145" height="145">
+        <use href="{{ asset('images/icons.svg#icon') }}"></use>
+    </svg>
 
     <p class="mb-6">
-        <span class="block text-lg">Log in to <img style="margin:-6px" width="100" src="{{ asset('images/logo.svg') }}"></span>
-        or <a href="{{ route('register') }}" class="">{{ __('create an account') }}</a>
+        <span class="block text-lg">Log in to <svg style="margin:-6px" width="100" height="28">
+            <use href="{{ asset('images/icons.svg#logo') }}"></use>
+        </svg></span>
+        or <a href="{{ route('register') }}" class="underline">{{ __('create an account') }}</a>
     </p>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <div class="input-group mb-4">
+        <div class="input-group grid mb-4">
             <label class="input-label" for="email">{{ __('Email Address') }}</label>
             <input class="input-field" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="e.g. user@tankful.nz" required autofocus autocomplete="username">
             @if ($errors->has('email'))
@@ -21,7 +25,7 @@
             @endif
         </div>
 
-        <div class="input-group mb-4">
+        <div class="input-group grid mb-4">
             <label class="input-label" for="password">{{ __('Password') }}</label>
             <input class="input-field" type="password" id="password" name="password" placeholder="e.g. I have a long strong password" required autocomplete="current-password">
             @if ($errors->has('password'))
