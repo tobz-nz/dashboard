@@ -8,7 +8,9 @@
 </ul>
 
 <div class="account-links">
-    <img class="avatar" width="40" src="{{ auth()->user()->avatar }}" alt="">
+    <a href="{{ route('profile.index') }}">
+        <img class="avatar" width="40" src="{{ auth()->user()->avatar }}" alt="">
+    </a>
     <div class="grid gap-1">
         <a class="link" href="{{ route('profile.index') }}">Account</a>
         <button form="logout-form" class="link">Log Out</button>

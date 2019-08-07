@@ -69,7 +69,7 @@
 
             <div class="sidebar-open">
                 <svg width="20" height="20" role="button">
-                    <use xlink:href="{{ asset('images/icons.svg#arrow-down') }}"></use>
+                    <use xlink:href="{{ asset('images/icons.svg#chevron-down') }}"></use>
                 </svg>
             </div>
         </main>

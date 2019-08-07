@@ -3,7 +3,7 @@
     <summary>
         <span>{{ $device->name ?? 'Select Device' }}</span>
         <svg width="30" height="17">
-            <use href="{{ asset('images/icons.svg#arrow-down') }}"></use>
+            <use href="{{ asset('images/icons.svg#chevron-down') }}"></use>
         </svg>
     </summary>
     <div>

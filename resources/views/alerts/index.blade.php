@@ -7,20 +7,21 @@
 @endsection
 
 @section('content')
-<header class="content-header">
-    <h1>Alerts for {{ $device->name }}</h1>
-</header>
+    <header class="content-header">
+        <h1>@yield('title')</h1>
+    </header>
 
-@foreach($device->alerts as $alert)
-@include('alerts.form', [
-    'route' => route('alerts.update', [$device, $alert]),
-    'alert' => $alert,
-])
-@endforeach
+    <div class="pt-7 px-8 flex flex-col items-start">
+        @foreach($device->alerts as $alert)
+        @include('alerts.form', [
+            'route' => route('alerts.update', [$device, $alert]),
+            'alert' => $alert,
+        ])
+        @endforeach
 
-@include('alerts.form', [
-    'route' => route('alerts.store', $device),
-    'alert' => new \App\Alert,
-])
-
+        @include('alerts.form', [
+            'route' => route('alerts.store', $device),
+            'alert' => new \App\Alert,
+        ])
+    </div>
 @endsection

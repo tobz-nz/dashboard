@@ -222,6 +222,10 @@
     &-flow-col {
         grid-auto-flow: column;
     }
+
+    &-minmax {
+        grid-template-columns: repeat(var(--grid-fill, auto-fit), minmax(var(--min, 0), var(--max, auto)));
+    }
 }
 
 .gap {

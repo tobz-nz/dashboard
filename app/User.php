@@ -5,6 +5,7 @@ namespace App;
 use App\Account;
 use App\Device;
 use Creativeorange\Gravatar\Facades\Gravatar;
+use function GuzzleHttp\json_decode;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -101,6 +102,17 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Gravatar::fallback(asset('images/icons.svg#avatar'))
             ->get($this->email);
+    }
+
+    /**
+     * Decode preferences with safety catch
+     *
+     * @param string $value
+     * @return mixed
+     */
+    public function getPreferencesAttribute($value)
+    {
+        return optional((object) json_decode($value ?: '[]'));
     }
 
     /**
