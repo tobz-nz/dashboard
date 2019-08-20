@@ -45,14 +45,14 @@ class LevelCheck
         // loop through alerts and check direction and percent
         $alerts->each(function ($alert) use ($lastAlert, &$triggeredAlert) {
             // Level dropping
-            if ($this->LevelDroppedTo($alert)) {
+            if ($this->levelDroppedTo($alert)) {
                 // device level is lower than the alert & the alert is triggered on drop/change
                 $triggeredAlert = $alert;
                 return;
             }
 
             // Level rising
-            if ($this->LevelRoseTo($alert)) {
+            if ($this->levelRoseTo($alert)) {
                 // device level is higher than the alert & the alert is triggered on rise/change
                 $triggeredAlert = $alert;
                 return;
@@ -71,19 +71,19 @@ class LevelCheck
         }
     }
 
-    private function LevelDroppedTo(Alert $alert): bool
+    private function levelDroppedTo(Alert $alert): bool
     {
         return $this->device->currentPercent <= $alert->percent &&
             in_array($alert->trigger, [Alert::DROPPED, Alert::CHANGED]);
     }
 
-    private function LevelRoseTo(Alert $alert): bool
+    private function levelRoseTo(Alert $alert): bool
     {
         return $this->device->currentPercent >= $alert->percent &&
             in_array($alert->trigger, [Alert::ROSE, Alert::CHANGED]);
     }
 
-    private function lastAlert(Collection $alerts):? Alert
+    private function lastAlert(Collection $alerts): ?Alert
     {
         if (!$this->device->meta || !optional($this->device->meta)->lastAlert) {
             return null;
