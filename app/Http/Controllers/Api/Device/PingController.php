@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Device;
 
 use App\Device;
+use App\Events\DeviceSeen;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Device\PingRequest;
 use App\Http\Resources\DeviceResource;
@@ -19,7 +20,7 @@ class PingController extends Controller
      */
     public function store(PingRequest $request, Device $device)
     {
-        $device->update(['last_seen_at' => new Carbon]);
+        event(new DeviceSeen($device));
 
         return response([], 204);
     }

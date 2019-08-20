@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Device;
 
 use App\Device;
+use App\Events\DeviceSeen;
 use App\Events\MetricRecorded;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DeviceMetrics\CreateRequest;
@@ -32,9 +33,11 @@ class MetricController extends Controller
      */
     public function store(CreateRequest $request, Device $device): DeviceMetricResource
     {
-        $metric = $device->metrics()->create($request->validated());
+        $metric = $device->metrics()
+            ->create($request->validated());
 
         event(new MetricRecorded($metric));
+        event(new DeviceSeen($device));
 
         return new DeviceMetricResource($metric);
     }

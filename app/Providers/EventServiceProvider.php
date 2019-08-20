@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\DeviceSeen;
 use App\Events\MetricRecorded;
 use App\Listeners\LevelCheck;
+use App\Listeners\UpdateLastSeenAt;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -19,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+
+        DeviceSeen::class => [
+            UpdateLastSeenAt::class,
         ],
 
         MetricRecorded::class => [
