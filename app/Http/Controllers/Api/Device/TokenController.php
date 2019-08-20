@@ -19,15 +19,16 @@ class TokenController extends Controller
      */
     public function store(CreateRequest $request, Device $device)
     {
-        $token = Str::random(60);
-
-        $device->update([
-            'api_token' => hash('sha256', $token),
-            'last_seen_at' => new Carbon,
-        ]);
+        if (empty($device->api_token)) {
+            $token = Str::random(60);
+            $device->update([
+                'api_token' => hash('sha256', $token),
+                'last_seen_at' => new Carbon,
+            ]);
+        }
 
         return response()->json([
-            'api_token' => $token,
+            'api_token' => $device->api_token,
         ]);
     }
 }

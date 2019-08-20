@@ -13,7 +13,7 @@ class CreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return ($this->device && empty($this->device->api_token))
+        return $this->device
             // user() is a device, not a user
             || ($this->user('device') && $this->user('device')->is($this->device));
     }
