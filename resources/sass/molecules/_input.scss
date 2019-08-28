@@ -18,6 +18,14 @@
         flex-wrap: wrap;
         gap: var(--gap-2) var(--gap-3);
         align-items: baseline;
+
+        @include for-tablet-portrait-up {
+            @supports (grid-template-columns: subgrid) {
+                display: grid;
+                grid-template-columns: subgrid;
+                grid-column: 1/-1;
+            }
+        }
     }
 
     &-field-group {
@@ -71,11 +79,20 @@
             color: var(--grey-3);
             font-size: var(--text-2);
             line-height: 1.5;
+
+            @supports (grid-template-columns: subgrid) {
+                grid-row: 2;
+                grid-column: 1/-1;
+
+                @include for-tablet-landscape-up {
+                    grid-row: unset;
+                    grid-column: unset;
+                }
+            }
         }
     }
 
     &--invalid {
-
         input {
             border-color: var(--red-0);
             box-shadow: 0 0 1.5px 1px var(--red-0);

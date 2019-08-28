@@ -1,0 +1,14 @@
+.device-form {
+    @supports (grid-template-columns: subgrid) {
+        @include for-tablet-portrait-up {
+            display: grid;
+            grid-template-columns: max-content auto;
+            grid-template-columns: 130px auto;
+        }
+
+        @include for-tablet-landscape-up {
+            display: grid;
+            grid-template-columns: max-content auto auto;
+        }
+    }
+}
