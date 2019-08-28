@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Device;
 
+use App\Device;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Device\ViewAllRequest;
 use App\Http\Requests\Api\Device\ViewRequest;
@@ -43,7 +44,7 @@ class DeviceController extends Controller
      */
     public function show(ViewRequest $request, Device $device)
     {
-        return response()->json('Not Implemented', 501);
+        return new DeviceResource($device);
     }
 
     /**
