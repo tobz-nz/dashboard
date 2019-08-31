@@ -10,17 +10,12 @@ class Model extends BaseModel
     /**
      * @inheritdoc
      */
-    protected $dateFormat = 'Y-m-d H:i:sO';
-
-    /**
-     * @inheritdoc
-     */
     public function getDateFormat()
     {
         if ($this->getConnection() instanceof PostgresConnection) {
-            return $this->dateFormat ?: parent::getDateFormat();
+            return 'Y-m-d H:i:sO';
         }
 
-        parent::getDateFormat();
+        return parent::getDateFormat();
     }
 }
