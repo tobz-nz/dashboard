@@ -41,6 +41,8 @@
         // flex: 0 1 120px;
         // width: 120px;
 
+        grid-column: 1/-1;
+
         font-weight: 300;
         font-size: var(--text-md);
     }
@@ -50,6 +52,7 @@
         padding: var(--spacing-3);
 
         flex: 1 1 170px;
+        width: max-content;
         max-width: 350px;
         min-height: 47px;
         inline-size: auto;

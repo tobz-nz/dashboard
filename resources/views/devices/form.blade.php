@@ -1,6 +1,6 @@
 @csrf()
 
-<div class="mb-4 input-group inline @if($errors->has('name'))input--invalid @endif">
+<div class="mb-4 input-group @if($errors->has('name'))input--invalid @endif">
     <label class="input-label" for="name">{{ __('Name') }}</label>
     <input class="input-field" type="text" id="name" name="name" value="{{ old('name', $device->name) }}" placeholder="e.g. Main Water Tank" @if($errors->has('name'))aria-errormessage="error-message-name" aria-invalid @endif autofocus>
     @if ($errors->has('name'))
@@ -9,7 +9,7 @@
     <div class="input-summary">This field is just so you can manage multiple Tanks/properties easier.</div>
 </div>
 
-<div class="mb-7 input-group inline @if($errors->has('color'))input--invalid @endif">
+<div class="mb-7 input-group @if($errors->has('color'))input--invalid @endif">
     <label class="input-label" for="color">{{ __('Colour') }}</label>
     <input class="input-field" type="color" id="color" name="color" value="{{ old('color', $device->color ?: '#33aaff') }}" placeholder="e.g. Main Water Tank">
     @if ($errors->has('color'))
@@ -21,7 +21,7 @@
 <h3 class="mt-0 mb-2">Dimensions</h3>
 <input type="hidden" name="dimensions[shape]" value="cylinder">
 
-<div class="mb-4 input-group inline @if($errors->has('dimensions.diameter'))input--invalid @endif">
+<div class="mb-4 input-group @if($errors->has('dimensions.diameter'))input--invalid @endif">
     <label class="input-label" for="dimensions.diameter">{{ __('Diameter (cm)') }}</label>
     <input class="input-field" type="number" min="1" id="dimensions.diameter" name="dimensions[diameter]" value="{{ old('dimensions.diameter', $device->dimensions->diameter??null) }}" placeholder="e.g. 350" @if($errors->has('dimensions.diameter'))aria-errormessage="error-message-dimensions.diameter" aria-invalid @endif required>
     @if ($errors->has('dimensions.diameter'))
@@ -30,7 +30,7 @@
     <div class="input-summary">This field is the diameter of your water tank - the measurement across the top from one side to the other. Typically this is 350cm (3.5 meters).</div>
 </div>
 
-<div class="mb-4 input-group inline @if($errors->has('dimensions.height'))input--invalid @endif">
+<div class="mb-4 input-group @if($errors->has('dimensions.height'))input--invalid @endif">
     <label class="input-label" for="dimensions.height">{{ __('Height (cm)') }}</label>
     <input class="input-field" type="number" min="1" id="dimensions.height" name="dimensions[height]" value="{{ old('dimensions.height', $device->dimensions->height??null) }}" placeholder="e.g. 25000" required>
     @if ($errors->has('dimensions.height'))
@@ -39,7 +39,7 @@
     <div class="input-summary">This field is the maximum height of the tank. I.E. The highest depth of water.</div>
 </div>
 
-<div class="mb-7 input-group inline @if($errors->has('dimensions.catchment'))input--invalid @endif">
+<div class="mb-7 input-group @if($errors->has('dimensions.catchment'))input--invalid @endif">
     <label class="input-label" for="meta.catchment">{{ __('Catchment Area') }} (M<sup>2</sup>)</label>
     <input class="input-field" type="number" min="1" id="meta.catchment" name="meta[catchment]" value="{{ old('meta.catchment', $device->meta->catchment??null) }}" placeholder="e.g. 145">
     @if ($errors->has('meta.catchment'))
@@ -49,7 +49,7 @@
 </div>
 
 <h3 class="mt-0 mb-2">Household</h3>
-<div class="mb-4 input-group inline @if($errors->has('dimensions.address'))input--invalid @endif">
+<div class="mb-4 input-group @if($errors->has('dimensions.address'))input--invalid @endif">
     <label class="input-label" for="place">{{ __('Address') }}</label>
     <places-field class="input-field" id="place" name="place" data-field="address-location" value="{{ old('place', optional($device->address)->name ?? null) }}" placeholder="e.g. 12 Kagan Ave, Mangawhai" data-place required></places-field>
 
@@ -114,7 +114,7 @@
     <div class="input-summary">The property type is used to help us categorize and calculate how much water you use.</div>
 </div>
 
-<div class="mb-7 input-group inline @if($errors->has('household_size'))input--invalid @endif">
+<div class="mb-7 input-group @if($errors->has('household_size'))input--invalid @endif">
     <label class="input-label" for="household_size">{{ __('Number of Residents') }}</label>
     <input class="input-field" type="number" min="1" id="household_size" name="household_size" value="{{ old('household_size', $device->household_size) }}" placeholder="# of Residents" required>
     @if ($errors->has('household_size'))

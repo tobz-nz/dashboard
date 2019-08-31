@@ -205,6 +205,14 @@
 }
 
 .justify {
+    &-start {
+        justify-content: flex-start;
+    }
+
+    &-end {
+        justify-content: flex-end;
+    }
+
     &-center {
         justify-content: center;
     }
@@ -226,6 +234,14 @@
     &-minmax {
         grid-template-columns: repeat(var(--grid-fill, auto-fit), minmax(var(--min, 0), var(--max, auto)));
     }
+
+    &-span-cols {
+        grid-column: 1/-1;
+    }
+}
+
+.subgrid {
+    grid-template-columns: subgrid;
 }
 
 .gap {
@@ -239,5 +255,25 @@
         &-#{$i} {
             grid-gap: var(--gap-#{$i});
         }
+
+        &-x-#{$i} {
+            grid-gap: 0 var(--gap-#{$i});
+        }
+
+        &-y-#{$i} {
+            grid-gap: var(--gap-#{$i}) 0;
+        }
     }
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.sticky {
+    position: sticky;
 }
