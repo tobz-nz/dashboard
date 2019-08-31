@@ -50,7 +50,7 @@ return [
         'device' => [
             'driver' => 'token',
             'provider' => 'devices',
-            'hash' => true,
+            'hash' => false,
         ],
     ],
 
