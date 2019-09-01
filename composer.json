@@ -28,6 +28,7 @@
     "require-dev": {
         "ahuggins/open-on-make": "^0.0.25",
         "beyondcode/laravel-dump-server": "^1.0",
+        "facade/ignition": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "itsgoingd/clockwork": "^3.1",
