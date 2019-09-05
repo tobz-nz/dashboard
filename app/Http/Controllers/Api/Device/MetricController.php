@@ -22,7 +22,11 @@ class MetricController extends Controller
      */
     public function index(Request $request, Device $device): AnonymousResourceCollection
     {
-        return DeviceMetricResource::collection($device->metrics->paginiate());
+        $metrics = $device->metrics()
+            ->orderByDesc('created_at')
+            ->paginiate();
+
+        return DeviceMetricResource::collection($metrics);
     }
 
     /**
@@ -34,6 +38,7 @@ class MetricController extends Controller
     public function store(CreateRequest $request, Device $device): DeviceMetricResource
     {
         $metric = $device->metrics()
+            ->orderByDesc('created_at')
             ->create($request->validated());
 
         event(new MetricRecorded($metric));

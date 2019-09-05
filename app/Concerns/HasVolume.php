@@ -59,7 +59,7 @@ trait HasVolume
         $level = $value ?: $this->currentLevel;
 
         if (empty($level)) {
-            return 0.0;
+            return 0;
         }
 
         // value in cm (stored in mm)
@@ -107,21 +107,29 @@ trait HasVolume
         $table = DeviceMetric::make()->getTable();
 
         /*
-        SELECT value, created_at
-        FROM device_metrics
-        INNER JOIN
-        (
-          SELECT
-          MAX(created_at) AS max_created_at
-          FROM device_metrics
-          GROUP BY Date(`created_at`)
-        ) AS t
-        ON created_at = t.max_created_at
+        SELECT
+            value,
+            created_at,
+            deleted_at
+        FROM
+            device_metrics
+            INNER JOIN (
+                SELECT
+                    MAX(created_at) AS max_created_at
+                FROM
+                    device_metrics
+                WHERE
+                    deleted_at IS NULL
+                GROUP BY
+                    Date(created_at)) AS t ON created_at = t.max_created_at
+        ORDER BY
+            max_created_at
         */
 
         $sub = \DB::table($table)
             ->select(\DB::raw('max(created_at) AS max_created_at'))
             ->where(['device_id' => $this->getKey()])
+            ->whereNull('deleted_at')
             ->groupBy(\DB::raw('DATE(created_at)'));
 
         return $this->metrics()
@@ -129,7 +137,6 @@ trait HasVolume
             ->joinSub($sub, 'm', function ($join) {
                 $join->on('created_at', '=', 'm.max_created_at');
             })
-            ->orderByDesc('max_created_at')
             ->limit($limit);
     }
 
@@ -141,7 +148,7 @@ trait HasVolume
     public function getDaysRemainingAttribute(): ?int
     {
         // return days remaining
-        return (int) $this->burnRate ? round($this->currentLevel / $this->burnRate) : null;
+        return (int) $this->burnRate ? ceil($this->currentLevel / $this->burnRate) : null;
     }
 
     /**
@@ -151,16 +158,19 @@ trait HasVolume
      */
     public function getBurnRateAttribute(): ?int
     {
-        // reverse so its chronological (we order most recent first by default)
-        $dailies = $this->dailyMetrics()->take(30)->get();
+        $dailies = $this->dailyMetrics()
+            ->take(30)
+            ->orderBy('max_created_at')
+            ->get();
 
         $last = optional($dailies->first())->value ?? 0;
         $burn = collect([]);
 
         foreach ($dailies as $metric) {
-            if ($last - $metric->value > 0) {
+            $val = $last - $metric->value;
+            if ($val > 0) {
                 // We only want readings where the value has gone down
-                $burn->push($last - $metric->value);
+                $burn->push($val);
             }
             $last = $metric->value;
         }
@@ -168,7 +178,7 @@ trait HasVolume
         // if no readings to cound return null.
         // (time remaining is indeterminate)
         if ($burn->count() === 0) {
-            return null;
+            return 0;
         }
 
         // return the average daily burn rate

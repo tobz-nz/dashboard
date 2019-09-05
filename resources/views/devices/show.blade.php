@@ -40,7 +40,7 @@
 
     <div>
         <?php
-        $data = $device->dailyMetrics($limit = 30)->get()->transform(function($metric) use ($device) {
+        $data = $device->dailyMetrics($limit = 30)->orderByDesc('max_created_at')->get()->transform(function($metric) use ($device) {
             return (object) [
                 'name' => $metric->created_at->format('Y-m-d'),
                 'value' => [$metric->created_at->format('Y-m-d'), round($metric->value / data_get($device->dimensions, 'height', 0) * 100, 2)],

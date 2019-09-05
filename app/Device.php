@@ -107,8 +107,7 @@ class Device extends Model
      */
     public function metrics()
     {
-        return $this->hasMany(DeviceMetric::class)
-            ->orderByDesc('created_at');
+        return $this->hasMany(DeviceMetric::class);
     }
 
     /**
