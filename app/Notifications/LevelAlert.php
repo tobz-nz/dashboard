@@ -52,6 +52,10 @@ class LevelAlert extends Notification
             array_push($channels, 'mail');
         }
 
+        if (data_get($notifiable, 'preferences.slack_alerts')) {
+            array_push($channels, 'slack');
+        }
+
         return $channels;
     }
 
@@ -74,6 +78,13 @@ class LevelAlert extends Notification
             ->salutation('');
     }
 
+    /**
+     * Broadcast via native WebPush
+     *
+     * @param mixed $notifiable
+     * @param \Illuminate\Notifications\Notification $notification
+     * @return \NotificationChannels\WebPush\WebPushMessage
+     */
     public function toWebPush($notifiable, $notification)
     {
         $data = (object) $this->toArray($notifiable);
@@ -94,6 +105,12 @@ class LevelAlert extends Notification
             ->data(['url' => route('devices.show', $this->device)]);
     }
 
+    /**
+     * Broadcast via Apple APN service (Push)
+     *
+     * @param mixed $notifiable
+     * @return \NotificationChannels\Apn\ApnMessage
+     */
     public function toApn($notifiable)
     {
         $data = (object) $this->toArray($notifiable);
@@ -103,6 +120,36 @@ class LevelAlert extends Notification
             ->title($data->title)
             ->body($data->body)
             ->setUrlArguments(['devices/' . $this->device->uid]);
+    }
+
+    /**
+     * Get the Slack representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\SlackMessage
+     */
+    public function toSlack($notifiable)
+    {
+        return (new SlackMessage)
+            ->from('Tankful', ':droplet:')
+            ->image(asset('images/logo.svg'))
+            ->to('#smarttank5000')
+            ->success()
+            ->attachment(function ($attachment) {
+                $attachment->title(
+                    'New Water Level Reading',
+                    route('devices.show', $this->metric->device)
+                )
+                ->fields([
+                    'Tank' => $this->metric->device->name,
+                    'Percent Remaining' => $this->metric->device->currentPercent.'%',
+                    'Current Depth (cm)' => vsprintf('%d(cm) / %d(L)', [
+                        $this->metric->value / 10,
+                        $this->metric->device->currentVolume,
+                    ]),
+                    'Days Left' => $this->metric->device->daysRemaining,
+                ]);
+            });
     }
 
     /**

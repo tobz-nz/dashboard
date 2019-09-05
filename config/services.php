@@ -49,6 +49,10 @@ return [
         'register_certificate' => base_path(env('APNS_REGISTER_CERTIFICATE')),
     ],
 
+    'slack' => [
+        'webhook_url' => env('SLACK_WEBHOOK_URL'),
+    ],
+
     'algolia' => [
         'places' => [
             'appId' => env('ALGOLIA_PLACES_APPID'),

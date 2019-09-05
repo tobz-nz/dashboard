@@ -134,4 +134,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Account::class);
     }
+
+    /**
+     * Route notifications for the Slack channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForSlack($notification)
+    {
+        return $this->slack_webhook_url ?? config('services.slack.webhook_url');
+    }
 }

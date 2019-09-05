@@ -63,7 +63,16 @@
                     'label' => 'Enable Push Notifications',
                     'checked' => old('preferences.push_alerts', $user->preferences->push_alerts??false),
                     'class' => 'inline',
-                ])Do you want to receive water level alerts via Push Notification? @endcheckable</fieldset>
+                ])Do you want to receive water level alerts via Push Notification? @endcheckable
+
+                @checkable([
+                    'id' => 'slack-alerts',
+                    'name' => 'preferences[slack_alerts]',
+                    'label' => 'Enable Slack Notifications',
+                    'checked' => old('preferences.slack_alerts', $user->preferences->slack_alerts??false),
+                    'class' => 'inline',
+                ])Do you want to receive water level alerts via Slack? @endcheckable
+            </fieldset>
 
             <div class="flex justify-between">
                 <button type="submit" class="mb-7 button">Update Profile</button>
