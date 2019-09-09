@@ -51,7 +51,9 @@
 <h3 class="mt-0 mb-2">Household</h3>
 <div class="mb-4 input-group @if($errors->has('dimensions.address'))input--invalid @endif">
     <label class="input-label" for="place">{{ __('Address') }}</label>
-    <places-field class="input-field" id="place" name="place" data-field="address-location" value="{{ old('place', optional($device->address)->name ?? null) }}" placeholder="e.g. 12 Kagan Ave, Mangawhai" data-place required></places-field>
+    <div>
+        <places-field class="input-field" id="place" name="place" data-field="address-location" value="{{ old('place', optional($device->address)->name ?? null) }}" placeholder="e.g. 12 Kagan Ave, Mangawhai" data-place required></places-field>
+    </div>
 
     <div class="input-summary">The address field is used to look up weather forecasts and to book deliveries &amp; other servies.</div>
 
