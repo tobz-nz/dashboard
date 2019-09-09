@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('asdasdasd'),
             'email_verified_at' => new Carbon,
             'api_token' => Str::random(60),
-        ])->each(function($user) {
+        ])->each(function ($user) {
             // $user->assignRole('super');
         });
     }
