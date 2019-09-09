@@ -47,14 +47,14 @@
             ])You need one of these so you can access your Tanful account and others cannot. @endinput
 
             <fieldset class="mb-5">
-                <legend>Preferences:</legend>
+                <legend>Notification Preferences:</legend>
 
                 @checkable([
                     'id' => 'email-alerts',
                     'name' => 'preferences[email_alerts]',
                     'label' => 'Enable Email Alerts',
                     'checked' => old('preferences.email_alerts', $user->preferences->email_alerts),
-                    'class' => 'mb-4 inline',
+                    'class' => 'mb-1 inline',
                 ])Do you want to receive water level alerts via email? @endcheckable
 
                 @checkable([
@@ -62,7 +62,7 @@
                     'name' => 'preferences[push_alerts]',
                     'label' => 'Enable Push Notifications',
                     'checked' => old('preferences.push_alerts', $user->preferences->push_alerts??false),
-                    'class' => 'inline',
+                    'class' => 'mb-1 inline',
                 ])Do you want to receive water level alerts via Push Notification? @endcheckable
 
                 @checkable([
@@ -70,7 +70,7 @@
                     'name' => 'preferences[slack_alerts]',
                     'label' => 'Enable Slack Notifications',
                     'checked' => old('preferences.slack_alerts', $user->preferences->slack_alerts??false),
-                    'class' => 'inline',
+                    'class' => 'mb-1 inline',
                 ])Do you want to receive water level alerts via Slack? @endcheckable
             </fieldset>
 
