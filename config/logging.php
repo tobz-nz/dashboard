@@ -2,6 +2,7 @@
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
+use Rollbar\Laravel\MonologHandler;
 
 return [
 
@@ -36,7 +37,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],
+            'channels' => ['daily', 'rollbar'],
             'ignore_exceptions' => false,
         ],
 
@@ -89,6 +90,13 @@ return [
             'driver' => 'errorlog',
             'level' => 'debug',
         ],
+
+        'rollbar' => [
+            'driver' => 'monolog',
+            'handler' => MonologHandler::class,
+            'access_token' => env('ROLLBAR_TOKEN'),
+            'level' => 'debug',
+        ]
     ],
 
 ];
