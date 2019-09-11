@@ -13,7 +13,7 @@
         {{ old($name, $checked??false) ? ' checked' : '' }}
         {{ $attributes??'' }}>
 
-    <svg class="input--checkbox" width="20" height="20" viewBox="0 0 20 20">
+    <svg class="input--checkbox" width="20" height="20">
         <use xlink:href="https://tankful.test/images/icons.svg#checkbox"></use>
         <use class="checked" xlink:href="https://tankful.test/images/icons.svg#checkbox_checked"></use>
     </svg>
