@@ -9,7 +9,7 @@
 @section('content')
 
     <header class="content-header">
-        <h1>Trends</h1>
+        <h1>{{ $device->name }}: Trends</h1>
         <div class="text-right text-2">Last seen <span class="nowrap">{{ $device->last_seen_at->calendar() }}</span></div>
     </header>
 

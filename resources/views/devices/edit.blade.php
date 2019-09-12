@@ -8,7 +8,7 @@
 
 @section('content')
     <header class="content-header">
-        <h1>Device settings</h1>
+        <h1>{{ $device->name }}: Device settings</h1>
     </header>
 
     <div class="pt-7 px-8 flex flex-col items-start">

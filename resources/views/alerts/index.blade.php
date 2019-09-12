@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', "Alerts for {$device->name}")
+@section('title', "{$device->name}: Alerts")
 
 @section('nav-links')
     @include('devices.nav-links')
