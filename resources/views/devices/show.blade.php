@@ -10,7 +10,7 @@
 
     <header class="content-header">
         <h1>{{ $device->name }}: Trends</h1>
-        <div class="text-right text-2">Last seen <span class="nowrap">{{ $device->last_seen_at->calendar() }}</span></div>
+        <div class="text-right text-2">Last seen <time class="nowrap" datetime="{{ $device->getDate('last_seen_at')->format(DateTime::ATOM) }}">{{ $device->getDate('last_seen_at')->calendar() }}</time></div>
     </header>
 
     @if ($device->meta->is_missing??null === true)

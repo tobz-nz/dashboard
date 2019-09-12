@@ -7,6 +7,7 @@ use App\Concerns\HasVolume;
 use App\DeviceMetric;
 use App\Model;
 use App\User;
+use DateTime;
 use Givebutter\LaravelKeyable\Keyable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
@@ -66,6 +67,12 @@ class Device extends Model
     public function getRouteKeyName()
     {
         return 'uid';
+    }
+
+    public function getDate(string $dateAttribute): Carbon
+    {
+        return $this->$dateAttribute->
+            timezone($this->meta->timezone);
     }
 
     /**
