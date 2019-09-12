@@ -27,7 +27,7 @@ class MetricPolicy
     }
 
     /**
-     * Determine whether the user can view the device.
+     * Determine whether the user can view any Metrics.
      *
      * @param  \App\User  $user
      * @param  \App\Device  $device

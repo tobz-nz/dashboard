@@ -25,7 +25,7 @@ class DevicePolicy
     }
 
     /**
-     * Determine whether the user can view the device.
+     * Determine whether the user can view any devices.
      *
      * @param  \App\User  $user
      * @param  \App\Device  $device
@@ -37,7 +37,7 @@ class DevicePolicy
     }
 
     /**
-     * Determine whether the user can view the device.
+     * Determine whether the user can view any devices.
      *
      * @param  \App\User  $user
      * @param  \App\Device  $device

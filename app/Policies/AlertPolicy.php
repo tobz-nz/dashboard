@@ -2,13 +2,24 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Alert;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AlertPolicy
 {
     use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view any Alerts.
+     *
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function viewAny(User $user)
+    {
+        return true;
+    }
 
     /**
      * Determine whether the user can view the alert.
