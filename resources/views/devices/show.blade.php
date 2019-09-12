@@ -25,7 +25,7 @@
         <div class="current-status grid">
             <tf-pie :value="{{ $device->currentPercent }}" style="color:hsl(205, 100%, 60%)"></tf-pie>
             <div class="status-details">
-                <div>{{ $device->currentLevel }} cm</div>
+                <div>{{ round($device->currentLevel / 10) }} cm</div>
                 <div>{{ $device->currentVolume }} L</div>
             </div>
         </div>
