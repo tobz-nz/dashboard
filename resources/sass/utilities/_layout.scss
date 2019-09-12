@@ -266,6 +266,20 @@
     }
 }
 
+.overflow {
+    &-auto {
+        overflow: auto;
+    }
+
+    &-scroll {
+        overflow: scroll;
+    }
+
+    &-hidden {
+        overflow: hidden;
+    }
+}
+
 .relative {
     position: relative;
 }

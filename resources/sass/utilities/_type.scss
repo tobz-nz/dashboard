@@ -22,13 +22,26 @@
     &-bold {
         font-weight: var(--weight, 700);
     }
+
+    &-right {
+        text-align: right;
+    }
+
+    &left {
+        text-align: left;
+    }
 }
 
 .underline {
     text-decoration: underline;
 }
+
 .no-underline {
     text-decoration: none;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 h1, h2, h3, h4, h5, h6 {

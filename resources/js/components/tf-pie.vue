@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-chart ref="chart" style="width:320px" class="tf-pie" :options="options" :autoresize="true"></v-chart>
+        <v-chart ref="chart" style="width:320px; height:320px" class="tf-pie" :options="options" :autoresize="true"></v-chart>
     </div>
 </template>
 
