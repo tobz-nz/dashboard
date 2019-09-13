@@ -1,6 +1,6 @@
 <ul class="p-4 links unlist">
     @isset($device)
-        <li><a class="link{{ Route::currentRouteNamed('devices.show') ? ' active' : '' }}" href="{{ route('dashboard', $device) }}">Trends<span class="line"></span></a></li>
+        <li><a class="link{{ Route::currentRouteNamed('devices.show') ? ' active' : '' }}" href="{{ route('devices.show', $device) }}">Trends<span class="line"></span></a></li>
         {{-- <li><a class="link{{ Route::currentRouteNamed('dashboard') ? ' active' : '' }}" href="{{ route('dashboard') }}">Manage Refills<span class="line"></span></a></li> --}}
         <li><a class="link{{ Route::currentRouteNamed('alerts.index') ? ' active' : '' }}" href="{{ route('alerts.index', $device) }}">Alerts<span class="line"></span></a></li>
         <li><a class="link{{ Route::currentRouteNamed('devices.edit') ? ' active' : '' }}" href="{{ route('devices.edit', $device) }}">Settings<span class="line"></span></a></li>
