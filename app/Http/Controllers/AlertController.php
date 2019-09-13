@@ -6,6 +6,7 @@ use App\Alert;
 use App\Device;
 use App\Http\Requests\Alert\CreateRequest;
 use App\Http\Requests\Alert\DeleteRequest;
+use App\Http\Requests\Alert\UpdateRequest;
 use Illuminate\Http\Request;
 
 class AlertController extends Controller
@@ -74,9 +75,13 @@ class AlertController extends Controller
      * @param  \App\Alert  $alert
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alert $alert)
+    public function update(UpdateRequest $request, Device $device, Alert $alert)
     {
-        //
+        $alert->update($request->validated());
+
+        flash('Alert Updated')->success();
+
+        return redirect()->back();
     }
 
     /**
