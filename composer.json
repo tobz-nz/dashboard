@@ -14,7 +14,7 @@
         "givebutter/laravel-keyable": "^1.0",
         "jwage/php-apns": "^0.0.3",
         "laracasts/flash": "^3.0",
-        "laravel-notification-channels/apn": "dev-master",
+        "laravel-notification-channels/apn": "^0.4",
         "laravel-notification-channels/webpush": "^3.0",
         "laravel/cashier": "^9.1",
         "laravel/framework": "5.8.*",
@@ -22,12 +22,12 @@
         "laravel/slack-notification-channel": "^2.0",
         "laravel/telescope": "^2.0",
         "laravel/tinker": "^1.0",
-        "lexxyungcarter/ziggy": "0.6.9.3",
         "predis/predis": "^1.1",
-        "rollbar/rollbar-laravel": "^4.0"
+        "rollbar/rollbar-laravel": "^4.0",
+        "tightenco/ziggy": "^0.8"
     },
     "require-dev": {
-        "ahuggins/open-on-make": "^0.0.25",
+        "ahuggins/open-on-make": "^0.0",
         "beyondcode/laravel-dump-server": "^1.0",
         "facade/ignition": "^1.0",
         "filp/whoops": "^2.0",
