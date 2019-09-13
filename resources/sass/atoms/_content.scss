@@ -1,4 +1,7 @@
 .content {
     height: 100vh;
-    overflow-y: auto;
+
+    @supports not (-webkit-overflow-scrolling: touch) {
+        overflow-y: auto;
+    }
 }
