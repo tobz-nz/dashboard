@@ -1,8 +1,8 @@
 .content-header {
     display: flex;
 
-    padding-right: var(--spacing-8);
-    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-5);
+    padding-left: var(--spacing-5);
 
     position: sticky;
     top: 0;
@@ -17,4 +17,9 @@
     // box-shadow: 0 0 35px #0000001a;
     border-bottom: 1px solid var(--grey-4);
     background: white;
+
+    @include for-tablet-portrait-up {
+        padding-right: var(--spacing-8);
+        padding-left: var(--spacing-8);
+    }
 }
