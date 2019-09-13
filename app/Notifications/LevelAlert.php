@@ -6,6 +6,7 @@ use App\Alert;
 use App\Device;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Apn\ApnChannel;
 use NotificationChannels\Apn\ApnMessage;
@@ -40,7 +41,7 @@ class LevelAlert extends Notification
     {
         $channels = [];
 
-        if (count($notifiable->apn_tokens)) {
+        if (count($notifiable->apn_tokens ?? [])) {
             array_push($channels, ApnChannel::class);
         }
 
@@ -138,16 +139,16 @@ class LevelAlert extends Notification
             ->attachment(function ($attachment) {
                 $attachment->title(
                     'New Water Level Reading',
-                    route('devices.show', $this->metric->device)
+                    route('devices.show', $this->device)
                 )
                 ->fields([
-                    'Tank' => $this->metric->device->name,
-                    'Percent Remaining' => $this->metric->device->currentPercent.'%',
+                    'Tank' => $this->device->name,
+                    'Percent Remaining' => $this->device->currentPercent.'%',
                     'Current Depth (cm)' => vsprintf('%d(cm) / %d(L)', [
-                        $this->metric->value / 10,
-                        $this->metric->device->currentVolume,
+                        $this->device->currentValue / 10,
+                        $this->device->currentVolume,
                     ]),
-                    'Days Left' => $this->metric->device->daysRemaining,
+                    'Days Left' => $this->device->daysRemaining,
                 ]);
             });
     }
