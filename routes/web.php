@@ -57,7 +57,7 @@ $router->group(['middleware' => [
     ]);
 });
 
-$router->group(['domain' => env('FIRMWARE_DOMAIN')], function ($router) {
+$router->group(['domain' => config('tankful.firmware.domain')], function ($router) {
     // used in firmware version caching command
     $router->redirect('/current.json', '/')->name('firmware.current');
 });
