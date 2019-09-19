@@ -62,27 +62,7 @@ trait HasVolume
             return 0;
         }
 
-        // value in cm (stored in mm)
-        $valueInCm = $level / 10;
-
-        if (optional($this->dimensions)->shape === 'cylinder') {
-            // radius in cm
-            $diameter = (int) $this->dimensions->diameter ?? 1;
-            $radius = $diameter / 2;
-
-            // Π x (radius)2 x Depth = cm3 / 1000 = litres
-            // eg: round((pi() * pow(175, 2) * 222.2) / 1000, 2) = 21378.15 Litres
-            return round(((pi() * pow($radius, 2)) * $valueInCm) / 1000);
-        }
-
-        if (optional($this->dimensions)->shape === 'rectangle') {
-            $length = $this->dimensions->length;
-            $width = $this->dimensions->width;
-
-            return round($valueInCm * $width * $length);
-        }
-
-        throw \RuntimeException('Invalid Device Shape');
+        return $this->mmToLitres($level);
     }
 
     /**
@@ -183,5 +163,33 @@ trait HasVolume
 
         // return the average daily burn rate
         return $burn->sum() / $burn->count();
+    }
+
+    /**
+     * Calculate mm of depth to cubic Litres
+     *
+     * @param float $valueInMm
+     * @return int
+     */
+    public function mmToLitres(float $valueInMm): float
+    {
+        if (optional($this->dimensions)->shape === 'cylinder') {
+            // radius in cm
+            $diameter = (int) $this->dimensions->diameter ?? 1;
+            $radius = $diameter / 2;
+
+            // Π x (radius)2 x Depth = cm3 / 1000 = litres
+            // eg: round((pi() * pow(175, 2) * 222.2) / 1000, 2) = 21378.15 Litres
+            return round(((pi() * pow($radius, 2)) * $valueInMm) / 10000);
+        }
+
+        if (optional($this->dimensions)->shape === 'rectangle') {
+            $length = $this->dimensions->length;
+            $width = $this->dimensions->width;
+
+            return round($valueInMm * $width * $length);
+        }
+
+        throw \RuntimeException('Invalid Device Shape');
     }
 }

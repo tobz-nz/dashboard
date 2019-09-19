@@ -34,7 +34,7 @@
             <div class="days-remaining flex flex-col justify-center items-center rounded-full" style="width: 220px; height:220px; box-shadow:0 0 10px var({{ $device->daysRemaining > 7 ? '--blue-0' : '--red-0' }})">
                 <span class="days-remaining__counter block text-center" style="font-size: var(--text-10);">{{ (int) $device->daysRemaining ?? 'Indeterminate' }}</span>
                 <span>Days remaining</span>
-                <small class="text-light">avg {{ $device->burnRate }}L per day</small>
+                <small class="text-light">avg {{ $device->mmToLitres($device->burnRate) }}L per day</small>
             </div>
         </div>
     </div>
