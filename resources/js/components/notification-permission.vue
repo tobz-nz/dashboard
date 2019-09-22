@@ -20,7 +20,7 @@
 
         data() {
             return {
-                active: true,
+                active: Notification.permission !== 'granted',
             }
         },
 
@@ -32,15 +32,16 @@
             },
 
             async requestPermission(event) {
-                console.log(event);
-                let asd = await initWebPush()
-                console.log(asd);
-                if (!asd) {
+                console.log('trying for WebPush...');
+                let registerResponse = await initWebPush();
+                console.log(registerResponse);
+
+                if (!registerResponse) {
                     console.log('trying APN for push...');
-                    if (!initAPNSPush()) {
-                        this.close();
-                    }
+                    initAPNSPush();
                 }
+
+                this.close();
             },
         }
     }

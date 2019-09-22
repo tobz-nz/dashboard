@@ -74,7 +74,9 @@ self.addEventListener('activate', event => {
 
 
 
-/* Forward push notifications */
+/**
+ * Forward push notifications to the broswer
+ */
 self.addEventListener('push', event => {
     console.log('Push Received');
 
@@ -94,6 +96,9 @@ self.addEventListener('push', event => {
     }
 });
 
+/**
+ * Handle when a notificaiton is clicked
+ */
 self.addEventListener('notificationclick', event => {
     console.log(event.notification.data);
 
