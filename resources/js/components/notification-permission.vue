@@ -11,7 +11,6 @@
 
 <script>
     import initWebPush from '../push/web.js'
-    import initAPNSPush from '../push/apn.js'
 
     export default {
         components: {},
@@ -34,14 +33,37 @@
             async requestPermission(event) {
                 console.log('trying for WebPush...');
                 let registerResponse = await initWebPush();
-                console.log(registerResponse);
 
                 if (!registerResponse) {
                     console.log('trying APN for push...');
-                    initAPNSPush();
-                }
 
-                this.close();
+                    let permissionData = window.safari.pushNotification.permission(window.appData.apn.id);
+                    if (permissionData.permission === 'default') {
+                        // This is a new web service URL and its validity is unknown.
+
+                        // Fetch user data, then ask for permission to send notifications
+                        let userData = {
+                            userId: String(appData.user.id)
+                        }
+
+                        window.safari.pushNotification.requestPermission(
+                            route('apns').url(),     // The web service URL.
+                            window.appData.apn.id,  // The Website Push ID.
+                            userData,                // Data that you choose to send to your server to help you identify the user.
+                            this.requestPermission   // The callback function.
+                        );
+                    }
+                    else if (permissionData.permission === 'denied') {
+                        // The user said no.
+                        return false;
+                    }
+                    else if (permissionData.permission === 'granted') {
+                        // The web service URL is a valid push provider, and the user said yes.
+                        // permissionData.deviceToken is now available to use.
+                        this.close();
+                        return true;
+                    }
+                }
             },
         }
     }
