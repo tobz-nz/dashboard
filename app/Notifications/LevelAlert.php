@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\Alert;
 use App\Device;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
@@ -39,7 +40,7 @@ class LevelAlert extends Notification
      */
     public function via($notifiable)
     {
-        $channels = [];
+        $channels = ['broadcast'];
 
         if (count($notifiable->apn_tokens ?? [])) {
             array_push($channels, ApnChannel::class);
@@ -154,6 +155,17 @@ class LevelAlert extends Notification
     }
 
     /**
+     * Get the Broadcast representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\BroadcastMessage
+     */
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage($this->toArray($notifiable));
+    }
+
+    /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
@@ -162,12 +174,19 @@ class LevelAlert extends Notification
     public function toArray($notifiable)
     {
         return [
+            'type' => $this->alertLevel(),
             'title' => sprintf('You water level has %s', $this->actionText()),
             'body' => sprintf(
                 'The level in your water tank (%s) is now at %d%% capacity.',
                 $this->device->name,
                 $this->device->currentPercent
             ),
+            'device' => $this->device->uid,
+            'level' => [
+                'value' => $this->device->currentLevel,
+                'percent' => $this->device->currentPercent,
+                'volume' => $this->device->currentVolume,
+            ],
         ];
     }
 
