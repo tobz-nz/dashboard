@@ -18,6 +18,14 @@
     }
 
     summary {
+        display: block;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+
+    .summary {
         display: flex;
 
         justify-content: space-between;
@@ -25,10 +33,6 @@
 
         list-style: none;
         cursor: pointer;
-
-        &::-webkit-details-marker {
-            display: none;
-        }
 
         > span {
             white-space: nowrap;
@@ -47,7 +51,8 @@
 
         padding: var(--spacing-4);
 
-        width: 100%;
+        width: -webkit-fill-available;
+        width: available;
 
         transform: translateY(102%);
         background: var(--blue-0);

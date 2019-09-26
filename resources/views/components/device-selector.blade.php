@@ -1,10 +1,12 @@
 @can('create', App\Device::class)
 <details class="select-device autoclose">
     <summary>
-        <span>{{ $device->name ?? 'Select Device' }}</span>
-        <svg width="30" height="17">
-            <use href="{{ asset('images/icons.svg#chevron-down') }}"></use>
-        </svg>
+        <div class="summary">
+            <span>{{ $device->name ?? 'Select Device' }}</span>
+            <svg width="30" height="17">
+                <use href="{{ asset('images/icons.svg#chevron-down') }}"></use>
+            </svg>
+        </div>
     </summary>
     <div>
         @foreach($devices as $device)
