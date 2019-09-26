@@ -78,6 +78,24 @@ trait HasVolume
     }
 
     /**
+     * Get the colour to use for the current level
+     *
+     * @return string
+     */
+    public function getLevelColorAttribute(): string
+    {
+        if ($this->currentPercent >= 65) {
+            return '--green-2';
+        }
+
+        if ($this->currentPercent >= 40) {
+            return '--yellow-2';
+        }
+
+        return '--red-1';
+    }
+
+    /**
      * Get metrics limited to the last entry per day
      *
      * @param int $limit
