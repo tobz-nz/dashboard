@@ -1,5 +1,3 @@
-// Use a gradient the polyfill does not support
-// so Firefox does not pass the @supports check
 .pie {
     --value: .6;
     --size: 250px;
@@ -22,7 +20,9 @@
 
     border-radius: 50%;
 
-    @supports (background: conic-gradient(from 0.25turn at 50% 30%, #fff, #fff)) {
+    // Use -webkit prefix so Firefox does not pass the @supports check.
+    // The polyfill makes it pass the none-prefixed check which is annoying.
+    @supports (background: -webkit-conic-gradient(#fff, #fff)) {
         &:after {
             position: absolute;
             top: 2%;
