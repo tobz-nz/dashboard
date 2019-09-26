@@ -19,6 +19,10 @@ class DeviceObserver
         DeviceUid::where(['uid' => $device->uid, 'registered_at' => null])
             ->firstOrFail()
             ->update(['registered_at' => new Carbon]);
+
+        $device->update([
+            'last_seen_at' => new Carbon,
+        ]);
     }
 
     /**
