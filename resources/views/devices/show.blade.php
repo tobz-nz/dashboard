@@ -6,6 +6,11 @@
     @include('devices.nav-links')
 @endsection
 
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://leaverou.github.io/conic-gradient/conic-gradient.js"></script>
+@endpush
+
 @section('content')
 
     <header class="content-header">
@@ -22,14 +27,16 @@
     @endalert
     @endif
 
-    <div class="grid grid-minmax mx-auto justify-center gap-3" style="--min:300px">
-        <div class="current-status grid">
-            <tf-pie :value="{{ $device->currentPercent }}" style="color:hsl(205, 100%, 60%)"></tf-pie>
-            <div class="status-details">
-                <div>{{ round($device->currentLevel / 10) }} cm</div>
-                <div>{{ $device->currentVolume }} L</div>
-            </div>
+    <div class="grid grid-minmax mx-auto pt-6 justify-center gap-3" style="--min:300px">
+
+        <div class="pie mx-auto" style="--value: {{ $device->currentPercent * .01 }}; --progress: red">
+            <div class="text-8">{{ $device->currentPercent }}%</div>
+            <div>{{ round($device->currentLevel / 10) }} cm</div>
+            <div>{{ $device->currentVolume }} L</div>
+
+            <div class="pie-fallback" style="background-image: radial-gradient(white calc(var(--size) * 0.42), transparent 0%), conic-gradient(from 120deg, #fff 33%, #32aaff 33%, #32aaff {{ 33 + (67 * $device->currentPercent * .01)}}%, #e5f6ff {{ 33 + (67 * $device->currentPercent * .01)}}%, #e5f6ff 360deg);"></div>
         </div>
+
         <div class="grid justify-center items-center">
             <div class="days-remaining flex flex-col justify-center items-center rounded-full" style="width: 220px; height:220px; box-shadow:0 0 10px var({{ $device->daysRemaining > 7 ? '--blue-0' : '--red-0' }})">
                 <span class="days-remaining__counter block text-center" style="font-size: var(--text-10);">{{ (int) $device->daysRemaining ?? 'Indeterminate' }}</span>

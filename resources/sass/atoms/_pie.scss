@@ -1,0 +1,58 @@
+// Use a gradient the polyfill does not support
+// so Firefox does not pass the @supports check
+.pie {
+    --value: .6;
+    --size: 250px;
+
+    --progress: var(--blue-1);
+    --track: var(--blue-4);
+    --percent: calc(33% + (67% * var(--value)));
+
+    position: relative;
+    display: flex;
+    flex-flow: column;
+
+    margin-bottom: -5%;
+
+    width: var(--size);
+    height: var(--size);
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    @supports (background: conic-gradient(from 0.25turn at 50% 30%, #fff, #fff)) {
+        &:after {
+            position: absolute;
+            top: 2%;
+            z-index: -1;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            content: "";
+
+            border-radius: inherit;
+            background-image: radial-gradient(white calc(var(--size) * 0.42), transparent 0%),
+                conic-gradient(from 120deg, #fff 33%, var(--progress, #000) 33%, var(--progress, #000) var(--percent, 0), var(--track, #000) var(--percent, 0), var(--track, #000) 360deg);
+        }
+
+        &-fallback {
+            display: none;
+        }
+    }
+}
+
+.pie-fallback {
+    position: absolute;
+    top: 2%;
+    z-index: -1;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    border-radius: inherit;
+}
