@@ -4,6 +4,7 @@ namespace App\Concerns;
 
 use App\DeviceMetric;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 trait HasVolume
 {
@@ -42,7 +43,7 @@ trait HasVolume
         return $this->metrics()
             ->where('created_at', function ($query) {
                 return $query
-                    ->select(\DB::raw('MAX(created_at)'))
+                    ->select(DB::raw('MAX(created_at)'))
                     ->from('device_metrics');
             })
             ->avg('value') ?: 0;
@@ -95,27 +96,30 @@ trait HasVolume
             device_metrics
             INNER JOIN (
                 SELECT
-                    MAX(created_at) AS max_created_at
+                    MAX(created_at) AT TIME ZONE 'UTC') AS max_created_at
                 FROM
                     device_metrics
                 WHERE
                     deleted_at IS NULL
                 GROUP BY
-                    Date(created_at)) AS t ON created_at = t.max_created_at
+                    Date(created_at)) AS t ON created_at = t.max_created_at AT TIME ZONE 'UTC'
         ORDER BY
             max_created_at
         */
 
-        $sub = \DB::table($table)
-            ->select(\DB::raw('max(created_at) AS max_created_at'))
+        $timezone = optional($this->meta)->timezone ?? 'UTC';
+
+        $sub = DB::table($table)
+            ->select(DB::raw("max(created_at AT TIME ZONE '{$timezone}') AS max_created_at"))
             ->where(['device_id' => $this->getKey()])
             ->whereNull('deleted_at')
-            ->groupBy(\DB::raw('DATE(created_at)'));
+            ->groupBy(DB::raw('DATE(created_at)'));
 
         return $this->metrics()
+            ->select('value', 'created_at', 'deleted_at')
             ->whereNull('deleted_at')
-            ->joinSub($sub, 'm', function ($join) {
-                $join->on('created_at', '=', 'm.max_created_at');
+            ->joinSub($sub, 'm', function ($join) use ($timezone) {
+                $join->on('created_at', '=', DB::raw("m.max_created_at AT TIME ZONE '{$timezone}'"));
             })
             ->limit($limit);
     }
