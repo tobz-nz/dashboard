@@ -108,8 +108,7 @@ trait HasVolume
         /*
         SELECT
             value,
-            created_at,
-            deleted_at
+            (created_at AT TIME ZONE 'UTC')::TIMESTAMPTZ AS created_at
         FROM
             device_metrics
             INNER JOIN (
