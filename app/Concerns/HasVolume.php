@@ -26,10 +26,16 @@ trait HasVolume
      */
     public function getCurrentLevelAttribute($value): int
     {
-        return $this->metrics()
-            ->whereType('level')
-            ->orderByDesc('id')
-            ->value('value') ?: 0;
+        return app('cache')
+            ->tags([
+                "device.{$this->id}",
+            ])
+            ->rememberForever("currentlevel.{$this->id}", function () {
+                return $this->metrics()
+                    ->whereType('level')
+                    ->orderByDesc('id')
+                    ->value('value') ?: 0;
+            });
     }
 
     /**
@@ -40,13 +46,19 @@ trait HasVolume
      */
     public function getCurrentAvgAttribute($value): int
     {
-        return $this->metrics()
-            ->where('created_at', function ($query) {
-                return $query
-                    ->select(DB::raw('MAX(created_at)'))
-                    ->from('device_metrics');
-            })
-            ->avg('value') ?: 0;
+        return app('cache')
+            ->tags([
+                "device.{$this->id}",
+            ])
+            ->rememberForever("currentAvg.{$this->id}", function () {
+                return $this->metrics()
+                    ->where('created_at', function ($query) {
+                        return $query
+                            ->select(DB::raw('MAX(created_at)'))
+                            ->from('device_metrics');
+                    })
+                    ->avg('value') ?: 0;
+            });
     }
 
     /**
@@ -164,10 +176,14 @@ trait HasVolume
      */
     public function getBurnRateAttribute(): ?int
     {
-        $dailies = $this->dailyMetrics()
-            ->take(30)
-            ->orderBy('max_created_at')
-            ->get();
+        $dailies = app('cache')
+            ->tags([
+                "device.{$this->id}",
+            ])->rememberForever("burnRate.{$this->id}", function () {
+                return $this->dailyMetrics(30)
+                    ->orderBy('max_created_at')
+                    ->get();
+            });
 
         $last = optional($dailies->first())->value ?? 0;
         $burn = collect([]);

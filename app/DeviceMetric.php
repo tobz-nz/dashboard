@@ -21,6 +21,10 @@ class DeviceMetric extends Model
         'meta' => 'object',
     ];
 
+    protected $touches = [
+        'device',
+    ];
+
     /**
      * Device relationship
      *

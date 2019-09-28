@@ -33,7 +33,7 @@ class DeviceObserver
      */
     public function updated(Device $device)
     {
-        //
+        $this->flushCache();
     }
 
     /**
@@ -44,7 +44,7 @@ class DeviceObserver
      */
     public function deleted(Device $device)
     {
-        //
+        $this->flushCache();
     }
 
     /**
@@ -66,6 +66,18 @@ class DeviceObserver
      */
     public function forceDeleted(Device $device)
     {
-        //
+        $this->flushCache();
+    }
+
+    /**
+     * Clear out any caches related to this device
+     *
+     * @return void
+     */
+    private function flushCache()
+    {
+        app('cache')->tags([
+            "device.{$this->id}",
+        ])->flush();
     }
 }
