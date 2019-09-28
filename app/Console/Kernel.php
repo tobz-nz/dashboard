@@ -24,8 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('firmware:cache-version')
-            ->hourly();
+        $schedule->command('firmware:cache-version')->hourly();
+        $schedule->command('tankful:amber', ['--within' => 70])->everyMinute();
     }
 
     /**
