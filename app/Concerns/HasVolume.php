@@ -142,7 +142,7 @@ trait HasVolume
             ->select(DB::raw("max(created_at AT TIME ZONE '{$timezone}') AS max_created_at"))
             ->where(['device_id' => $this->getKey()])
             ->whereNull('deleted_at')
-            ->groupBy(DB::raw('DATE(created_at)'));
+            ->groupBy(DB::raw("DATE(created_at AT TIME ZONE '{$timezone}')"));
 
         return $this->metrics()
             ->select(
