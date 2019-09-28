@@ -134,7 +134,12 @@ trait HasVolume
             ->groupBy(DB::raw('DATE(created_at)'));
 
         return $this->metrics()
-            ->select('value', 'created_at', 'deleted_at')
+            ->select(
+                'value',
+                // Note the type cast is required to add the timezone offset to the formated date
+                // Also note, that the offset is always +00 instead of the actual offset. No idea why.
+                DB::raw("(created_at AT TIME ZONE '{$timezone}')::TIMESTAMPTZ as created_at")
+            )
             ->whereNull('deleted_at')
             ->joinSub($sub, 'm', function ($join) use ($timezone) {
                 $join->on('created_at', '=', DB::raw("m.max_created_at AT TIME ZONE '{$timezone}'"));
