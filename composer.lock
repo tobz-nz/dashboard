@@ -4,63 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea212d82c380b5987d9bbd75c26d4126",
+    "content-hash": "f71bc2bdf4747d9d4d37ca2536f63a58",
     "packages": [
-        {
-            "name": "beberlei/assert",
-            "version": "v2.9.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/beberlei/assert.git",
-                "reference": "124317de301b7c91d5fce34c98bba2c6925bec95"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/beberlei/assert/zipball/124317de301b7c91d5fce34c98bba2c6925bec95",
-                "reference": "124317de301b7c91d5fce34c98bba2c6925bec95",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.1.1",
-                "phpunit/phpunit": "^4.8.35|^5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Assert\\": "lib/Assert"
-                },
-                "files": [
-                    "lib/Assert/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de",
-                    "role": "Lead Developer"
-                },
-                {
-                    "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com",
-                    "role": "Collaborator"
-                }
-            ],
-            "description": "Thin assertion library for input validation in business models.",
-            "keywords": [
-                "assert",
-                "assertion",
-                "validation"
-            ],
-            "time": "2019-05-28T15:27:37+00:00"
-        },
         {
             "name": "cakephp/chronos",
             "version": "1.2.8",
@@ -1170,28 +1115,28 @@
         },
         {
             "name": "laravel-notification-channels/webpush",
-            "version": "3.0.1",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel-notification-channels/webpush.git",
-                "reference": "cb285b704ec877f2de74a1da0c381962e6c2e45b"
+                "reference": "5910eee2a9337ce160579579d687fa8e84958a16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-notification-channels/webpush/zipball/cb285b704ec877f2de74a1da0c381962e6c2e45b",
-                "reference": "cb285b704ec877f2de74a1da0c381962e6c2e45b",
+                "url": "https://api.github.com/repos/laravel-notification-channels/webpush/zipball/5910eee2a9337ce160579579d687fa8e84958a16",
+                "reference": "5910eee2a9337ce160579579d687fa8e84958a16",
                 "shasum": ""
             },
             "require": {
-                "illuminate/notifications": "^5.3",
-                "illuminate/support": "^5.1",
-                "minishlink/web-push": "^2.0",
-                "php": "^7.0"
+                "illuminate/notifications": "^5.3|^6.0",
+                "illuminate/support": "^5.1|^6.0",
+                "minishlink/web-push": "^5.0",
+                "php": "^7.1"
             },
             "require-dev": {
                 "mockery/mockery": "~1.0",
-                "orchestra/testbench": "^3.5",
-                "phpunit/phpunit": "~6.0"
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -1220,7 +1165,7 @@
             ],
             "description": "Web Push Notifications driver for Laravel.",
             "homepage": "https://github.com/laravel-notification-channels/webpush",
-            "time": "2018-08-27T07:27:36+00:00"
+            "time": "2019-09-06T07:26:06+00:00"
         },
         {
             "name": "laravel/cashier",
@@ -1779,102 +1724,32 @@
             "time": "2019-08-24T11:17:19+00:00"
         },
         {
-            "name": "mdanter/ecc",
-            "version": "v0.5.2",
+            "name": "minishlink/web-push",
+            "version": "v5.2.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpecc/phpecc.git",
-                "reference": "b95f25cc1bacc83a9f0ccd375900b7cfd343029e"
+                "url": "https://github.com/web-push-libs/web-push-php.git",
+                "reference": "b1e09e93fbbf3d4f95cee79a61191bd9df9f8f27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpecc/phpecc/zipball/b95f25cc1bacc83a9f0ccd375900b7cfd343029e",
-                "reference": "b95f25cc1bacc83a9f0ccd375900b7cfd343029e",
+                "url": "https://api.github.com/repos/web-push-libs/web-push-php/zipball/b1e09e93fbbf3d4f95cee79a61191bd9df9f8f27",
+                "reference": "b1e09e93fbbf3d4f95cee79a61191bd9df9f8f27",
                 "shasum": ""
             },
             "require": {
                 "ext-gmp": "*",
-                "fgrosse/phpasn1": "^2.0",
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0",
-                "squizlabs/php_codesniffer": "^2.0",
-                "symfony/yaml": "^2.6|^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Mdanter\\Ecc\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matyas Danter",
-                    "homepage": "http://matejdanter.com/",
-                    "role": "Author"
-                },
-                {
-                    "name": "Thibaud Fabre",
-                    "email": "thibaud@aztech.io",
-                    "homepage": "http://aztech.io",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Thomas Kerin",
-                    "email": "afk11@users.noreply.github.com",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "PHP Elliptic Curve Cryptography library",
-            "homepage": "https://github.com/phpecc/phpecc",
-            "keywords": [
-                "Diffie",
-                "ECDSA",
-                "Hellman",
-                "curve",
-                "ecdh",
-                "elliptic",
-                "nistp192",
-                "nistp224",
-                "nistp256",
-                "nistp384",
-                "nistp521",
-                "phpecc",
-                "secp256k1",
-                "secp256r1"
-            ],
-            "time": "2018-12-03T18:17:01+00:00"
-        },
-        {
-            "name": "minishlink/web-push",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-push-libs/web-push-php.git",
-                "reference": "6e1b88c46351ea3850cb1e9ae9565b8c61a58396"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-push-libs/web-push-php/zipball/6e1b88c46351ea3850cb1e9ae9565b8c61a58396",
-                "reference": "6e1b88c46351ea3850cb1e9ae9565b8c61a58396",
-                "shasum": ""
-            },
-            "require": {
+                "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.2",
                 "lib-openssl": "*",
-                "mdanter/ecc": "^0.5.0",
-                "php": "^7.0",
-                "spomky-labs/base64url": "^1.0",
-                "spomky-labs/jose": "^7.0",
-                "spomky-labs/php-aes-gcm": "^1.2"
+                "php": "^7.1",
+                "web-token/jwt-key-mgmt": "^1.0",
+                "web-token/jwt-signature": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "5.7.*"
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "phpstan/phpstan": "0.11.2",
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "autoload": {
@@ -1902,7 +1777,7 @@
                 "push",
                 "web"
             ],
-            "time": "2017-11-22T20:04:25+00:00"
+            "time": "2019-03-23T17:10:13+00:00"
         },
         {
             "name": "moneyphp/money",
@@ -2597,52 +2472,6 @@
             "time": "2016-06-16T16:22:20+00:00"
         },
         {
-            "name": "psr/cache",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Cache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for caching libraries",
-            "keywords": [
-                "cache",
-                "psr",
-                "psr-6"
-            ],
-            "time": "2016-08-06T20:24:11+00:00"
-        },
-        {
             "name": "psr/container",
             "version": "1.0.0",
             "source": {
@@ -3259,89 +3088,30 @@
             "time": "2019-02-22T07:42:52+00:00"
         },
         {
-            "name": "spomky-labs/aes-key-wrap",
-            "version": "v4.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Spomky-Labs/aes-key-wrap.git",
-                "reference": "6d302dc2d20cd61fc8bf0e253d628c70724d302a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/aes-key-wrap/zipball/6d302dc2d20cd61fc8bf0e253d628c70724d302a",
-                "reference": "6d302dc2d20cd61fc8bf0e253d628c70724d302a",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "lib-openssl": "*",
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "AESKW\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky-Labs/aes-key-wrap/contributors"
-                }
-            ],
-            "description": "AES Key Wrap for PHP.",
-            "homepage": "https://github.com/Spomky-Labs/aes-key-wrap",
-            "keywords": [
-                "A128KW",
-                "A192KW",
-                "A256KW",
-                "RFC3394",
-                "RFC5649",
-                "aes",
-                "key",
-                "padding",
-                "wrap"
-            ],
-            "time": "2017-10-28T16:15:26+00:00"
-        },
-        {
             "name": "spomky-labs/base64url",
-            "version": "v1.0.2",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spomky-Labs/base64url.git",
-                "reference": "ef6d5fb93894063d9cee996022259fd08d6646ea"
+                "reference": "3eb46a1de803f0078962d910e3a2759224a68c61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/base64url/zipball/ef6d5fb93894063d9cee996022259fd08d6646ea",
-                "reference": "ef6d5fb93894063d9cee996022259fd08d6646ea",
+                "url": "https://api.github.com/repos/Spomky-Labs/base64url/zipball/3eb46a1de803f0078962d910e3a2759224a68c61",
+                "reference": "3eb46a1de803f0078962d910e3a2759224a68c61",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3|^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0",
-                "satooshi/php-coveralls": "^1.0"
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -3359,7 +3129,7 @@
                     "homepage": "https://github.com/Spomky-Labs/base64url/contributors"
                 }
             ],
-            "description": "Base 64 URL Safe Encoding/decoding PHP Library",
+            "description": "Base 64 URL Safe Encoding/Decoding PHP Library",
             "homepage": "https://github.com/Spomky-Labs/base64url",
             "keywords": [
                 "base64",
@@ -3367,151 +3137,7 @@
                 "safe",
                 "url"
             ],
-            "time": "2016-01-21T19:50:30+00:00"
-        },
-        {
-            "name": "spomky-labs/jose",
-            "version": "v7.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Spomky-Labs/jose.git",
-                "reference": "c7835297fa6a2c00dcdcbfadd67f7ea099b226a1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/jose/zipball/c7835297fa6a2c00dcdcbfadd67f7ea099b226a1",
-                "reference": "c7835297fa6a2c00dcdcbfadd67f7ea099b226a1",
-                "shasum": ""
-            },
-            "require": {
-                "beberlei/assert": "^2.4",
-                "fgrosse/phpasn1": "^2.0",
-                "lib-openssl": "*",
-                "mdanter/ecc": "0.5.*",
-                "php": "^7.0",
-                "psr/cache": "^1.0",
-                "spomky-labs/aes-key-wrap": "^3.0|^4.0",
-                "spomky-labs/base64url": "^1.0",
-                "spomky-labs/php-aes-gcm": "^1.2",
-                "symfony/polyfill-mbstring": "^1.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0",
-                "satooshi/php-coveralls": "^2.0",
-                "symfony/cache": "^2.0|^3.0|^4.0"
-            },
-            "suggest": {
-                "ext-crypto": "Highly recommended when you use AES GCM based algorithms.",
-                "ext-curve25519": "For EdDSA with X25519 curves support.",
-                "ext-ed25519": "For EdDSA with Ed25519 curves support."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "7.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jose\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/Spomky-Labs/jose/contributors"
-                }
-            ],
-            "description": "JSON Object Signing and Encryption library for PHP.",
-            "homepage": "https://github.com/Spomky-Labs/Jose",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "jwa",
-                "jwt"
-            ],
-            "abandoned": "web-token/jwt-framework",
-            "time": "2018-05-03T07:34:56+00:00"
-        },
-        {
-            "name": "spomky-labs/php-aes-gcm",
-            "version": "v1.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Spomky-Labs/php-aes-gcm.git",
-                "reference": "e3900f2eb29a98476ae94c25c5c4aebb32ebf338"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/php-aes-gcm/zipball/e3900f2eb29a98476ae94c25c5c4aebb32ebf338",
-                "reference": "e3900f2eb29a98476ae94c25c5c4aebb32ebf338",
-                "shasum": ""
-            },
-            "require": {
-                "beberlei/assert": "^2.4",
-                "lib-openssl": "*",
-                "php": ">=5.4",
-                "symfony/polyfill-mbstring": "^1.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.5|^5.0",
-                "satooshi/php-coveralls": "^1.0"
-            },
-            "suggest": {
-                "ext-crypto": "Highly recommended for better performance."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "AESGCM\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/Spomky-Labs/php-aes-gcm/contributors"
-                }
-            ],
-            "description": "AES GCM (Galois Counter Mode) PHP implementation.",
-            "homepage": "https://github.com/Spomky-Labs/php-aes-gcm",
-            "keywords": [
-                "AES-GCM",
-                "Galois Counter Mode",
-                "aes",
-                "gcm"
-            ],
-            "time": "2018-11-07T14:39:44+00:00"
+            "time": "2018-08-16T15:44:20+00:00"
         },
         {
             "name": "stripe/stripe-php",
@@ -5230,6 +4856,642 @@
             "time": "2019-09-10T21:37:39+00:00"
         },
         {
+            "name": "web-token/jwt-core",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-core.git",
+                "reference": "2d6e2e6f39e9494e6634efe62f4d8b22a8f001e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/2d6e2e6f39e9494e6634efe62f4d8b22a8f001e3",
+                "reference": "2d6e2e6f39e9494e6634efe62f4d8b22a8f001e3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gmp": "*",
+                "ext-mbstring": "*",
+                "fgrosse/phpasn1": "^2.0",
+                "php": "^7.1",
+                "spomky-labs/base64url": "^1.0|^2.0",
+                "web-token/jwt-util-ecc": "^1.3"
+            },
+            "conflict": {
+                "spomky-labs/jose": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Core\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "Core component of the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-08-22T10:36:08+00:00"
+        },
+        {
+            "name": "web-token/jwt-key-mgmt",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-key-mgmt.git",
+                "reference": "0d92c381e2732bb9c6c2a8e21ab10d133ae074d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-key-mgmt/zipball/0d92c381e2732bb9c6c2a8e21ab10d133ae074d2",
+                "reference": "0d92c381e2732bb9c6c2a8e21ab10d133ae074d2",
+                "shasum": ""
+            },
+            "require": {
+                "lib-openssl": "*",
+                "paragonie/sodium_compat": "^1.2",
+                "web-token/jwt-core": "^1.3",
+                "web-token/jwt-util-ecc": "^1.3"
+            },
+            "require-dev": {
+                "php-http/httplug": "^1.1",
+                "php-http/message-factory": "^1.0",
+                "php-http/mock-client": "^1.0",
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "suggest": {
+                "php-http/httplug": "To enable JKU/X5U support.",
+                "php-http/message-factory": "To enable JKU/X5U support."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\KeyManagement\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-key-mgmt/contributors"
+                }
+            ],
+            "description": "Key Management component of the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-05-02T12:37:15+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature.git",
+                "reference": "b3ee58ccfdbdbaedf64177bc01abd800db1379e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/b3ee58ccfdbdbaedf64177bc01abd800db1379e5",
+                "reference": "b3ee58ccfdbdbaedf64177bc01abd800db1379e5",
+                "shasum": ""
+            },
+            "require": {
+                "web-token/jwt-core": "^1.3",
+                "web-token/jwt-signature-algorithm-ecdsa": "^1.3",
+                "web-token/jwt-signature-algorithm-eddsa": "^1.3",
+                "web-token/jwt-signature-algorithm-hmac": "^1.3",
+                "web-token/jwt-signature-algorithm-none": "^1.3",
+                "web-token/jwt-signature-algorithm-rsa": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "suggest": {
+                "web-token/jwt-signature-algorithm-ecdsa": "ECDSA Based Signature Algorithms",
+                "web-token/jwt-signature-algorithm-eddsa": "EdDSA Based Signature Algorithms",
+                "web-token/jwt-signature-algorithm-experimental": "Experimental Signature Algorithms",
+                "web-token/jwt-signature-algorithm-hmac": "HMAC Based Signature Algorithms",
+                "web-token/jwt-signature-algorithm-none": "None Signature Algorithm",
+                "web-token/jwt-signature-algorithm-rsa": "RSA Based Signature Algorithms"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-signature/contributors"
+                }
+            ],
+            "description": "Signature component of the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-08-22T10:36:08+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-ecdsa",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
+                "reference": "078f99ce0e63474964257b68abcbe60fa2220396"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-ecdsa/zipball/078f99ce0e63474964257b68abcbe60fa2220396",
+                "reference": "078f99ce0e63474964257b68abcbe60fa2220396",
+                "shasum": ""
+            },
+            "require": {
+                "web-token/jwt-signature": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "ECDSA Based Signature Algorithms the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-04-21T22:05:56+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-eddsa",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-eddsa.git",
+                "reference": "c40765e98cf56f9c31844fdb04bd6ff45f255864"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-eddsa/zipball/c40765e98cf56f9c31844fdb04bd6ff45f255864",
+                "reference": "c40765e98cf56f9c31844fdb04bd6ff45f255864",
+                "shasum": ""
+            },
+            "require": {
+                "web-token/jwt-signature": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "EdDSA Signature Algorithm the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-04-21T22:05:56+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-hmac",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-hmac.git",
+                "reference": "fd51a55534559befe6ffdfe6eb131d8c121eea82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-hmac/zipball/fd51a55534559befe6ffdfe6eb131d8c121eea82",
+                "reference": "fd51a55534559befe6ffdfe6eb131d8c121eea82",
+                "shasum": ""
+            },
+            "require": {
+                "web-token/jwt-signature": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "HMAC Based Signature Algorithms the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-04-21T22:05:56+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-none",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-none.git",
+                "reference": "0bd27b01d38868749e9a2daddfe6125a6098565a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-none/zipball/0bd27b01d38868749e9a2daddfe6125a6098565a",
+                "reference": "0bd27b01d38868749e9a2daddfe6125a6098565a",
+                "shasum": ""
+            },
+            "require": {
+                "web-token/jwt-signature": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "None Signature Algorithm the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-04-21T22:05:56+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-rsa",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-rsa.git",
+                "reference": "58947f022f1f45a4b6b7d6e463714c627e52977c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-rsa/zipball/58947f022f1f45a4b6b7d6e463714c627e52977c",
+                "reference": "58947f022f1f45a4b6b7d6e463714c627e52977c",
+                "shasum": ""
+            },
+            "require": {
+                "web-token/jwt-signature": "^1.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "RSA Based Signature Algorithms the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-04-21T22:05:56+00:00"
+        },
+        {
+            "name": "web-token/jwt-util-ecc",
+            "version": "v1.3.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-util-ecc.git",
+                "reference": "463370e8e96fb6a4916a41f854ec60db090cc367"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/463370e8e96fb6a4916a41f854ec60db090cc367",
+                "reference": "463370e8e96fb6a4916a41f854ec60db090cc367",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gmp": "*",
+                "ext-mbstring": "*",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Core\\Util\\Ecc\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-core/contributors"
+                }
+            ],
+            "description": "ECC Tools for the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "time": "2019-04-21T22:05:56+00:00"
+        },
+        {
             "name": "zendframework/zend-json",
             "version": "3.1.1",
             "source": {
@@ -5332,16 +5594,16 @@
     "packages-dev": [
         {
             "name": "ahuggins/open-on-make",
-            "version": "0.0.33",
+            "version": "0.0.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ahuggins/open-on-make.git",
-                "reference": "64b89b3c75f6a849cdd6ab24b7180313cb56de4b"
+                "reference": "2dae8869b2e3e0e19c10ed86e0932c0dd00c80c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ahuggins/open-on-make/zipball/64b89b3c75f6a849cdd6ab24b7180313cb56de4b",
-                "reference": "64b89b3c75f6a849cdd6ab24b7180313cb56de4b",
+                "url": "https://api.github.com/repos/ahuggins/open-on-make/zipball/2dae8869b2e3e0e19c10ed86e0932c0dd00c80c9",
+                "reference": "2dae8869b2e3e0e19c10ed86e0932c0dd00c80c9",
                 "shasum": ""
             },
             "require": {
@@ -5375,7 +5637,7 @@
                 }
             ],
             "description": "Automatically open files in editor when Artisan make:* is executed",
-            "time": "2019-09-09T03:31:19+00:00"
+            "time": "2019-09-27T03:57:22+00:00"
         },
         {
             "name": "beyondcode/laravel-dump-server",
@@ -5496,16 +5758,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "7128b251b48f24ef64e5cddd7f8d40cc3a06fd3e"
+                "reference": "4de2e8062e66edadbff261ebb5baae6eccfb799c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/7128b251b48f24ef64e5cddd7f8d40cc3a06fd3e",
-                "reference": "7128b251b48f24ef64e5cddd7f8d40cc3a06fd3e",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/4de2e8062e66edadbff261ebb5baae6eccfb799c",
+                "reference": "4de2e8062e66edadbff261ebb5baae6eccfb799c",
                 "shasum": ""
             },
             "require": {
@@ -5517,7 +5779,7 @@
             },
             "require-dev": {
                 "larapack/dd": "^1.1",
-                "phpunit/phpunit": "^7.0",
+                "phpunit/phpunit": "^7.5.16",
                 "spatie/phpunit-snapshot-assertions": "^2.0"
             },
             "type": "library",
@@ -5546,26 +5808,26 @@
                 "flare",
                 "reporting"
             ],
-            "time": "2019-09-11T14:19:56+00:00"
+            "time": "2019-09-27T14:54:17+00:00"
         },
         {
             "name": "facade/ignition",
-            "version": "1.8.2",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "4ff9397a24da58b35382802e2d22325b640123ea"
+                "reference": "40461a1f680171876c186dfff419b2a4c892995c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/4ff9397a24da58b35382802e2d22325b640123ea",
-                "reference": "4ff9397a24da58b35382802e2d22325b640123ea",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/40461a1f680171876c186dfff419b2a4c892995c",
+                "reference": "40461a1f680171876c186dfff419b2a4c892995c",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "facade/flare-client-php": "^1.0.4",
+                "facade/flare-client-php": "^1.1",
                 "facade/ignition-contracts": "^1.0",
                 "filp/whoops": "^2.4",
                 "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0",
@@ -5600,7 +5862,10 @@
             "autoload": {
                 "psr-4": {
                     "Facade\\Ignition\\": "src"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5614,7 +5879,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-09-20T09:37:06+00:00"
+            "time": "2019-09-27T16:49:08+00:00"
         },
         {
             "name": "facade/ignition-contracts",

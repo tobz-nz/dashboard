@@ -15,7 +15,7 @@
         "jwage/php-apns": "^0.0.3",
         "laracasts/flash": "^3.0",
         "laravel-notification-channels/apn": "^0.4",
-        "laravel-notification-channels/webpush": "^3.0",
+        "laravel-notification-channels/webpush": "^5.0",
         "laravel/cashier": "^10.2",
         "laravel/framework": "5.8.*",
         "laravel/horizon": "^3.2",
