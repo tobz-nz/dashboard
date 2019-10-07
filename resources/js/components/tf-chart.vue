@@ -39,6 +39,7 @@
                         trigger: 'axis',
                         formatter: this.tooltipFormater,
                         backgroundColor: 'hsl(207, 15%, 40%)',
+                        padding: 10,
                         axisPointer: {
                             type: 'cross',
                             label: {
@@ -128,7 +129,17 @@
             tooltipFormater(params) {
                 params = params[0];
                 var date = new Moment(params.name);
-                return date.format('l') + ' : ' + params.value[1];
+                var weatherIcon = params.data.meta.icon ? `<img src="/images/weather/${weatherIcon}.svg">` : '<div>N/A</div>';
+
+                return `<time class="block mb-2">${date.format('dddd Do MMMM YYYY')}</time>
+                <div class="flex justify-around items-center">
+                    ${weatherIcon}
+                    <div>
+                        ${params.data.percent}% / ${params.data.depth}<small>cm</small><br>
+                        ${params.data.volume} <small>L</small><br>
+                    </div>
+                </div>
+                `;
             }
         }
     }

@@ -49,9 +49,15 @@
     <div class="mb-8">
         <?php
         $data = $device->dailyMetrics($limit = 30)->orderByDesc('max_created_at')->get()->transform(function($metric) use ($device) {
+            $percent = round($metric->value / data_get($device->dimensions, 'height', 0) * 100);
+
             return (object) [
                 'name' => $metric->created_at->format('Y-m-d'),
-                'value' => [$metric->created_at->format('Y-m-d'), round($metric->value / data_get($device->dimensions, 'height', 0) * 100)],
+                'value' => [$metric->created_at->format('Y-m-d'), $percent],
+                'depth' => round($metric->value / 10),
+                'percent' => $percent,
+                'meta' => $metric->meta ?: [],
+                'volume' => $device->mmToLitres($metric->value),
             ];
         })
         ?>
