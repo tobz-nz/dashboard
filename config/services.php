@@ -58,5 +58,9 @@ return [
             'appId' => env('ALGOLIA_PLACES_APPID'),
             'apiKey' => env('ALGOLIA_PLACES_APIKEY'),
         ]
-    ]
+    ],
+
+    'freshchat' => [
+        'token' => env('FRESHCHAT_TOKEN'),
+    ],
 ];
