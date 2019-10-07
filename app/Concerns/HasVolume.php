@@ -19,9 +19,9 @@ trait HasVolume
     }
 
     /**
-     * Get name & fallback to the uid if no name ste
+     * Get current level
      *
-     * @param  string $name
+     * @param  string $value
      * @return string
      */
     public function getCurrentLevelAttribute($value): int
