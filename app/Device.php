@@ -71,8 +71,8 @@ class Device extends Model
 
     public function getDate(string $dateAttribute): Carbon
     {
-        return optional($this->$dateAttribute)->
-            timezone($this->meta->timezone) ?: config('app.timezone');
+        $timezone = optional($this->meta)->timezone ?: config('app.timezone');
+        return $this->$dateAttribute->timezone($timezone);
     }
 
     /**
