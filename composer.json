@@ -13,6 +13,7 @@
         "fideloper/proxy": "^4.0",
         "givebutter/laravel-keyable": "^1.0",
         "jwage/php-apns": "^0.0.3",
+        "lab404/laravel-impersonate": "^1.5",
         "laracasts/flash": "^3.0",
         "laravel-notification-channels/apn": "^0.4",
         "laravel-notification-channels/webpush": "^5.0",

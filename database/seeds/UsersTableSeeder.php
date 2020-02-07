@@ -23,5 +23,15 @@ class UsersTableSeeder extends Seeder
         ])->each(function ($user) {
             // $user->assignRole('super');
         });
+
+        factory(User::class)->create([
+            'name' => 'Test McTestFace',
+            'email' => 'test@example.com',
+            'password' => Hash::make('asdasdasd'),
+            'email_verified_at' => new Carbon,
+            'api_token' => Str::random(60),
+        ])->each(function ($user) {
+            // $user->assignRole('super');
+        });
     }
 }

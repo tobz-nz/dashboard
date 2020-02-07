@@ -76,6 +76,10 @@
             </div>
         </main>
 
+        @impersonating
+            <a href="{{ route('impersonate.leave') }}">Leave impersonation</a>
+        @endImpersonating
+
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
             @csrf
         </form>

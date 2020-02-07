@@ -9,12 +9,13 @@ use function GuzzleHttp\json_decode;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Cashier\Billable;
 use NotificationChannels\WebPush\HasPushSubscriptions;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, Billable;
+    use Notifiable, Billable, Impersonate;
     use HasPushSubscriptions;
 
     /**
@@ -91,6 +92,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->pushSubscriptions()->count() ||
             count($this->apn_tokens ?? []);
+    }
+
+    /**
+     * @return bool
+     */
+    public function canImpersonate()
+    {
+        return $this->id === 1;
     }
 
     /**

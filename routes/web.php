@@ -12,6 +12,7 @@
  */
 
 Auth::routes(['verify' => true]);
+Route::impersonate();
 
 $router->redirect('/', 'login');
 
@@ -44,6 +45,7 @@ $router->group(['middleware' => [
         'only' => ['index', 'store'],
     ]);
 
+    $router->resource('users', UserController::class);
     $router->resource('devices', DeviceController::class);
     $router->resource('devices/{device}/alerts', AlertController::class);
 
