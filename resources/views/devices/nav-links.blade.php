@@ -13,6 +13,11 @@
     </a>
     <div class="grid gap-1">
         <a class="link" href="{{ route('profile.index') }}">Account</a>
-        <button form="logout-form" class="link">Log Out</button>
+
+        @impersonating
+            <a href="{{ route('impersonate.leave') }}">Leave impersonation</a>
+        @else
+            <button form="logout-form" class="link">Log Out</button>
+        @endImpersonating
     </div>
 </div>
