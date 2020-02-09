@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 $factory->define(Device::class, function (Faker $faker) {
     return [
         'uid' => Str::random(18),
-        'api_token' => 'api-token',
+        'api_token' => Str::random(18),
         'owner_id' => 1,
         'name' => $faker->words(3, true),
         'color' => $faker->hexcolor,

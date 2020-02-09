@@ -16,10 +16,19 @@ class DevicesTableSeeder extends Seeder
     {
         factory(DeviceUid::class)->create([
             'uid' => '30aea44e6b24',
-        ]);
+        ])->each(function ($uid) {
+            factory(Device::class)->create([
+                'uid' => $uid->uid,
+                'api_token' => 'api-token',
+            ]);
+        });
 
-        factory(Device::class)->create([
-            'uid' => '30aea44e6b24',
-        ]);
+        factory(DeviceUid::class, 2)->create([
+        ])->each(function ($uid) {
+            factory(Device::class)->create([
+                'uid' => $uid->uid,
+            ]);
+        });
+
     }
 }
