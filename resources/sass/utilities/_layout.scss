@@ -181,6 +181,8 @@
 }
 
 .w {
+    width: var(--size, var(--width, auto));
+
     &-full {
         width: 100%;
     }
@@ -188,6 +190,10 @@
     &-fit {
         width: stretch;
     }
+}
+
+.h {
+    height: var(--size, var(--height, auto));
 }
 
 .items {
