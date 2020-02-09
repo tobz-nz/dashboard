@@ -4,6 +4,12 @@
         {{-- <li><a class="link{{ Route::currentRouteNamed('dashboard') ? ' active' : '' }}" href="{{ route('dashboard') }}">Manage Refills<span class="line"></span></a></li> --}}
         <li><a class="link{{ Route::currentRouteNamed('alerts.index') ? ' active' : '' }}" href="{{ route('alerts.index', $device) }}">Alerts<span class="line"></span></a></li>
         <li><a class="link{{ Route::currentRouteNamed('devices.edit') ? ' active' : '' }}" href="{{ route('devices.edit', $device) }}">Settings<span class="line"></span></a></li>
+
+        @if (auth()->user()->canImpersonate())
+            <li>
+                <a class="link{{ Route::currentRouteNamed('users.*') ? ' active' : '' }}" href="{{ route('users.index') }}">List Users</a>
+            </li>
+        @endif
     @endisset
 </ul>
 
