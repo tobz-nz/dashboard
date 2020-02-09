@@ -2,9 +2,31 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <link rel="manifest" href="{{ route('webmanifest') }}">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/app-icon.svg') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@yield('title', '') - {{ config('app.name') }}</title>
+
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://wchat.freshchat.com">
+
+    <meta name="application-name" content="{{ config('app.name') }}">
+    <meta name="theme-color" content="hsl(213, 80%, 36%)">
+
+    <meta name="robots" content="noindex,nofollow">
+
+    <link rel="manifest" href="{{ route('webmanifest') }}">
+
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/app-icon.svg') }}">
+    <link rel="mask-icon" href="{{ asset('images/app-icon.svg') }}" color="white">
+
+    {{-- Android --}}
+    <meta name="mobile-web-app-capable" content="yes">
+
+    {{-- iOS --}}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="{{ config('app.name') }}">
+    <meta rel="apple-touch-icon" href="{{ asset('images/app-icon.png') }}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
     @stack('meta')
 
     <!-- CSRF Token -->
@@ -21,6 +43,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('styles')
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Barlow:300,400,500,700" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     @routes()
