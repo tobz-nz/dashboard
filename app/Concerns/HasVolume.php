@@ -181,7 +181,7 @@ trait HasVolume
                 "device.{$this->id}",
             ])->rememberForever("burnRate.{$this->id}", function () {
                 return $this->dailyMetrics(30)
-                    ->orderBy('max_created_at')
+                    ->orderByDesc('max_created_at')
                     ->get();
             });
 
