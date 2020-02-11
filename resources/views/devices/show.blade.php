@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', compact('device'))
 
 @section('title', 'Trends')
 
@@ -37,8 +37,8 @@
             <div class="pie-fallback" style="background-image: radial-gradient(white calc(var(--size) * 0.42), transparent 0%), conic-gradient(from 120deg, transparent 33%, var({{ $device->levelColor }}) 33%, var({{ $device->levelColor }}) {{ 33 + (67 * $device->currentPercent * .01)}}%, var(--blue-5) {{ 33 + (67 * $device->currentPercent * .01)}}%, var(--blue-5) 360deg);"></div>
         </div>
 
-        <div class="grid justify-center items-center">
-            <div class="days-remaining flex flex-col justify-center items-center rounded-full" style="--size: 210px; width: var(--size); height:var(--size); box-shadow:0 0 10px var({{ $device->daysRemaining > 7 ? '--blue-0' : '--red-0' }})">
+        <div class="grid justify-center align-items-center">
+            <div class="days-remaining flex flex-col justify-center align-items-center rounded-full" style="--size: 210px; width: var(--size); height:var(--size); box-shadow:0 0 10px var({{ $device->daysRemaining > 7 ? '--blue-0' : '--red-0' }})">
                 <span class="days-remaining__counter block text-center" style="font-size: var(--text-10);">{{ (int) $device->daysRemaining ?? 'Indeterminate' }}</span>
                 <span>Days remaining</span>
                 <small class="text-light">avg {{ $device->mmToLitres($device->burnRate) }}L per day</small>

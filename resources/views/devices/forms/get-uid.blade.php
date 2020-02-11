@@ -30,7 +30,7 @@
             @endif
         </div>
 
-        <button type="submit" class="inline-flex justify-center items-center">
+        <button type="submit" class="inline-flex justify-center align-items-center">
             <svg class="" width="20" height="20" role="image">
                 <use href="{{ asset('images/icons.svg#arrow-right') }}"></use>
             </svg>

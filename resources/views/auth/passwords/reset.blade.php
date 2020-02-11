@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex flex-col justify-center items-center">
+<div class="flex flex-col justify-center align-items-center">
     <img class="block mt-8" width="145" height="145" src="{{ asset('images/icon.svg') }}">
     <img class="block mb-5" width="320" height="100" src="{{ asset('images/logo.svg') }}">
 

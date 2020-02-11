@@ -71,9 +71,9 @@ class AppServiceProvider extends ServiceProvider
             $devices = app('cache')->rememberForever($user->getCachKey('devices'), function () use ($user) {
                 return $user->devices()->orderBy('created_at')->paginate();
             });
-            $device = $devices->first();
+            // $device = $devices->first();
 
-            $view->with(compact('user', 'device', 'devices'));
+            $view->with(compact('user', 'devices'));
         });
     }
 }

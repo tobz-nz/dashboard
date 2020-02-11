@@ -77,6 +77,7 @@ class DeviceObserver
     private function flushCache(Device $device)
     {
         app('cache')->tags([
+            $device->owner->getCachKey('devices'),
             "device.{$device->id}",
         ])->flush();
     }

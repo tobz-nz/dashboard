@@ -1,4 +1,6 @@
 .m {
+    margin: var(--margin, 0);
+
     @for $i from 0 through 15 {
         &-#{$i} {
             margin: var(--spacing-#{$i});
@@ -10,6 +12,9 @@
     }
 
     &x {
+        margin-right: var(--mx, 0);
+        margin-left: var(--mx, 0);
+
         &-auto {
             margin-right: auto;
             margin-left: auto;
@@ -24,6 +29,9 @@
     }
 
     &y {
+        margin-top: var(--my, 0);
+        margin-bottom: var(--my, 0);
+
         &-auto {
             margin-top: auto;
             margin-bottom: auto;
@@ -38,6 +46,8 @@
     }
 
     &t {
+        margin-top: var(--mt, 0);
+
         &-auto {
             margin-top: auto;
         }
@@ -50,6 +60,8 @@
     }
 
     &r {
+        margin-right: var(--mr, 0);
+
         &-auto {
             margin-right: auto;
         }
@@ -62,6 +74,8 @@
     }
 
     &b {
+        margin-bottom: var(--mb, 0);
+
         &-auto {
             margin-bottom: auto;
         }
@@ -74,6 +88,8 @@
     }
 
     &l {
+        margin-left: var(--ml, 0);
+
         &-auto {
             margin-left: auto;
         }
@@ -93,10 +109,6 @@
         }
     }
 
-    &-auto {
-        padding: auto;
-    }
-
     @for $i from 0 through 15 {
         &-#{$i} {
             padding: var(--spacing-#{$i});
@@ -104,11 +116,6 @@
     }
 
     &x {
-        &-auto {
-            padding-right: auto;
-            padding-left: auto;
-        }
-
         @for $i from 0 through 15 {
             &-#{$i} {
                 padding-right: var(--spacing-#{$i});
@@ -118,11 +125,6 @@
     }
 
     &y {
-        &-auto {
-            padding-top: auto;
-            padding-bottom: auto;
-        }
-
         @for $i from 0 through 15 {
             &-#{$i} {
                 padding-top: var(--spacing-#{$i});
@@ -132,10 +134,6 @@
     }
 
     &t {
-        &-auto {
-            padding-top: auto;
-        }
-
         @for $i from 0 through 15 {
             &-#{$i} {
                 padding-top: var(--spacing-#{$i});
@@ -144,10 +142,6 @@
     }
 
     &r {
-        &-auto {
-            padding-right: auto;
-        }
-
         @for $i from 0 through 15 {
             &-#{$i} {
                 padding-right: var(--spacing-#{$i});
@@ -156,10 +150,6 @@
     }
 
     &b {
-        &-auto {
-            padding-bottom: auto;
-        }
-
         @for $i from 0 through 15 {
             &-#{$i} {
                 padding-bottom: var(--spacing-#{$i});
@@ -168,10 +158,6 @@
     }
 
     &l {
-        &-auto {
-            padding-left: auto;
-        }
-
         @for $i from 0 through 15 {
             &-#{$i} {
                 padding-left: var(--spacing-#{$i});
@@ -181,7 +167,15 @@
 }
 
 .w {
-    width: var(--size, var(--width, auto));
+    width: var(--width, var(--size, auto));
+
+    &-max {
+        width: max-content;
+    }
+
+    &-min {
+        width: min-content;
+    }
 
     &-full {
         width: 100%;
@@ -192,11 +186,39 @@
     }
 }
 
-.h {
-    height: var(--size, var(--height, auto));
+.mw {
+    max-width: var(--mwidth, var(--size, none));
 }
 
-.items {
+.h {
+    height: var(--height, var(--size, auto));
+
+    &-full {
+        height: 100%;
+    }
+
+    &-screen {
+        height: 100vh;
+    }
+
+    &-max {
+        max-height: var(--max-height, var(--size, none));
+
+        &-screen {
+            max-height: 100vh;
+        }
+    }
+
+    &-min {
+        min-height: var(--min-height, var(--size, none));
+
+        &-screen {
+            min-height: 100vh;
+        }
+    }
+}
+
+.align-items {
     &-start {
         align-items: flex-start;
     }
@@ -207,6 +229,48 @@
 
     &-end {
         align-items: flex-end;
+    }
+}
+
+.align {
+    &-start {
+        align-content: flex-start;
+    }
+
+    &-center {
+        align-content: center;
+    }
+
+    &-end {
+        align-content: flex-end;
+    }
+
+    &-self {
+        &-start {
+            align-self: flex-start;
+        }
+
+        &-center {
+            align-self: center;
+        }
+
+        &-end {
+            align-self: flex-end;
+        }
+    }
+}
+
+.items {
+    &-start {
+        justify-items: flex-start;
+    }
+
+    &-end {
+        justify-items: flex-end;
+    }
+
+    &-center {
+        justify-items: center;
     }
 }
 
@@ -230,9 +294,34 @@
     &-around {
         justify-content: space-around;
     }
+
+    &-self {
+        &-start {
+            justify-self: flex-start;
+        }
+
+        &-end {
+            justify-self: flex-end;
+        }
+
+        &-center {
+            justify-self: center;
+        }
+    }
 }
 
 .grid {
+    grid-template-columns: var(--columns, auto);
+    grid-template-rows: var(--rows, auto);
+
+    @include for-tablet-portrait-up {
+        grid-template-columns: var(--tablet-columns, var(--columns, auto));
+    }
+
+    @include for-desktop-up {
+        grid-template-columns: var(--desktop-columns, var(--tablet-columns, var(--columns, auto)));
+    }
+
     &-flow-col {
         grid-auto-flow: column;
     }
@@ -242,12 +331,34 @@
     }
 
     &-span-cols {
-        grid-column: 1/-1;
+        grid-column: var(--span-cols, 1/-1);
+    }
+
+    &-span-rows {
+        grid-row: var(--span-rows, 1/-1);
     }
 }
 
 .subgrid {
     grid-template-columns: subgrid;
+}
+
+.flex {
+    &-item {
+        flex: var(--flex, var(--basis, auto) var(--grow, 1) var(--shrink, 1));
+    }
+
+    &-grow {
+        flex-grow: var(--grow, 1);
+    }
+
+    &-shrink {
+        flex-shrink: var(--shrink, 1);
+    }
+
+    &-basis {
+        flex-basis: var(--basis, auto);
+    }
 }
 
 .gap {
@@ -257,7 +368,7 @@
         grid-gap: var(--gap-0, 0);
     }
 
-    @for $i from 1 through 3 {
+    @for $i from 0 through 4 {
         &-#{$i} {
             grid-gap: var(--gap-#{$i});
         }
@@ -284,16 +395,4 @@
     &-hidden {
         overflow: hidden;
     }
-}
-
-.relative {
-    position: relative;
-}
-
-.absolute {
-    position: absolute;
-}
-
-.sticky {
-    position: sticky;
 }

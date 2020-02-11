@@ -5,8 +5,8 @@
 @section('content')
 
 <ul class="devices">
-    @foreach(auth()->user()->devices as $device)
-    <li><a href="{{ route('devices.show', $device) }}">{{ $device->name }}</a></li>
+    @foreach(auth()->user()->devices as $currentDevice)
+    <li><a href="{{ route('devices.show', $currentDevice) }}">{{ $currentDevice->name }}</a></li>
     @endforeach
 </ul>
 

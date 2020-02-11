@@ -1,34 +1,64 @@
 .text {
+    color: var(--color, currentColor);
+
     // sizes
-    @for $i from 1 through 10 {
+    @for $i from 1 through 8 {
         &-#{$i} {
             font-size: var(--text-#{$i});
         }
     }
 
     // weights
+    &-thin {
+        font-weight: var(--font-thin, 300);
+    }
+
+    &-extra-light {
+        font-weight: var(--font-extra-light, 300);
+    }
+
     &-light {
-        font-weight: var(--weight, 300);
+        font-weight: var(--font-light, 300);
     }
 
-    &-normal {
-        font-weight: var(--weight, 400);
+    &-regular {
+        font-weight: var(--font-regular, 400);
     }
 
-    &-medium {
-        font-weight: var(--weight, 500);
+    &-semibold {
+        font-weight: var(--font-semibold, 500);
     }
 
     &-bold {
-        font-weight: var(--weight, 700);
+        font-weight: var(--font-bold, 600);
+    }
+
+    &-extra-bold {
+        font-weight: var(--font-bold, 700);
+    }
+
+    &-heavy {
+        font-weight: var(--font-heavy, 800);
     }
 
     &-right {
         text-align: right;
     }
 
-    &left {
+    &-left {
         text-align: left;
+    }
+
+    &-center {
+        text-align: center;
+    }
+
+    &-normal {
+        font-style: normal;
+    }
+
+    &-italic {
+        font-style: italic;
     }
 }
 
@@ -44,12 +74,30 @@
     white-space: nowrap;
 }
 
+.truncate {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @supports (-webkit-line-clamp: 1) {
+        display: -webkit-box; // lol.
+        white-space: normal; // dunno why this is required.. but 🤷‍♂️
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--line-clamp, 1);
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
-    font-family: 'Barlow', sans-serif;
-    font-weight: 500;
+    font-family: var(--default-font, Helvetica, sans-serif);
+    font-weight: var(--weight, 500);
 }
 
 h1 {
     font-size: var(--text-6);
+}
+
+p {
+    margin: 0 0 1em;
 }

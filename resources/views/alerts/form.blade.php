@@ -2,7 +2,7 @@
     @method($alert->exists ? 'put' : 'POST')
     @csrf()
 
-    <div class="grid subgrid gap input-group items-center" style="grid-template-rows: auto auto; --gap:var(--gap-2) var(--gap-3)">
+    <div class="grid subgrid gap input-group align-items-center" style="grid-template-rows: auto auto; --gap:var(--gap-2) var(--gap-3)">
         <label class="input-label grid-span-cols" for="percent-{{ $alert->id ?? 0 }}">{{ __('Alert me when water level') }}</label>
 
         <select name="trigger" id="alert-trigger-{{ $alert->id ?? 0 }}" class="input-field">
@@ -11,7 +11,7 @@
             <option value="3"@if(old('trigger', $alert->trigger) == 3)selected @endif>Passes</option>
         </select>
 
-        <div class="relative grid grid-flow-col gap-2 items-center">
+        <div class="relative grid grid-flow-col gap-2 align-items-center">
             <input id="percent-{{ $alert->id ?? 0 }}" type="number" class="input-field" name="percent" min="0" max="100" value="{{ old('percent', $alert->percent) }}" min="0" max="100" placeholder="e.g. 50%" required>
             <div class="absolute input-group-append opaque" style="right: 35px; --opacity: 0.6">
                 <div class="input-group-text" title="Percent">%</div>

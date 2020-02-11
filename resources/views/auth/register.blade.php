@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="flex flex-col justify-center items-center">
+<div class="flex flex-col justify-center align-items-center">
     <svg class="block mt-6" style="color:var(--blue-1)" width="145" height="145">
         <use href="{{ asset('images/icons.svg#icon') }}"></use>
     </svg>
