@@ -5,6 +5,7 @@ namespace App\Concerns;
 use App\DeviceMetric;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use RuntimeException;
 
 trait HasVolume
 {
@@ -232,6 +233,6 @@ trait HasVolume
             return round($valueInMm * $width * $length);
         }
 
-        throw \RuntimeException('Invalid Device Shape');
+        throw new RuntimeException('Invalid Device Shape');
     }
 }
