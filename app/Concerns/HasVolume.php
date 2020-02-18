@@ -183,7 +183,8 @@ trait HasVolume
             ])->remember("burnRate.{$this->id}", 1/2, function () {
                 return $this->dailyMetrics(30)
                     ->orderByDesc('max_created_at')
-                    ->get()->reverse();
+                    ->get()
+                    ->reverse();
             });
 
         $last = optional($dailies->first())->value ?? 0;
