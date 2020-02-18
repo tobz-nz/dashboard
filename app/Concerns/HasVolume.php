@@ -180,10 +180,10 @@ trait HasVolume
         $dailies = app('cache')
             ->tags([
                 "device.{$this->id}",
-            ])->rememberForever("burnRate.{$this->id}", function () {
+            ])->remember("burnRate.{$this->id}", 1/2, function () {
                 return $this->dailyMetrics(30)
-                    ->orderBy('max_created_at')
-                    ->get();
+                    ->orderByDesc('max_created_at')
+                    ->get()->reverse();
             });
 
         $last = optional($dailies->first())->value ?? 0;
