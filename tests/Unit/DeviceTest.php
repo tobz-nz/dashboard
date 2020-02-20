@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Device;
 use App\DeviceMetric;
 use App\DeviceUid;
+use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
@@ -16,7 +17,9 @@ class DeviceTest extends TestCase
 
     public function testCylinderDeviceVolume()
     {
+        $owner = factory(User::class)->create();
         $device = $this->makeDevice([
+            'owner_id' => $owner->id,
             'dimensions' => [
                 'shape' => 'cylinder',
                 'diameter' => 350,
@@ -33,7 +36,9 @@ class DeviceTest extends TestCase
 
     public function testCylinderDevicePercent()
     {
+        $owner = factory(User::class)->create();
         $device = $this->makeDevice([
+            'owner_id' => $owner->id,
             'dimensions' => [
                 'shape' => 'cylinder',
                 'diameter' => 350,
@@ -60,7 +65,9 @@ class DeviceTest extends TestCase
 
     public function testRectangleDeviceVolume()
     {
+        $owner = factory(User::class)->create();
         $device = $this->makeDevice([
+            'owner_id' => $owner->id,
             'dimensions' => [
                 'shape' => 'rectangle',
                 'length' => 200,
@@ -77,7 +84,9 @@ class DeviceTest extends TestCase
 
     public function testRectangleDevicePercent()
     {
+        $owner = factory(User::class)->create();
         $device = $this->makeDevice([
+            'owner_id' => $owner->id,
             'dimensions' => [
                 'shape' => 'rectangle',
                 'length' => 200,
@@ -95,7 +104,9 @@ class DeviceTest extends TestCase
 
     public function testDeviceDaysLeft()
     {
+        $owner = factory(User::class)->create();
         $device = $this->makeDevice([
+            'owner_id' => $owner->id,
             'dimensions' => [
                 'shape' => 'cylinder',
                 'diameter' => 350,
