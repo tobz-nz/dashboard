@@ -9,7 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 
-class LevelCheck
+class LevelCheck implements ShouldQueue
 {
     use InteractsWithQueue;
 

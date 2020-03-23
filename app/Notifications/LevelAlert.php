@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\Alert;
 use App\Device;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\SlackMessage;
@@ -14,7 +15,7 @@ use NotificationChannels\Apn\ApnMessage;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 
-class LevelAlert extends Notification
+class LevelAlert extends Notification implements ShouldQueue
 {
     use Queueable;
 
