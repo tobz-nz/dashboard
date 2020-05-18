@@ -23,10 +23,12 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     {{-- iOS --}}
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="{{ config('app.name') }}">
-    <meta rel="apple-touch-icon" href="{{ asset('images/app-icon.png') }}">
     <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta rel="apple-touch-icon" sizes="134x134" href="{{ asset('images/app-icon.png') }}">
+
     @stack('meta')
 
     <!-- CSRF Token -->
