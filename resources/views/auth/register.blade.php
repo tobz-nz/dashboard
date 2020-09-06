@@ -42,27 +42,6 @@
             <input class="input-field" type="password" id="password_confirmation" name="password_confirmation" required>
         </div>
 
-        <div class="input-group grid mb-4 @if($errors->has('dimensions.address'))input--invalid @endif">
-            <label class="input-label" for="place">{{ __('Address') }}</label>
-            <places-field class="input-field" id="place" name="place" data-field="address-location" value="{{ old('place') }}" placeholder="e.g. 12 Kagan Ave, Mangawhai" data-place required></places-field>
-
-            <input type="hidden" id="address-name" name="address[name]" value="{{ old('address.name') }}">
-            <input type="hidden" id="address-city" name="address[city]" value="{{ old('address.city') }}">
-            <input type="hidden" id="address-country" name="address[country]" value="{{ old('address.country') }}">
-            <input type="hidden" id="address-postcode" name="address[postcode]" value="{{ old('address.postcode') }}">
-            <input type="hidden" id="address-latlng-lat" name="address[latlng][lat]" value="{{ old('address.latlng.lat') }}">
-            <input type="hidden" id="address-latlng-lng" name="address[latlng][lng]" value="{{ old('address.latlng.lng') }}">
-
-            @if ($errors->has('address') || $errors->has('place'))
-                <div class="input--error">{{ $errors->first('place') ?: $errors->first('address') }}</div>
-            @endif
-        </div>
-
-        <div class="input-group grid mb-6">
-            <label class="input-label" for="household-size">{{ __('Household Size(number of residents)') }}</label>
-            <input class="input-field" type="number" min="1" id="household-size" name="household_size" value="{{ old('household_size', 3) }}" required>
-        </div>
-
         <button type="submit" class="w-full button button--primary border">{{ __('Register') }}</button>
 
         <a href="{{ route('login') }}" class="flex p-4 link justify-center">or Login in</a>
